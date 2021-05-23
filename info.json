@@ -1,0 +1,59 @@
+{
+    "name": {
+        "id": 1007900000,
+        "internal": "ContractManagement",
+        "external": "ContractManagement"
+    },
+    "category": "Tools",
+    "version": "1.0.0",
+    "requirements": {
+        "phpOMS": "1.0.0",
+        "phpOMS-db": "1.0.0"
+    },
+    "creator": {
+        "name": "Orange Management",
+        "website": "www.spl1nes.com"
+    },
+    "description": "ContractManagement module.",
+    "directory": "ContractManagement",
+    "dependencies": {
+        "Admin": "1.0.0",
+        "Calendar": "1.0.0",
+        "Media": "1.0.0",
+        "Editor": "1.0.0",
+        "Tag": "1.0.0"
+    },
+    "providing": {
+        "Navigation": "*",
+        "Search": "*"
+    },
+    "load": [
+        {
+            "pid": [
+                "/contract"
+            ],
+            "type": 4,
+            "for": 0,
+            "from": "ContractManagement",
+            "file": "ContractManagement"
+        },
+        {
+            "pid": [
+                "/"
+            ],
+            "type": 4,
+            "for": "Navigation",
+            "from": "ContractManagement",
+            "file": "ContractManagement"
+        },
+        {
+            "pid": [
+                "/"
+            ],
+            "type": 5,
+            "from": "ContractManagement",
+            "for": "Navigation",
+            "file": "Navigation"
+        }
+    ]
+}
