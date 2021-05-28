@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1007901001,
+        "pid": "/",
+        "type": 2,
+        "subtype": 1,
+        "name": "Contract",
+        "uri": "{/prefix}contract/list?{?}",
+        "target": "self",
+        "icon": null,
+        "order": 45,
+        "from": "Kanban",
+        "permission": { "permission": 2, "type": null, "element": null },
+        "parent": 1003301001,
+        "children": [
+             {
+                "id": 1007902001,
+                "pid": "/contract",
+                "type": 3,
+                "subtype": 1,
+                "name": "Boards",
+                "uri": "{/prefix}contract/list?{?}",
+                "target": "self",
+                "icon": null,
+                "order": 1,
+                "from": "Kanban",
+                "permission": { "permission": 2, "type": null, "element": null },
+                "parent": 1007901001,
+                "children": []
+            }
+        ]
+    }
+]
