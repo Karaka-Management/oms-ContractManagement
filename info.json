@@ -41,15 +41,6 @@
             "pid": [
                 "/"
             ],
-            "type": 4,
-            "for": "Navigation",
-            "from": "ContractManagement",
-            "file": "ContractManagement"
-        },
-        {
-            "pid": [
-                "/"
-            ],
             "type": 5,
             "from": "ContractManagement",
             "for": "Navigation",

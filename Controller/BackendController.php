@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Modules\ContractManagement\Controller;
 
-use Modules\Dashboard\Models\DashboardElementInterface;
 use Modules\ContractManagement\Models\PermissionState;
 use phpOMS\Account\PermissionType;
 use phpOMS\Asset\AssetType;
@@ -34,6 +33,6 @@ use phpOMS\Views\View;
  * @link    https://orange-management.org
  * @since   1.0.0
  */
-final class BackendController extends Controller implements DashboardElementInterface
+final class BackendController extends Controller
 {
 }
