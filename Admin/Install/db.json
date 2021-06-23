@@ -1,45 +1,144 @@
 {
-    "media_contract": {
-        "name": "media_contract",
+    "contractmgmt_type": {
+        "name": "contractmgmt_type",
         "fields": {
-            "media_contract_id": {
-                "name": "media_contract_id",
+            "contractmgmt_type_id": {
+                "name": "contractmgmt_type_id",
                 "type": "INT",
                 "null": false,
-                "primary": true
+                "primary": true,
+                "autoincrement": true
             },
-            "media_contract_start": {
-                "name": "media_contract_start",
-                "type": "DATETIME",
-                "default": null,
+            "contractmgmt_type_name": {
+                "name": "contractmgmt_type_name",
+                "type": "VARCHAR(255)",
                 "null": false
-            },
-            "media_contract_end": {
-                "name": "media_contract_end",
-                "type": "DATETIME",
-                "null": false
-            },
-            "media_contract_autorenewal": {
-                "name": "media_contract_autorenewal",
-                "type": "TINYINT",
-                "default": 1,
-                "null": false
-            },
-            "media_contract_renewaltime": {
-                "name": "media_contract_renewaltime",
+            }
+        }
+    },
+    "contractmgmt_type_l11n": {
+        "name": "contractmgmt_type_l11n",
+        "fields": {
+            "contractmgmt_type_l11n_id": {
+                "name": "contractmgmt_type_l11n_id",
                 "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "contractmgmt_type_l11n_title": {
+                "name": "contractmgmt_type_l11n_title",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "contractmgmt_type_l11n_type": {
+                "name": "contractmgmt_type_l11n_type",
+                "type": "INT(11)",
+                "null": false,
+                "foreignTable": "contractmgmt_type",
+                "foreignKey": "contractmgmt_type_id"
+            },
+            "contractmgmt_type_l11n_lang": {
+                "name": "contractmgmt_type_l11n_lang",
+                "type": "VARCHAR(2)",
+                "null": false,
+                "foreignTable": "language",
+                "foreignKey": "language_639_1"
+            }
+        }
+    },
+    "contractmgmt_contract": {
+        "name": "contractmgmt_contract",
+        "fields": {
+            "contractmgmt_contract_id": {
+                "name": "contractmgmt_contract_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "contractmgmt_contract_title": {
+                "name": "contractmgmt_contract_title",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "contractmgmt_contract_description": {
+                "name": "contractmgmt_contract_description",
+                "type": "TEXT",
+                "null": false
+            },
+            "contractmgmt_contract_start": {
+                "name": "contractmgmt_contract_start",
+                "type": "DATETIME",
+                "null": false
+            },
+            "contractmgmt_contract_end": {
+                "name": "contractmgmt_contract_end",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "contractmgmt_contract_costs": {
+                "name": "contractmgmt_contract_costs",
+                "type": "BIGINT",
+                "null": true,
+                "default": null
+            },
+            "contractmgmt_contract_duration": {
+                "name": "contractmgmt_contract_duration",
+                "type": "INT",
+                "null": false
+            },
+            "contractmgmt_contract_warning": {
+                "name": "contractmgmt_contract_warning",
+                "type": "INT",
+                "null": false
+            },
+            "contractmgmt_contract_type": {
+                "name": "contractmgmt_contract_type",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "contractmgmt_type",
+                "foreignKey": "contractmgmt_type_id"
+            },
+            "contractmgmt_contract_responsible": {
+                "name": "contractmgmt_contract_responsible",
+                "type": "INT",
+                "null": true,
                 "default": null,
-                "null": true
+                "foreignTable": "account",
+                "foreignKey": "account_id"
             },
-            "media_contract_costs": {
-                "name": "media_contract_costs",
-                "type": "BIGINT",
+            "contractmgmt_contract_created_at": {
+                "name": "contractmgmt_contract_created_at",
+                "type": "DATETIME",
                 "null": false
+            }
+        }
+    },
+    "contractmgmt_contract_media": {
+        "name": "contractmgmt_contract_media",
+        "fields": {
+            "contractmgmt_contract_media_id": {
+                "name": "contractmgmt_contract_media_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
             },
-            "media_contract_value": {
-                "name": "media_contract_value",
-                "type": "BIGINT",
-                "null": false
+            "contractmgmt_contract_media_contract": {
+                "name": "contractmgmt_contract_media_contract",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "contractmgmt_contract",
+                "foreignKey": "contractmgmt_contract_id"
+            },
+            "contractmgmt_contract_media_media": {
+                "name": "contractmgmt_contract_media_media",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "media",
+                "foreignKey": "media_id"
             }
         }
     }
