@@ -41,9 +41,7 @@ class ContractTypeL11n implements \JsonSerializable, ArrayableInterface
      * @var int|ContractType
      * @since 1.0.0
      */
-    protected int |
-
-ContractType $type = 0;
+    protected int | ContractType $type = 0;
 
     /**
      * Language.
@@ -65,8 +63,8 @@ ContractType $type = 0;
      * Constructor.
      *
      * @param int|ContractType $type     Attribute type
-     * @param string                $title    Localized title
-     * @param string                $language Language
+     * @param string           $title    Localized title
+     * @param string           $language Language
      *
      * @since 1.0.0
      */

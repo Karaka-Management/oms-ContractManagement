@@ -42,7 +42,7 @@ use Modules\ContractManagement\Models\ContractMapper;
  */
 final class ApiController extends Controller
 {
-	/**
+    /**
      * Api method to create a contract
      *
      * @param RequestAbstract  $request  Request
@@ -57,7 +57,7 @@ final class ApiController extends Controller
      */
     public function apiContractCreate(RequestAbstract $request, ResponseAbstract $response, $data = null) : void
     {
-    	if (!empty($val = $this->validateContractCreate($request))) {
+        if (!empty($val = $this->validateContractCreate($request))) {
             $response->set('contract_create', new FormValidation($val));
             $response->header->status = RequestStatusCode::R_400;
 
@@ -103,11 +103,11 @@ final class ApiController extends Controller
      */
     private function createContractFromRequest(RequestAbstract $request) : Contract
     {
-        $contract       = new Contract();
-        $contract->title = (string) ($request->getData('title') ?? '');
+        $contract              = new Contract();
+        $contract->title       = (string) ($request->getData('title') ?? '');
         $contract->description = (string) ($request->getData('description') ?? '');
-        $contract->type = new NullContractType((int) ($request->getData('type') ?? 0));
-        $contract->start = new \DateTime($request->getData('start') ?? 'now');
+        $contract->type        = new NullContractType((int) ($request->getData('type') ?? 0));
+        $contract->start       = new \DateTime($request->getData('start') ?? 'now');
 
         if (!empty($request->getData('end'))) {
             $contract->end = new \DateTime($request->getData('end'));
@@ -202,7 +202,7 @@ final class ApiController extends Controller
      */
     private function createContractTypeFromRequest(RequestAbstract $request) : ContractType
     {
-        $contractType = new ContractType();
+        $contractType       = new ContractType();
         $contractType->name = (string) ($request->getData('name') ?? '');
 
         return $contractType;

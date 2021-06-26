@@ -33,14 +33,14 @@ echo $this->getData('nav')->render(); ?>
     <div class="tab-content">
         <input type="radio" id="c-tab-1" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-1' ? ' checked' : ''; ?>>
         <div class="tab">
-	        <div class="row">
-	        </div>
-		</div>
+            <div class="row">
+            </div>
+        </div>
 
-		<input type="radio" id="c-tab-2" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-2' ? ' checked' : ''; ?>>
+        <input type="radio" id="c-tab-2" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-2' ? ' checked' : ''; ?>>
         <div class="tab">
-	        <div class="row">
-	        </div>
-		</div>
+            <div class="row">
+            </div>
+        </div>
     </div>
 </div>

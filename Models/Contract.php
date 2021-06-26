@@ -77,7 +77,7 @@ class Contract
      */
     public function __construct()
     {
-        $this->createdAt     = new \DateTimeImmutable('now');
+        $this->createdAt = new \DateTimeImmutable('now');
     }
 
     /**

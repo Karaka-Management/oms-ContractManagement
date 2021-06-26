@@ -6,7 +6,7 @@ use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
 return [
-	'^.*/contract/list.*$' => [
+    '^.*/contract/list.*$' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractList',
             'verb'       => RouteVerb::GET,

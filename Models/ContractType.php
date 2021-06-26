@@ -48,9 +48,7 @@ class ContractType implements \JsonSerializable, ArrayableInterface
      *
      * @var ContractTypeL11n
      */
-    protected string |
-
- ContractTypeL11n $l11n;
+    protected string | ContractTypeL11n $l11n;
 
     /**
      * Constructor.
@@ -82,22 +80,22 @@ class ContractType implements \JsonSerializable, ArrayableInterface
      * Set l11n
      *
      * @param string|ContractTypeL11n $l11n Tag article l11n
-     * @param string                       $lang Language
+     * @param string                  $lang Language
      *
      * @return void
      *
      * @since 1.0.0
      */
-    public function setL11n($l11n, string $lang = ISO639x1Enum::_EN) : void
+    public function setL11n(string|ContractTypeL11n $l11n, string $lang = ISO639x1Enum::_EN) : void
     {
         if ($l11n instanceof ContractTypeL11n) {
             $this->l11n = $l11n;
-        } elseif (\is_string($l11n)) {
+        } elseif ($this->l11n instanceof ContractTypeL11n) {
+            $this->l11n->title = $l11n;
+        } else {
             $this->l11n        = new ContractTypeL11n();
             $this->l11n->title = $l11n;
             $this->l11n->setLanguage($lang);
-        } elseif ($this->l11n instanceof ContractTypeL11n && \is_string($l11n)) {
-            $this->l11n->title = $l11n;
         }
     }
 
