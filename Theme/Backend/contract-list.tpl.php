@@ -76,11 +76,13 @@ echo $this->getData('nav')->render(); ?>
                     $url = UriFactory::build('{/prefix}contract/single?{?}&id=' . $value->getId());
 
                     $type = 'ok';
-                    if ($value->end->getTimestamp() < $now->getTimestamp() && $value->end->getTimestamp() + 129600 > $now->getTimestamp()) {
+                    if (($value->end->getTimestamp() < $now->getTimestamp() && $value->end->getTimestamp() + 7776000 > $now->getTimestamp())
+                        || ($value->end->getTimestamp() > $now->getTimestamp() && $value->end->getTimestamp() - 7776000 < $now->getTimestamp())
+                    ) {
                         $type = 'error';
                     } elseif ($value->end->getTimestamp() < $now->getTimestamp()) {
                         $type = 'info';
-                    } elseif ($value->end->getTimestamp() + 129600 < $now->getTimestamp()) {
+                    } elseif ($value->end->getTimestamp() + 7776000 < $now->getTimestamp()) {
                         $type = 'warning';
                     }
                 ?>

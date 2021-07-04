@@ -17,7 +17,7 @@ namespace Modules\ContractManagement\Controller;
 use phpOMS\Module\ModuleAbstract;
 
 /**
- * Task class.
+ * Contract controller class.
  *
  * @package Modules\ContractManagement
  * @license OMS License 1.0

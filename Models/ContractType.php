@@ -90,7 +90,7 @@ class ContractType implements \JsonSerializable, ArrayableInterface
     {
         if ($l11n instanceof ContractTypeL11n) {
             $this->l11n = $l11n;
-        } elseif ($this->l11n instanceof ContractTypeL11n) {
+        } elseif (isset($this->l11n) && $this->l11n instanceof ContractTypeL11n) {
             $this->l11n->title = $l11n;
         } else {
             $this->l11n        = new ContractTypeL11n();
