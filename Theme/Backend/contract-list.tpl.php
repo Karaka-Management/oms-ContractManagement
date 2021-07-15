@@ -35,18 +35,6 @@ echo $this->getData('nav')->render(); ?>
             <table id="contractList" class="default sticky">
                 <thead>
                 <tr>
-                    <td><?= $this->getHtml('ID', '0', '0'); ?>
-                        <label for="contractList-sort-1">
-                            <input type="radio" name="contractList-sort" id="contractList-sort-1">
-                            <i class="sort-asc fa fa-chevron-up"></i>
-                        </label>
-                        <label for="contractList-sort-2">
-                            <input type="radio" name="contractList-sort" id="contractList-sort-2">
-                            <i class="sort-desc fa fa-chevron-down"></i>
-                        </label>
-                        <label>
-                            <i class="filter fa fa-filter"></i>
-                        </label>
                     <td class="wf-100"><?= $this->getHtml('Title'); ?>
                         <label for="contractList-sort-3">
                             <input type="radio" name="contractList-sort" id="contractList-sort-3">
@@ -87,7 +75,6 @@ echo $this->getData('nav')->render(); ?>
                     }
                 ?>
                 <tr tabindex="0" data-href="<?= $url; ?>">
-                    <td data-label="<?= $this->getHtml('ID', '0', '0'); ?>"><a href="<?= $url; ?>"><?= $value->getId(); ?></a>
                     <td data-label="<?= $this->getHtml('Title'); ?>"><a href="<?= $url; ?>"><?= $this->printHtml($value->title); ?></a>
                     <td data-label="<?= $this->getHtml('End'); ?>"><a href="<?= $url; ?>"><span class="tag <?= $type;  ?>"><?= $value->end !== null ? $value->end->format('Y-m-d') : ''; ?></span></a>
                 <?php endforeach; ?>
