@@ -108,6 +108,7 @@ final class ApiController extends Controller
         $contract->description = (string) ($request->getData('description') ?? '');
         $contract->type        = new NullContractType((int) ($request->getData('type') ?? 0));
         $contract->start       = new \DateTime($request->getData('start') ?? 'now');
+        $contract->account     = new NullAccount((int) $request->getData('account'));
 
         if (!empty($request->getData('end'))) {
             $contract->end = new \DateTime($request->getData('end'));

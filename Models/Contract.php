@@ -16,6 +16,8 @@ namespace Modules\ContractManagement\Models;
 
 use Modules\Media\Models\Media;
 use Modules\Media\Models\NullMedia;
+use Modules\Admin\Models\Account;
+use Modules\Admin\Models\NullAccount;
 use phpOMS\Localization\Money;
 
 /**
@@ -58,6 +60,8 @@ class Contract
 
     public ?int $responsible = null;
 
+    public Account $account;
+
     /**
      * Created at.
      *
@@ -78,6 +82,7 @@ class Contract
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable('now');
+        $this->account = new NullAccount();
     }
 
     /**

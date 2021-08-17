@@ -16,6 +16,7 @@ namespace Modules\ContractManagement\Models;
 
 use Modules\Editor\Models\EditorDocMapper;
 use Modules\Media\Models\MediaMapper;
+use Modules\Admin\Models\AccountMapper;
 use phpOMS\DataStorage\Database\DataMapperAbstract;
 
 /**
@@ -38,6 +39,7 @@ final class ContractMapper extends DataMapperAbstract
         'contractmgmt_contract_id'            => ['name' => 'contractmgmt_contract_id',      'type' => 'int',    'internal' => 'id'],
         'contractmgmt_contract_title'            => ['name' => 'contractmgmt_contract_title',      'type' => 'string', 'internal' => 'title', 'autocomplete' => true],
         'contractmgmt_contract_description'          => ['name' => 'contractmgmt_contract_description',    'type' => 'string', 'internal' => 'description'],
+        'contractmgmt_contract_accouunt'          => ['name' => 'contractmgmt_contract_accouunt',    'type' => 'int', 'internal' => 'accouunt'],
         'contractmgmt_contract_costs'    => ['name' => 'contractmgmt_contract_costs',    'type' => 'Serializable', 'internal' => 'costs'],
         'contractmgmt_contract_duration'          => ['name' => 'contractmgmt_contract_duration',    'type' => 'int', 'internal' => 'duration'],
         'contractmgmt_contract_warning'          => ['name' => 'contractmgmt_contract_warning',    'type' => 'int', 'internal' => 'warning'],
@@ -82,6 +84,10 @@ final class ContractMapper extends DataMapperAbstract
         'type' => [
             'mapper'            => ContractTypeMapper::class,
             'external'          => 'contractmgmt_contract_type',
+        ],
+        'account' => [
+            'mapper'            => AccountMapper::class,
+            'external'          => 'contractmgmt_contract_account',
         ],
     ];
 

@@ -67,6 +67,13 @@
                 "type": "TEXT",
                 "null": false
             },
+            "contractmgmt_contract_account": {
+                "name": "contractmgmt_contract_account",
+                "type": "INT",
+                "null": true,
+                "foreignTable": "account",
+                "foreignKey": "account_id"
+            },
             "contractmgmt_contract_start": {
                 "name": "contractmgmt_contract_start",
                 "type": "DATETIME",
