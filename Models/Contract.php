@@ -15,7 +15,6 @@ declare(strict_types=1);
 namespace Modules\ContractManagement\Models;
 
 use Modules\Media\Models\Media;
-use Modules\Media\Models\NullMedia;
 use Modules\Admin\Models\Account;
 use Modules\Admin\Models\NullAccount;
 use phpOMS\Localization\Money;

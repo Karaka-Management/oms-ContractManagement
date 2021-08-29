@@ -23,6 +23,8 @@ use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
 use phpOMS\Views\View;
 use Modules\ContractManagement\Models\ContractMapper;
+use Modules\ContractManagement\Models\ContractType;
+use Modules\ContractManagement\Models\ContractTypeL11n;
 
 /**
  * Backend controller for the contracts module.
@@ -57,17 +59,17 @@ final class BackendController extends Controller
 
         if ($request->getData('ptype') === 'p') {
             $view->setData('contracts',
-                ContractMapper::with('language', $response->getLanguage())
+                ContractMapper::with('language', $response->getLanguage(), [ContractTypeL11n::class])
                     ::getBeforePivot((int) ($request->getData('id') ?? 0), null, 25)
             );
         } elseif ($request->getData('ptype') === 'n') {
             $view->setData('contracts',
-                ContractMapper::with('language', $response->getLanguage())
+                ContractMapper::with('language', $response->getLanguage(), [ContractTypeL11n::class])
                     ::getAfterPivot((int) ($request->getData('id') ?? 0), null, 25)
             );
         } else {
             $view->setData('contracts',
-                ContractMapper::with('language', $response->getLanguage())
+                ContractMapper::with('language', $response->getLanguage(), [ContractTypeL11n::class])
                     ::getAfterPivot(0, null, 25)
             );
         }
