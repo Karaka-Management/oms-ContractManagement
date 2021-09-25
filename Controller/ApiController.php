@@ -147,7 +147,7 @@ final class ApiController extends Controller
             $request->header->account,
             __DIR__ . '/../../../Modules/Media/Files/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),
             '/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),
-            $request->getData('type') ?? '',
+            $request->getData('type', 'int'),
             '',
             '',
             PathSettings::FILE_PATH
