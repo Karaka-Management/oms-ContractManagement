@@ -36,14 +36,6 @@ class ContractType implements \JsonSerializable, ArrayableInterface
     protected int $id = 0;
 
     /**
-     * Name/string identifier by which it can be found/categorized
-     *
-     * @var string
-     * @since 1.0.0
-     */
-    public string $name = ''; // @todo: currently not filled, should be used as identifier or if not required removed (at the moment it seems like it is useless?!)
-
-    /**
      * Localization
      *
      * @var ContractTypeL11n
