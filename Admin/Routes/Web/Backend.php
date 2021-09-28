@@ -23,7 +23,7 @@ return [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractList',
             'verb'       => RouteVerb::GET,
             'permission' => [
-                'module' => BackendController::MODULE_NAME,
+                'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,
                 'state'  => PermissionState::CONTRACT,
             ],
@@ -34,7 +34,7 @@ return [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContract',
             'verb'       => RouteVerb::GET,
             'permission' => [
-                'module' => BackendController::MODULE_NAME,
+                'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,
                 'state'  => PermissionState::CONTRACT,
             ],
