@@ -35,6 +35,7 @@ use Modules\ContractManagement\Models\ContractTypeL11n;
  * @license OMS License 1.0
  * @link    https://orange-management.org
  * @since   1.0.0
+ * @codeCoverageIgnore
  */
 final class BackendController extends Controller
 {
