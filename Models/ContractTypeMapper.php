@@ -34,7 +34,6 @@ final class ContractTypeMapper extends DataMapperAbstract
      */
     protected static array $columns = [
         'contractmgmt_type_id'       => ['name' => 'contractmgmt_type_id',     'type' => 'int',    'internal' => 'id'],
-        'contractmgmt_type_name'     => ['name' => 'contractmgmt_type_name',   'type' => 'string', 'internal' => 'name', 'autocomplete' => true],
     ];
 
     /**

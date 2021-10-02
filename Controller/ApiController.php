@@ -203,8 +203,7 @@ final class ApiController extends Controller
      */
     private function createContractTypeFromRequest(RequestAbstract $request) : ContractType
     {
-        $contractType       = new ContractType();
-        $contractType->name = (string) ($request->getData('name') ?? '');
+        $contractType = new ContractType();
 
         return $contractType;
     }
@@ -221,8 +220,7 @@ final class ApiController extends Controller
     private function validateContractTypeCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['name'] = empty($request->getData('name')))
-            || ($val['title'] = empty($request->getData('title')))
+        if (($val['title'] = empty($request->getData('title')))
         ) {
             return $val;
         }

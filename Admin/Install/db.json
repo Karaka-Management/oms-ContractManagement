@@ -8,11 +8,6 @@
                 "null": false,
                 "primary": true,
                 "autoincrement": true
-            },
-            "contractmgmt_type_name": {
-                "name": "contractmgmt_type_name",
-                "type": "VARCHAR(255)",
-                "null": false
             }
         }
     },
