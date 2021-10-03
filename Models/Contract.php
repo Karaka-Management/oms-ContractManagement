@@ -81,7 +81,7 @@ class Contract
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable('now');
-        $this->account = new NullAccount();
+        $this->account   = new NullAccount();
     }
 
     /**
