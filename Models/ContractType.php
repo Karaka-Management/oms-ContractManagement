@@ -45,15 +45,13 @@ class ContractType implements \JsonSerializable, ArrayableInterface
     /**
      * Constructor.
      *
-     * @param string $name Name/identifier of the attribute type
+     * @param string $name Name
      *
      * @since 1.0.0
      */
     public function __construct(string $name = '')
     {
-        if (!empty($name)) {
-            $this->setL11n($name);
-        }
+        $this->setL11n($name);
     }
 
     /**
@@ -106,7 +104,10 @@ class ContractType implements \JsonSerializable, ArrayableInterface
      */
     public function toArray() : array
     {
-        return [];
+        return [
+            'id' => $this->id,
+            'l11n' => $this->l11n,
+        ];
     }
 
     /**

@@ -31,6 +31,7 @@ use Modules\Media\Models\PathSettings;
 use Modules\ContractManagement\Models\Contract;
 use Modules\ContractManagement\Models\NullContractType;
 use Modules\ContractManagement\Models\ContractMapper;
+use phpOMS\Localization\ISO639x1Enum;
 
 /**
  * Api controller for the contracts module.
@@ -186,7 +187,6 @@ final class ApiController extends Controller
         }
 
         $contractType = $this->createContractTypeFromRequest($request);
-        $contractType->setL11n($request->getData('title'), $request->getData('language'));
         $this->createModel($request->header->account, $contractType, ContractTypeMapper::class, 'contract_type', $request->getOrigin());
 
         $this->fillJsonResponse($request, $response, NotificationLevel::OK, 'Contract type', 'Contract type successfully created', $contractType);
@@ -204,6 +204,7 @@ final class ApiController extends Controller
     private function createContractTypeFromRequest(RequestAbstract $request) : ContractType
     {
         $contractType = new ContractType();
+        $contractType->setL11n($request->getData('title'), $request->getData('language') ?? ISO639x1Enum::_EN);
 
         return $contractType;
     }
@@ -287,7 +288,9 @@ final class ApiController extends Controller
     private function validateContractTypeL11nCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = empty($request->getData('title')))) {
+        if (($val['title'] = empty($request->getData('title')))
+            || ($val['type'] = empty($request->getData('type')))
+        ) {
             return $val;
         }
 

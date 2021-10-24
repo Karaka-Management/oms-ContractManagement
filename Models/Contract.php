@@ -49,7 +49,7 @@ class Contract
 
     public string $description = '';
 
-    public \DateTime $start;
+    public ?\DateTime $start = null;
 
     public ?\DateTime $end = null;
 
@@ -82,6 +82,7 @@ class Contract
     {
         $this->createdAt = new \DateTimeImmutable('now');
         $this->account   = new NullAccount();
+        $this->type      = new ContractType();
     }
 
     /**
@@ -127,7 +128,19 @@ class Contract
      */
     public function toArray() : array
     {
-        return [];
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'start' => $this->start,
+            'end' => $this->end,
+            'duration' => $this->duration,
+            'warning' => $this->warning,
+            'responsible' => $this->responsible,
+            'createdAt' => $this->createdAt,
+            'costs' => $this->costs,
+            'type' => $this->type,
+        ];
     }
 
     /**
