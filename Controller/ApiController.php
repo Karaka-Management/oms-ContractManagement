@@ -15,23 +15,20 @@ declare(strict_types=1);
 namespace Modules\ContractManagement\Controller;
 
 use Modules\Admin\Models\NullAccount;
+use Modules\ContractManagement\Models\Contract;
+use Modules\ContractManagement\Models\ContractMapper;
 use Modules\ContractManagement\Models\ContractType;
-use Modules\ContractManagement\Models\ContractTypeMapper;
 use Modules\ContractManagement\Models\ContractTypeL11n;
 use Modules\ContractManagement\Models\ContractTypeL11nMapper;
-use phpOMS\Message\Http\HttpResponse;
+use Modules\ContractManagement\Models\ContractTypeMapper;
+use Modules\ContractManagement\Models\NullContractType;
+use Modules\Media\Models\PathSettings;
+use phpOMS\Localization\ISO639x1Enum;
 use phpOMS\Message\Http\RequestStatusCode;
 use phpOMS\Message\NotificationLevel;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
 use phpOMS\Model\Message\FormValidation;
-use phpOMS\Utils\Parser\Markdown\Markdown;
-use phpOMS\Message\Http\HttpRequest;
-use Modules\Media\Models\PathSettings;
-use Modules\ContractManagement\Models\Contract;
-use Modules\ContractManagement\Models\NullContractType;
-use Modules\ContractManagement\Models\ContractMapper;
-use phpOMS\Localization\ISO639x1Enum;
 
 /**
  * Api controller for the contracts module.
@@ -143,7 +140,8 @@ final class ApiController extends Controller
         }
 
         $uploaded = $this->app->moduleManager->get('Media')->uploadFiles(
-            [$request->getData('name') ?? ''],
+            $request->getDataList('names') ?? [],
+            $request->getDataList('filenames') ?? [],
             $uploadedFiles,
             $request->header->account,
             __DIR__ . '/../../../Modules/Media/Files/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),

@@ -12,11 +12,8 @@
  */
 declare(strict_types=1);
 
-use Modules\Media\Models\NullMedia;
-use phpOMS\Uri\UriFactory;
-
 /**
- * @var \phpOMS\Views\View                  $this
+ * @var \phpOMS\Views\View                          $this
  * @var \Modules\ContractManagement\Models\Contract $contract
  */
 $contract = $this->getData('contract');

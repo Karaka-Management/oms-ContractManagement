@@ -50,7 +50,7 @@ final class ContractTypeMapper extends DataMapperAbstract
             'column'            => 'title',
             'conditional'       => true,
             'external'          => null,
-        ]
+        ],
     ];
 
     /**

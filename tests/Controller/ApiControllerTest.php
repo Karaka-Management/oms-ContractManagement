@@ -16,26 +16,22 @@ namespace Modules\ContractManagement\tests\Controller;
 
 use Model\CoreSettings;
 use Modules\Admin\Models\AccountPermission;
-use phpOMS\DataStorage\Session\HttpSession;
 use phpOMS\Account\Account;
 use phpOMS\Account\AccountManager;
 use phpOMS\Account\PermissionType;
 use phpOMS\Application\ApplicationAbstract;
+use phpOMS\DataStorage\Session\HttpSession;
 use phpOMS\Dispatcher\Dispatcher;
 use phpOMS\Event\EventManager;
-use phpOMS\Module\ModuleAbstract;
-use phpOMS\Module\ModuleManager;
-use phpOMS\Router\WebRouter;
-use phpOMS\Utils\TestUtils;
 use phpOMS\Localization\ISO639x1Enum;
-use Modules\Media\Models\MediaMapper;
-use Modules\Media\Models\PathSettings;
-use Modules\Media\Models\UploadStatus;
 use phpOMS\Message\Http\HttpRequest;
 use phpOMS\Message\Http\HttpResponse;
 use phpOMS\Message\Http\RequestStatusCode;
-use phpOMS\System\File\Local\Directory;
+use phpOMS\Module\ModuleAbstract;
+use phpOMS\Module\ModuleManager;
+use phpOMS\Router\WebRouter;
 use phpOMS\Uri\HttpUri;
+use phpOMS\Utils\TestUtils;
 
 /**
  * @testdox Modules\ContractManagement\tests\Controller\ApiControllerTest: ContractManagement api controller

@@ -13,7 +13,7 @@
 declare(strict_types=1);
 
 return ['ContractManagement' => [
-    'Contract'            => 'Contract',
+    'Contract'             => 'Contract',
     'Contracts'            => 'Contracts',
-    'Title'            => 'Title',
+    'Title'                => 'Title',
 ]];

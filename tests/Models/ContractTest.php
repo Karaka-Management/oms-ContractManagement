@@ -59,26 +59,26 @@ final class ContractTest extends \PHPUnit\Framework\TestCase
      */
     public function testSerialize() : void
     {
-        $this->contract->title = 'Title';
+        $this->contract->title       = 'Title';
         $this->contract->description = 'Description';
-        $this->contract->duration   = 123;
-        $this->contract->warning   = 2;
+        $this->contract->duration    = 123;
+        $this->contract->warning     = 2;
 
         $serialized = $this->contract->jsonSerialize();
         unset($serialized['createdAt']);
 
         self::assertEquals(
             [
-                'id'       => 0,
-                'title'    => 'Title',
+                'id'             => 0,
+                'title'          => 'Title',
                 'description'    => 'Description',
-                'start'    => null,
-                'end'    => null,
-                'duration'    => 123,
-                'warning'    => 2,
+                'start'          => null,
+                'end'            => null,
+                'duration'       => 123,
+                'warning'        => 2,
                 'responsible'    => null,
-                'costs'    => null,
-                'type'    => new ContractType(),
+                'costs'          => null,
+                'type'           => new ContractType(),
             ],
             $serialized
         );

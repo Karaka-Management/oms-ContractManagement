@@ -105,7 +105,7 @@ class ContractType implements \JsonSerializable, ArrayableInterface
     public function toArray() : array
     {
         return [
-            'id' => $this->id,
+            'id'   => $this->id,
             'l11n' => $this->l11n,
         ];
     }

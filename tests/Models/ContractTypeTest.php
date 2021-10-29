@@ -16,7 +16,6 @@ namespace Modules\ContractManagement\tests\Models;
 
 use Modules\ContractManagement\Models\ContractType;
 use Modules\ContractManagement\Models\ContractTypeL11n;
-use phpOMS\Localization\ISO639x1Enum;
 
 /**
  * @internal
@@ -67,7 +66,7 @@ final class ContractTypeTest extends \PHPUnit\Framework\TestCase
         self::assertEquals(
             [
                 'id'       => 0,
-                'l11n'    => new ContractTypeL11n(),
+                'l11n'     => new ContractTypeL11n(),
             ],
             $this->type->jsonSerialize()
         );

@@ -14,17 +14,12 @@ declare(strict_types=1);
 
 namespace Modules\ContractManagement\Controller;
 
-use Modules\ContractManagement\Models\PermissionState;
-use phpOMS\Account\PermissionType;
-use phpOMS\Asset\AssetType;
+use Modules\ContractManagement\Models\ContractMapper;
+use Modules\ContractManagement\Models\ContractTypeL11n;
 use phpOMS\Contract\RenderableInterface;
-use phpOMS\Message\Http\RequestStatusCode;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
 use phpOMS\Views\View;
-use Modules\ContractManagement\Models\ContractMapper;
-use Modules\ContractManagement\Models\ContractType;
-use Modules\ContractManagement\Models\ContractTypeL11n;
 
 /**
  * Backend controller for the contracts module.

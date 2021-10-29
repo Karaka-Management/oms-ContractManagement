@@ -14,9 +14,9 @@ declare(strict_types=1);
 
 namespace Modules\ContractManagement\Models;
 
-use Modules\Media\Models\Media;
 use Modules\Admin\Models\Account;
 use Modules\Admin\Models\NullAccount;
+use Modules\Media\Models\Media;
 use phpOMS\Localization\Money;
 
 /**
@@ -129,17 +129,17 @@ class Contract
     public function toArray() : array
     {
         return [
-            'id' => $this->id,
-            'title' => $this->title,
+            'id'          => $this->id,
+            'title'       => $this->title,
             'description' => $this->description,
-            'start' => $this->start,
-            'end' => $this->end,
-            'duration' => $this->duration,
-            'warning' => $this->warning,
+            'start'       => $this->start,
+            'end'         => $this->end,
+            'duration'    => $this->duration,
+            'warning'     => $this->warning,
             'responsible' => $this->responsible,
-            'createdAt' => $this->createdAt,
-            'costs' => $this->costs,
-            'type' => $this->type,
+            'createdAt'   => $this->createdAt,
+            'costs'       => $this->costs,
+            'type'        => $this->type,
         ];
     }
 
