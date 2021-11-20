@@ -86,6 +86,16 @@
                 "null": true,
                 "default": null
             },
+            "contractmgmt_contract_renewal": {
+                "name": "contractmgmt_contract_renewal",
+                "type": "INT",
+                "null": false
+            },
+            "contractmgmt_contract_autorenewal": {
+                "name": "contractmgmt_contract_autorenewal",
+                "type": "INT",
+                "null": false
+            },
             "contractmgmt_contract_duration": {
                 "name": "contractmgmt_contract_duration",
                 "type": "INT",
@@ -102,6 +112,14 @@
                 "null": false,
                 "foreignTable": "contractmgmt_type",
                 "foreignKey": "contractmgmt_type_id"
+            },
+            "contractmgmt_contract_unit": {
+                "name": "contractmgmt_contract_unit",
+                "type": "INT",
+                "null": true,
+                "default": null,
+                "foreignTable": "organization_unit",
+                "foreignKey": "organization_unit_id"
             },
             "contractmgmt_contract_responsible": {
                 "name": "contractmgmt_contract_responsible",

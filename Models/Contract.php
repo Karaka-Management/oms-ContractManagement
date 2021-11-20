@@ -17,6 +17,7 @@ namespace Modules\ContractManagement\Models;
 use Modules\Admin\Models\Account;
 use Modules\Admin\Models\NullAccount;
 use Modules\Media\Models\Media;
+use Modules\Organization\Models\Unit;
 use phpOMS\Localization\Money;
 
 /**
@@ -53,6 +54,15 @@ class Contract
 
     public ?\DateTime $end = null;
 
+    /**
+     * Months until end of contract
+     *
+     * The renewal sometimes can be done up until the end of the contract and sometimes x-months prior to the contract end.
+     */
+    public int $renewal = 0;
+
+    public bool $autoRenewal = false;
+
     public int $duration = 0;
 
     public int $warning = 0;
@@ -72,6 +82,8 @@ class Contract
     public ?Money $costs = null;
 
     public ContractType $type;
+
+    public ?Unit $unit = null;
 
     /**
      * Constructor.

@@ -1,0 +1,16 @@
+[
+    {
+        "type": "type",
+        "name": "contract",
+        "l11n": [
+            {
+                "title": "Contract",
+                "lang": "en"
+            },
+            {
+                "title": "Vertrag",
+                "lang": "de"
+            }
+        ]
+    }
+]
