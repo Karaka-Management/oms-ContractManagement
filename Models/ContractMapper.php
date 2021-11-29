@@ -18,6 +18,7 @@ namespace Modules\ContractManagement\Models;
 
 use Modules\Admin\Models\AccountMapper;
 use Modules\Media\Models\MediaMapper;
+use Modules\Organization\Models\UnitMapper;
 use phpOMS\DataStorage\Database\DataMapperAbstract;
 
 /**
@@ -43,7 +44,7 @@ final class ContractMapper extends DataMapperAbstract
         'contractmgmt_contract_account'              => ['name' => 'contractmgmt_contract_account',    'type' => 'int', 'internal' => 'account'],
         'contractmgmt_contract_costs'                => ['name' => 'contractmgmt_contract_costs',    'type' => 'Serializable', 'internal' => 'costs'],
         'contractmgmt_contract_renewal'             => ['name' => 'contractmgmt_contract_renewal',    'type' => 'int', 'internal' => 'renewal'],
-        'contractmgmt_contract_autorenewal'             => ['name' => 'contractmgmt_contract_autorenewal',    'type' => 'int', 'internal' => 'autoRenewal'],
+        'contractmgmt_contract_autorenewal'             => ['name' => 'contractmgmt_contract_autorenewal',    'type' => 'bool', 'internal' => 'autoRenewal'],
         'contractmgmt_contract_duration'             => ['name' => 'contractmgmt_contract_duration',    'type' => 'int', 'internal' => 'duration'],
         'contractmgmt_contract_warning'              => ['name' => 'contractmgmt_contract_warning',    'type' => 'int', 'internal' => 'warning'],
         'contractmgmt_contract_start'                => ['name' => 'contractmgmt_contract_start',    'type' => 'DateTime', 'internal' => 'start'],
