@@ -19,7 +19,7 @@ namespace Modules\ContractManagement\Models;
 use Modules\Admin\Models\AccountMapper;
 use Modules\Media\Models\MediaMapper;
 use Modules\Organization\Models\UnitMapper;
-use phpOMS\DataStorage\Database\DataMapperAbstract;
+use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
 
 /**
  * Contract mapper class.
@@ -29,7 +29,7 @@ use phpOMS\DataStorage\Database\DataMapperAbstract;
  * @link    https://orange-management.org
  * @since   1.0.0
  */
-final class ContractMapper extends DataMapperAbstract
+final class ContractMapper extends DataMapperFactory
 {
     /**
      * Columns.
@@ -37,7 +37,7 @@ final class ContractMapper extends DataMapperAbstract
      * @var array<string, array{name:string, type:string, internal:string, autocomplete?:bool, readonly?:bool, writeonly?:bool, annotations?:array}>
      * @since 1.0.0
      */
-    protected static array $columns = [
+    public const COLUMNS = [
         'contractmgmt_contract_id'                   => ['name' => 'contractmgmt_contract_id',      'type' => 'int',    'internal' => 'id'],
         'contractmgmt_contract_title'                => ['name' => 'contractmgmt_contract_title',      'type' => 'string', 'internal' => 'title', 'autocomplete' => true],
         'contractmgmt_contract_description'          => ['name' => 'contractmgmt_contract_description',    'type' => 'string', 'internal' => 'description'],
@@ -61,7 +61,7 @@ final class ContractMapper extends DataMapperAbstract
      * @var string
      * @since 1.0.0
      */
-    protected static string $table = 'contractmgmt_contract';
+    public const TABLE = 'contractmgmt_contract';
 
     /**
      * Primary field name.
@@ -69,7 +69,7 @@ final class ContractMapper extends DataMapperAbstract
      * @var string
      * @since 1.0.0
      */
-    protected static string $primaryField = 'contractmgmt_contract_id';
+    public const PRIMARYFIELD ='contractmgmt_contract_id';
 
     /**
      * Created at.
@@ -77,7 +77,7 @@ final class ContractMapper extends DataMapperAbstract
      * @var string
      * @since 1.0.0
      */
-    protected static string $createdAt = 'contractmgmt_contract_created_at';
+    public const CREATED_AT = 'contractmgmt_contract_created_at';
 
     /**
      * Has one relation.
@@ -85,7 +85,7 @@ final class ContractMapper extends DataMapperAbstract
      * @var array<string, array{mapper:string, external:string, by?:string, column?:string, conditional?:bool}>
      * @since 1.0.0
      */
-    protected static array $ownsOne = [
+    public const OWNS_ONE = [
         'type' => [
             'mapper'            => ContractTypeMapper::class,
             'external'          => 'contractmgmt_contract_type',
@@ -106,7 +106,7 @@ final class ContractMapper extends DataMapperAbstract
      * @var array<string, array{mapper:string, table:string, self?:?string, external?:?string, column?:string}>
      * @since 1.0.0
      */
-    protected static array $hasMany = [
+    public const HAS_MANY = [
         'files' => [
             'mapper'   => MediaMapper::class,            /* mapper of the related object */
             'table'    => 'contractmgmt_contract_media',         /* table of the related object, null if no relation table is used (many->1) */

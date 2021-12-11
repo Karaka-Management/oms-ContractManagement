@@ -55,18 +55,15 @@ final class BackendController extends Controller
 
         if ($request->getData('ptype') === 'p') {
             $view->setData('contracts',
-                ContractMapper::with('language', $response->getLanguage(), [ContractTypeL11n::class])
-                    ::getBeforePivot((int) ($request->getData('id') ?? 0), null, 25)
+                ContractMapper::getAll()->where('id', (int) ($request->getData('id') ?? 0), '<')->limit(25)->execute()
             );
         } elseif ($request->getData('ptype') === 'n') {
             $view->setData('contracts',
-                ContractMapper::with('language', $response->getLanguage(), [ContractTypeL11n::class])
-                    ::getAfterPivot((int) ($request->getData('id') ?? 0), null, 25)
+                ContractMapper::getAll()->where('id', (int) ($request->getData('id') ?? 0), '>')->limit(25)->execute()
             );
         } else {
             $view->setData('contracts',
-                ContractMapper::with('language', $response->getLanguage(), [ContractTypeL11n::class])
-                    ::getAfterPivot(0, null, 25)
+                ContractMapper::getAll()->where('id', 0, '>')->limit(25)->execute()
             );
         }
 
@@ -92,7 +89,7 @@ final class BackendController extends Controller
         $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-single');
         $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response));
 
-        $view->addData('contract', ContractMapper::get((int) $request->getData('id')));
+        $view->addData('contract', ContractMapper::get()->where('id', (int) $request->getData('id'))->execute());
 
         $editor = new \Modules\Editor\Theme\Backend\Components\Editor\BaseView($this->app->l11nManager, $request, $response);
         $view->addData('editor', $editor);

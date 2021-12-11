@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Modules\ContractManagement\Models;
 
-use phpOMS\DataStorage\Database\DataMapperAbstract;
+use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
 
 /**
  * Contract type mapper class.
@@ -24,7 +24,7 @@ use phpOMS\DataStorage\Database\DataMapperAbstract;
  * @link    https://orange-management.org
  * @since   1.0.0
  */
-final class ContractTypeMapper extends DataMapperAbstract
+final class ContractTypeMapper extends DataMapperFactory
 {
     /**
      * Columns.
@@ -32,7 +32,7 @@ final class ContractTypeMapper extends DataMapperAbstract
      * @var array<string, array{name:string, type:string, internal:string, autocomplete?:bool, readonly?:bool, writeonly?:bool, annotations?:array}>
      * @since 1.0.0
      */
-    protected static array $columns = [
+    public const COLUMNS = [
         'contractmgmt_type_id'       => ['name' => 'contractmgmt_type_id',     'type' => 'int',    'internal' => 'id'],
     ];
 
@@ -42,13 +42,12 @@ final class ContractTypeMapper extends DataMapperAbstract
      * @var array<string, array{mapper:string, table:string, self?:?string, external?:?string, column?:string}>
      * @since 1.0.0
      */
-    protected static array $hasMany = [
+    public const HAS_MANY = [
         'l11n' => [
             'mapper'            => ContractTypeL11nMapper::class,
             'table'             => 'contractmgmt_type_l11n',
             'self'              => 'contractmgmt_type_l11n_type',
             'column'            => 'title',
-            'conditional'       => true,
             'external'          => null,
         ],
     ];
@@ -59,7 +58,7 @@ final class ContractTypeMapper extends DataMapperAbstract
      * @var string
      * @since 1.0.0
      */
-    protected static string $table = 'contractmgmt_type';
+    public const TABLE = 'contractmgmt_type';
 
     /**
      * Primary field name.
@@ -67,5 +66,5 @@ final class ContractTypeMapper extends DataMapperAbstract
      * @var string
      * @since 1.0.0
      */
-    protected static string $primaryField = 'contractmgmt_type_id';
+    public const PRIMARYFIELD ='contractmgmt_type_id';
 }

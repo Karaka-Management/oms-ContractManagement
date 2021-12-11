@@ -93,7 +93,7 @@
             },
             "contractmgmt_contract_autorenewal": {
                 "name": "contractmgmt_contract_autorenewal",
-                "type": "INT",
+                "type": "TINYINT",
                 "null": false
             },
             "contractmgmt_contract_duration": {
