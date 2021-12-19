@@ -33,7 +33,7 @@ final class ContractTypeMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'contractmgmt_type_id'       => ['name' => 'contractmgmt_type_id',     'type' => 'int',    'internal' => 'id'],
+        'contractmgmt_type_id' => ['name' => 'contractmgmt_type_id', 'type' => 'int', 'internal' => 'id'],
     ];
 
     /**
@@ -44,11 +44,11 @@ final class ContractTypeMapper extends DataMapperFactory
      */
     public const HAS_MANY = [
         'l11n' => [
-            'mapper'            => ContractTypeL11nMapper::class,
-            'table'             => 'contractmgmt_type_l11n',
-            'self'              => 'contractmgmt_type_l11n_type',
-            'column'            => 'title',
-            'external'          => null,
+            'mapper'   => ContractTypeL11nMapper::class,
+            'table'    => 'contractmgmt_type_l11n',
+            'self'     => 'contractmgmt_type_l11n_type',
+            'column'   => 'title',
+            'external' => null,
         ],
     ];
 

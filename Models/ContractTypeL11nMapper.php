@@ -33,10 +33,10 @@ final class ContractTypeL11nMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'contractmgmt_type_l11n_id'        => ['name' => 'contractmgmt_type_l11n_id',       'type' => 'int',    'internal' => 'id'],
-        'contractmgmt_type_l11n_title'     => ['name' => 'contractmgmt_type_l11n_title',    'type' => 'string', 'internal' => 'title', 'autocomplete' => true],
-        'contractmgmt_type_l11n_type'      => ['name' => 'contractmgmt_type_l11n_type',      'type' => 'int',    'internal' => 'type'],
-        'contractmgmt_type_l11n_lang'      => ['name' => 'contractmgmt_type_l11n_lang', 'type' => 'string', 'internal' => 'language'],
+        'contractmgmt_type_l11n_id'    => ['name' => 'contractmgmt_type_l11n_id',    'type' => 'int',    'internal' => 'id'],
+        'contractmgmt_type_l11n_title' => ['name' => 'contractmgmt_type_l11n_title', 'type' => 'string', 'internal' => 'title', 'autocomplete' => true],
+        'contractmgmt_type_l11n_type'  => ['name' => 'contractmgmt_type_l11n_type',  'type' => 'int',    'internal' => 'type'],
+        'contractmgmt_type_l11n_lang'  => ['name' => 'contractmgmt_type_l11n_lang',  'type' => 'string', 'internal' => 'language'],
     ];
 
     /**
