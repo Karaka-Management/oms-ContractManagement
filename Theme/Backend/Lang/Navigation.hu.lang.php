@@ -12,12 +12,9 @@
  */
 declare(strict_types=1);
 
-return ['ContractManagement' => [
-    'Account'   => '',
-    'Contract'  => 'Contract',
-    'Contracts' => 'Contracts',
-    'End'       => '',
-    'Files'     => '',
-    'Overview'  => '',
-    'Title'     => 'Title',
+return ['Navigation' => [
+    'Contract'  => 'Szerződés',
+    'Contracts' => 'Szerződések',
+    'Create'    => 'Teremt',
+    'List'      => 'Lista',
 ]];

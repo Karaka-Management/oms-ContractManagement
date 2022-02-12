@@ -12,12 +12,9 @@
  */
 declare(strict_types=1);
 
-return ['ContractManagement' => [
-    'Account'   => '',
-    'Contract'  => 'Contract',
-    'Contracts' => 'Contracts',
-    'End'       => '',
-    'Files'     => '',
-    'Overview'  => '',
-    'Title'     => 'Title',
+return ['Navigation' => [
+    'Contract'  => 'اتفافية',
+    'Contracts' => 'انكماش',
+    'Create'    => 'يخلق',
+    'List'      => 'قائمة',
 ]];

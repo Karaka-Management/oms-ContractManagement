@@ -13,11 +13,11 @@
 declare(strict_types=1);
 
 return ['ContractManagement' => [
-    'Account'   => '',
-    'Contract'  => 'Contract',
-    'Contracts' => 'Contracts',
-    'End'       => '',
-    'Files'     => '',
-    'Overview'  => '',
-    'Title'     => 'Title',
+    'Account'   => '#VALUE!',
+    'Contract'  => '合同',
+    'Contracts' => '合同',
+    'End'       => '#VALUE!',
+    'Files'     => '#VALUE!',
+    'Overview'  => '#VALUE!',
+    'Title'     => '标题',
 ]];

@@ -4,7 +4,7 @@
  *
  * PHP Version 8.0
  *
- * @package   Modules\Contracts
+ * @package   Modules\Localization
  * @copyright Dennis Eichhorn
  * @license   OMS License 1.0
  * @version   1.0.0
@@ -13,8 +13,8 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
-    'Create'    => 'Create',
     'Contract'  => 'Contract',
     'Contracts' => 'Contracts',
+    'Create'    => 'Create',
     'List'      => 'List',
 ]];
