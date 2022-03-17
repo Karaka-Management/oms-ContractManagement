@@ -13,7 +13,7 @@
 declare(strict_types=1);
 
 use Modules\ContractManagement\Controller\BackendController;
-use Modules\ContractManagement\Models\PermissionState;
+use Modules\ContractManagement\Models\PermissionCategory;
 use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
@@ -25,7 +25,7 @@ return [
             'permission' => [
                 'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,
-                'state'  => PermissionState::CONTRACT,
+                'state'  => PermissionCategory::CONTRACT,
             ],
         ],
     ],
@@ -36,7 +36,7 @@ return [
             'permission' => [
                 'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,
-                'state'  => PermissionState::CONTRACT,
+                'state'  => PermissionCategory::CONTRACT,
             ],
         ],
     ],
