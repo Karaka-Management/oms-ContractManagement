@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Modules\ContractManagement\Models;
 
-use phpOMS\Contract\ArrayableInterface;
 use phpOMS\Localization\ISO639x1Enum;
 
 /**
@@ -25,7 +24,7 @@ use phpOMS\Localization\ISO639x1Enum;
  * @link    https://karaka.app
  * @since   1.0.0
  */
-class ContractType implements \JsonSerializable, ArrayableInterface
+class ContractType implements \JsonSerializable
 {
     /**
      * Id
