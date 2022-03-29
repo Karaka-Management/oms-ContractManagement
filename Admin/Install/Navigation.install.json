@@ -10,7 +10,7 @@
         "icon": null,
         "order": 45,
         "from": "Kanban",
-        "permission": { "permission": 2, "type": null, "element": null },
+        "permission": { "permission": 2, "category": null, "element": null },
         "parent": 1003301001,
         "children": [
              {
@@ -24,7 +24,7 @@
                 "icon": null,
                 "order": 1,
                 "from": "Kanban",
-                "permission": { "permission": 2, "type": null, "element": null },
+                "permission": { "permission": 2, "category": null, "element": null },
                 "parent": 1007901001,
                 "children": []
             }
