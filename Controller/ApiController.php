@@ -150,9 +150,7 @@ final class ApiController extends Controller
             __DIR__ . '/../../../Modules/Media/Files/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),
             '/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),
             $request->getData('type', 'int'),
-            '',
-            '',
-            PathSettings::FILE_PATH
+            pathSettings: PathSettings::FILE_PATH
         );
 
         $this->createModelRelation(
