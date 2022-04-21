@@ -46,7 +46,7 @@ final class BackendController extends Controller
      * @since 1.0.0
      * @codeCoverageIgnore
      */
-    public function viewContractList(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
+    public function viewContractList(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : RenderableInterface
     {
         $view = new View($this->app->l11nManager, $request, $response);
 
@@ -82,7 +82,7 @@ final class BackendController extends Controller
      * @since 1.0.0
      * @codeCoverageIgnore
      */
-    public function viewContract(RequestAbstract $request, ResponseAbstract $response, $data = null) : RenderableInterface
+    public function viewContract(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : RenderableInterface
     {
         $view = new View($this->app->l11nManager, $request, $response);
 
