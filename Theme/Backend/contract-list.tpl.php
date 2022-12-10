@@ -20,8 +20,8 @@ use phpOMS\Uri\UriFactory;
  */
 $contracts = $this->getData('contracts') ?? [];
 
-$previous = empty($contracts) ? 'contract/list' : 'contract/list?{?}&id=' . \reset($contracts)->getId() . '&ptype=p';
-$next     = empty($contracts) ? 'contract/list' : 'contract/list?{?}&id=' . \end($contracts)->getId() . '&ptype=n';
+$previous = empty($contracts) ? '{/lang}/{/app}/contract/list' : '{/lang}/{/app}/contract/list?{?}&id=' . \reset($contracts)->getId() . '&ptype=p';
+$next     = empty($contracts) ? '{/lang}/{/app}/contract/list' : '{/lang}/{/app}/contract/list?{?}&id=' . \end($contracts)->getId() . '&ptype=n';
 
 $now = new \DateTime('now');
 
@@ -73,7 +73,7 @@ echo $this->getData('nav')->render(); ?>
                         </label>
                 <tbody>
                 <?php foreach ($contracts as $key => $value) :
-                    $url = UriFactory::build('contract/single?{?}&id=' . $value->getId());
+                    $url = UriFactory::build('{/lang}/{/app}/contract/single?{?}&id=' . $value->getId());
 
                     $type = 'ok';
                     if (($value->end->getTimestamp() < $now->getTimestamp() && $value->end->getTimestamp() + 7776000 > $now->getTimestamp())
@@ -88,7 +88,7 @@ echo $this->getData('nav')->render(); ?>
                 ?>
                 <tr tabindex="0" data-href="<?= $url; ?>">
                     <td data-label="<?= $this->getHtml('Title'); ?>"><a href="<?= $url; ?>"><?= $this->printHtml($value->title); ?></a>
-                    <td data-label="<?= $this->getHtml('Account'); ?>"><a class="content" href="<?= UriFactory::build('profile/single?{?}&for=' . $value->account->getId()); ?>"><?= $this->printHtml($value->account->name1); ?> <?= $this->printHtml($value->account->name2); ?></a>
+                    <td data-label="<?= $this->getHtml('Account'); ?>"><a class="content" href="<?= UriFactory::build('{/lang}/{/app}/profile/single?{?}&for=' . $value->account->getId()); ?>"><?= $this->printHtml($value->account->name1); ?> <?= $this->printHtml($value->account->name2); ?></a>
                     <td data-label="<?= $this->getHtml('End'); ?>"><a href="<?= $url; ?>"><span class="tag <?= $type;  ?>"><?= $value->end !== null ? $value->end->format('Y-m-d') : ''; ?></span></a>
                 <?php endforeach; ?>
             </table>
