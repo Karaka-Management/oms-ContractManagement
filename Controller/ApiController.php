@@ -23,6 +23,7 @@ use Modules\ContractManagement\Models\ContractTypeL11nMapper;
 use Modules\ContractManagement\Models\ContractTypeMapper;
 use Modules\ContractManagement\Models\NullContractType;
 use Modules\Media\Models\PathSettings;
+use Modules\Organization\Models\NullUnit;
 use phpOMS\Localization\ISO639x1Enum;
 use phpOMS\Message\Http\RequestStatusCode;
 use phpOMS\Message\NotificationLevel;
@@ -109,7 +110,7 @@ final class ApiController extends Controller
         $contract->account     = new NullAccount((int) ($request->getData('account') ?? 0));
         $contract->renewal     = (int) ($request->getData('renewal') ?? 0);
         $contract->autoRenewal = (bool) ($request->getData('autorenewal') ?? false);
-        $contract->unit        = $request->getData('unit', 'int') ?? null;
+        $contract->unit        = New NullUnit((int) ($request->getData('unit') ?? 0));
 
         if (!empty($request->getData('end'))) {
             $contract->end = new \DateTime($request->getData('end'));
