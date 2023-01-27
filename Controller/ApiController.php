@@ -22,6 +22,7 @@ use Modules\ContractManagement\Models\ContractTypeL11n;
 use Modules\ContractManagement\Models\ContractTypeL11nMapper;
 use Modules\ContractManagement\Models\ContractTypeMapper;
 use Modules\ContractManagement\Models\NullContractType;
+use Modules\Media\Models\MediaMapper;
 use Modules\Media\Models\PathSettings;
 use Modules\Organization\Models\NullUnit;
 use phpOMS\Localization\ISO639x1Enum;
@@ -144,15 +145,28 @@ final class ApiController extends Controller
         }
 
         $uploaded = $this->app->moduleManager->get('Media')->uploadFiles(
-            $request->getDataList('names'),
-            $request->getDataList('filenames'),
-            $uploadedFiles,
-            $request->header->account,
-            __DIR__ . '/../../../Modules/Media/Files/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),
-            '/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),
-            $request->getData('type', 'int'),
+            names: $request->getDataList('names'),
+            fileNames: $request->getDataList('filenames'),
+            files: $uploadedFiles,
+            account: $request->header->account,
+            basePath: __DIR__ . '/../../../Modules/Media/Files/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),
+            virtualPath: '/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),
             pathSettings: PathSettings::FILE_PATH
         );
+
+        if ($request->hasData('type')) {
+            foreach ($uploaded as $file) {
+                $this->createModelRelation(
+                    $request->header->account,
+                    $file->getId(),
+                    $request->getData('type', 'int'),
+                    MediaMapper::class,
+                    'types',
+                    '',
+                    $request->getOrigin()
+                );
+            }
+        }
 
         $this->createModelRelation(
             $request->header->account,

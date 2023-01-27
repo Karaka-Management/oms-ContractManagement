@@ -82,7 +82,7 @@ final class ContractMapper extends DataMapperFactory
     /**
      * Has one relation.
      *
-     * @var array<string, array{mapper:string, external:string, by?:string, column?:string, conditional?:bool}>
+     * @var array<string, array{mapper:class-string, external:string, by?:string, column?:string, conditional?:bool}>
      * @since 1.0.0
      */
     public const OWNS_ONE = [
@@ -103,7 +103,7 @@ final class ContractMapper extends DataMapperFactory
     /**
      * Has many relation.
      *
-     * @var array<string, array{mapper:string, table:string, self?:?string, external?:?string, column?:string}>
+     * @var array<string, array{mapper:class-string, table:string, self?:?string, external?:?string, column?:string}>
      * @since 1.0.0
      */
     public const HAS_MANY = [
