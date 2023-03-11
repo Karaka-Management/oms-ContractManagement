@@ -53,5 +53,5 @@ final class ContractTypeL11nMapper extends DataMapperFactory
      * @var string
      * @since 1.0.0
      */
-    public const PRIMARYFIELD ='contractmgmt_type_l11n_id';
+    public const PRIMARYFIELD = 'contractmgmt_type_l11n_id';
 }

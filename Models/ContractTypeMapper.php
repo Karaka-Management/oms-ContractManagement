@@ -66,5 +66,5 @@ final class ContractTypeMapper extends DataMapperFactory
      * @var string
      * @since 1.0.0
      */
-    public const PRIMARYFIELD ='contractmgmt_type_id';
+    public const PRIMARYFIELD = 'contractmgmt_type_id';
 }
