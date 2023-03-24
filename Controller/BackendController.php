@@ -6,7 +6,7 @@
  *
  * @package   Modules\ContractManagement
  * @copyright Dennis Eichhorn
- * @license   OMS License 1.0
+ * @license   OMS License 2.0
  * @version   1.0.0
  * @link      https://jingga.app
  */
@@ -27,7 +27,7 @@ use phpOMS\Views\View;
  * @property \Web\WebApplication $app
  *
  * @package Modules\ContractManagement
- * @license OMS License 1.0
+ * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0
  * @codeCoverageIgnore
@@ -55,11 +55,11 @@ final class BackendController extends Controller
 
         if ($request->getData('ptype') === 'p') {
             $view->setData('contracts',
-                ContractMapper::getAll()->where('id', (int) ($request->getData('id') ?? 0), '<')->limit(25)->execute()
+                ContractMapper::getAll()->where('id', $request->getDataInt('id') ?? 0, '<')->limit(25)->execute()
             );
         } elseif ($request->getData('ptype') === 'n') {
             $view->setData('contracts',
-                ContractMapper::getAll()->where('id', (int) ($request->getData('id') ?? 0), '>')->limit(25)->execute()
+                ContractMapper::getAll()->where('id', $request->getDataInt('id') ?? 0, '>')->limit(25)->execute()
             );
         } else {
             $view->setData('contracts',

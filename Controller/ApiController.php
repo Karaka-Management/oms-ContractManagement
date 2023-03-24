@@ -6,7 +6,7 @@
  *
  * @package   Modules\ContractManagement
  * @copyright Dennis Eichhorn
- * @license   OMS License 1.0
+ * @license   OMS License 2.0
  * @version   1.0.0
  * @link      https://jingga.app
  */
@@ -36,7 +36,7 @@ use phpOMS\Model\Message\FormValidation;
  * Api controller for the contracts module.
  *
  * @package Modules\ContractManagement
- * @license OMS License 1.0
+ * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0
  */
@@ -104,18 +104,15 @@ final class ApiController extends Controller
     private function createContractFromRequest(RequestAbstract $request) : Contract
     {
         $contract              = new Contract();
-        $contract->title       = (string) ($request->getData('title') ?? '');
-        $contract->description = (string) ($request->getData('description') ?? '');
-        $contract->type        = new NullContractType((int) ($request->getData('type') ?? 0));
-        $contract->start       = new \DateTime($request->getData('start') ?? 'now');
-        $contract->account     = new NullAccount((int) ($request->getData('account') ?? 0));
-        $contract->renewal     = (int) ($request->getData('renewal') ?? 0);
-        $contract->autoRenewal = (bool) ($request->getData('autorenewal') ?? false);
-        $contract->unit        = New NullUnit((int) ($request->getData('unit') ?? 0));
-
-        if (!empty($request->getData('end'))) {
-            $contract->end = new \DateTime($request->getData('end'));
-        }
+        $contract->title       = $request->getDataString('title') ?? '';
+        $contract->description = $request->getDataString('description') ?? '';
+        $contract->type        = new NullContractType($request->getDataInt('type') ?? 0);
+        $contract->start       = $request->getDataDateTime('start') ?? new \DateTime('now');
+        $contract->account     = new NullAccount($request->getDataInt('account') ?? 0);
+        $contract->renewal     = $request->getDataInt('renewal') ?? 0;
+        $contract->autoRenewal = $request->getDataBool('autorenewal') ?? false;
+        $contract->unit        = New NullUnit($request->getDataInt('unit') ?? 0);
+        $contract->end         = $request->getDataDateTime('end');
 
         return $contract;
     }
@@ -159,7 +156,7 @@ final class ApiController extends Controller
                 $this->createModelRelation(
                     $request->header->account,
                     $file->getId(),
-                    $request->getData('type', 'int'),
+                    $request->getDataInt('type'),
                     MediaMapper::class,
                     'types',
                     '',
@@ -218,7 +215,7 @@ final class ApiController extends Controller
     private function createContractTypeFromRequest(RequestAbstract $request) : ContractType
     {
         $contractType = new ContractType();
-        $contractType->setL11n($request->getData('title'), $request->getData('language') ?? ISO639x1Enum::_EN);
+        $contractType->setL11n($request->getDataString('title') ?? '', $request->getDataString('language') ?? ISO639x1Enum::_EN);
 
         return $contractType;
     }
@@ -282,9 +279,9 @@ final class ApiController extends Controller
     private function createContractTypeL11nFromRequest(RequestAbstract $request) : ContractTypeL11n
     {
         $typeL11n = new ContractTypeL11n(
-            (int) ($request->getData('type') ?? 0),
-            (string) ($request->getData('title') ?? ''),
-            $request->getData('language') ?? $request->getLanguage()
+            $request->getDataInt('type') ?? 0,
+            $request->getDataString('title') ?? '',
+            $request->getDataString('language') ?? $request->getLanguage()
         );
 
         return $typeL11n;
