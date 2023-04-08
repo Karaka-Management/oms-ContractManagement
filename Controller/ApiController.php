@@ -81,10 +81,10 @@ final class ApiController extends Controller
     private function validateContractCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = empty($request->getData('title')))
-            || ($val['start'] = empty($request->getData('start')))
-            || ($val['duration'] = empty($request->getData('duration')))
-            || ($val['type'] = empty($request->getData('type')))
+        if (($val['title'] = !$request->hasData('title'))
+            || ($val['start'] = !$request->hasData('start'))
+            || ($val['duration'] = !$request->hasData('duration'))
+            || ($val['type'] = !$request->hasData('type'))
         ) {
             return $val;
         }
@@ -232,7 +232,7 @@ final class ApiController extends Controller
     private function validateContractTypeCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = empty($request->getData('title')))
+        if (($val['title'] = !$request->hasData('title'))
         ) {
             return $val;
         }
@@ -299,8 +299,8 @@ final class ApiController extends Controller
     private function validateContractTypeL11nCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['title'] = empty($request->getData('title')))
-            || ($val['type'] = empty($request->getData('type')))
+        if (($val['title'] = !$request->hasData('title'))
+            || ($val['type'] = !$request->hasData('type'))
         ) {
             return $val;
         }
