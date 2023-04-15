@@ -38,6 +38,10 @@ class Contract
      */
     protected int $id = 0;
 
+    public ?int $parent = null;
+
+    public bool $isTemplate = false;
+
     /**
      * Files.
      *
@@ -81,7 +85,7 @@ class Contract
 
     public ?Money $costs = null;
 
-    public ContractType $type;
+    public ?ContractType $type = null;
 
     public ?Unit $unit = null;
 
@@ -94,7 +98,6 @@ class Contract
     {
         $this->createdAt = new \DateTimeImmutable('now');
         $this->account   = new NullAccount();
-        $this->type      = new ContractType();
     }
 
     /**

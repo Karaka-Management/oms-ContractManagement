@@ -42,6 +42,8 @@ final class ContractMapper extends DataMapperFactory
      */
     public const COLUMNS = [
         'contractmgmt_contract_id'          => ['name' => 'contractmgmt_contract_id',          'type' => 'int',               'internal' => 'id'],
+        'contractmgmt_contract_parent'          => ['name' => 'contractmgmt_contract_parent',          'type' => 'int',               'internal' => 'parent'],
+        'contractmgmt_contract_template'          => ['name' => 'contractmgmt_contract_template',          'type' => 'int',               'internal' => 'isTemplate'],
         'contractmgmt_contract_title'       => ['name' => 'contractmgmt_contract_title',       'type' => 'string',            'internal' => 'title', 'autocomplete' => true],
         'contractmgmt_contract_description' => ['name' => 'contractmgmt_contract_description', 'type' => 'string',            'internal' => 'description'],
         'contractmgmt_contract_account'     => ['name' => 'contractmgmt_contract_account',     'type' => 'int',               'internal' => 'account'],

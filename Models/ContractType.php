@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Modules\ContractManagement\Models;
 
+use phpOMS\Localization\BaseStringL11n;
 use phpOMS\Localization\ISO639x1Enum;
 
 /**
@@ -35,11 +36,21 @@ class ContractType implements \JsonSerializable
     protected int $id = 0;
 
     /**
+     * Name.
+     *
+     * Name used for additional identification, doesn't have to be unique.
+     *
+     * @var string
+     * @since 1.0.0
+     */
+    public string $name = '';
+
+    /**
      * Localization
      *
-     * @var ContractTypeL11n
+     * @var BaseStringL11n
      */
-    protected string | ContractTypeL11n $l11n;
+    protected string | BaseStringL11n $l11n;
 
     /**
      * Constructor.
@@ -68,22 +79,23 @@ class ContractType implements \JsonSerializable
     /**
      * Set l11n
      *
-     * @param string|ContractTypeL11n $l11n Tag article l11n
-     * @param string                  $lang Language
+     * @param string|BaseStringL11n $l11n Tag article l11n
+     * @param string                $lang Language
      *
      * @return void
      *
      * @since 1.0.0
      */
-    public function setL11n(string|ContractTypeL11n $l11n, string $lang = ISO639x1Enum::_EN) : void
+    public function setL11n(string|BaseStringL11n $l11n, string $lang = ISO639x1Enum::_EN) : void
     {
-        if ($l11n instanceof ContractTypeL11n) {
+        if ($l11n instanceof BaseStringL11n) {
             $this->l11n = $l11n;
-        } elseif (isset($this->l11n) && $this->l11n instanceof ContractTypeL11n) {
-            $this->l11n->title = $l11n;
+        } elseif (isset($this->l11n) && $this->l11n instanceof BaseStringL11n) {
+            $this->l11n->content = $l11n;
         } else {
-            $this->l11n        = new ContractTypeL11n();
-            $this->l11n->title = $l11n;
+            $this->l11n          = new BaseStringL11n();
+            $this->l11n->ref     = $this->id;
+            $this->l11n->content = $l11n;
             $this->l11n->setLanguage($lang);
         }
     }
@@ -95,7 +107,7 @@ class ContractType implements \JsonSerializable
      */
     public function getL11n() : string
     {
-        return $this->l11n instanceof ContractTypeL11n ? $this->l11n->title : $this->l11n;
+        return $this->l11n instanceof BaseStringL11n ? $this->l11n->content : $this->l11n;
     }
 
     /**
@@ -106,6 +118,7 @@ class ContractType implements \JsonSerializable
         return [
             'id'   => $this->id,
             'l11n' => $this->l11n,
+            'name'   => $this->name,
         ];
     }
 

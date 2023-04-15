@@ -18,13 +18,13 @@ use Modules\Admin\Models\NullAccount;
 use Modules\ContractManagement\Models\Contract;
 use Modules\ContractManagement\Models\ContractMapper;
 use Modules\ContractManagement\Models\ContractType;
-use Modules\ContractManagement\Models\ContractTypeL11n;
 use Modules\ContractManagement\Models\ContractTypeL11nMapper;
 use Modules\ContractManagement\Models\ContractTypeMapper;
 use Modules\ContractManagement\Models\NullContractType;
 use Modules\Media\Models\MediaMapper;
 use Modules\Media\Models\PathSettings;
 use Modules\Organization\Models\NullUnit;
+use phpOMS\Localization\BaseStringL11n;
 use phpOMS\Localization\ISO639x1Enum;
 use phpOMS\Message\Http\RequestStatusCode;
 use phpOMS\Message\NotificationLevel;
@@ -93,6 +93,21 @@ final class ApiController extends Controller
     }
 
     /**
+     * Create media directory path
+     *
+     * @param Contract $contract Contract
+     *
+     * @return string
+     *
+     * @since 1.0.0
+     */
+    private function createContractDir(Contract $contract) : string
+    {
+        return '/Modules/ContractManagement/Contract/'
+            . $contract->getId();
+    }
+
+    /**
      * Method to create item l11n from request.
      *
      * @param RequestAbstract $request Request
@@ -141,14 +156,22 @@ final class ApiController extends Controller
             return;
         }
 
+        /** @var \Modules\ContractManagement\Models\Contract */
+        $contract = ContractMapper::get()
+            ->where('id', $request->getDataInt('contract'))
+            ->execute();
+
+        $path = $this->createContractDir($contract);
+
         $uploaded = $this->app->moduleManager->get('Media')->uploadFiles(
             names: $request->getDataList('names'),
             fileNames: $request->getDataList('filenames'),
             files: $uploadedFiles,
             account: $request->header->account,
-            basePath: __DIR__ . '/../../../Modules/Media/Files/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),
-            virtualPath: '/Modules/ContractManagement/Contracts/' . ($request->getData('contract_title') ?? '0'),
-            pathSettings: PathSettings::FILE_PATH
+            basePath: __DIR__ . '/../../../Modules/Media/Files' . $path,
+            virtualPath: $path,
+            pathSettings: PathSettings::FILE_PATH,
+            readContent: true
         );
 
         if ($request->hasData('type')) {
@@ -216,6 +239,7 @@ final class ApiController extends Controller
     {
         $contractType = new ContractType();
         $contractType->setL11n($request->getDataString('title') ?? '', $request->getDataString('language') ?? ISO639x1Enum::_EN);
+        $contractType->name = $request->getDataString('name') ?? '';
 
         return $contractType;
     }
@@ -272,15 +296,16 @@ final class ApiController extends Controller
      *
      * @param RequestAbstract $request Request
      *
-     * @return ContractTypeL11n
+     * @return BaseStringL11n
      *
      * @since 1.0.0
      */
-    private function createContractTypeL11nFromRequest(RequestAbstract $request) : ContractTypeL11n
+    private function createContractTypeL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
-        $typeL11n = new ContractTypeL11n(
-            $request->getDataInt('type') ?? 0,
-            $request->getDataString('title') ?? '',
+        $typeL11n          = new BaseStringL11n();
+        $typeL11n->ref     = $request->getDataInt('type') ?? 0;
+        $typeL11n->content = $request->getDataString('title') ?? '';
+        $typeL11n->setLanguage(
             $request->getDataString('language') ?? $request->getLanguage()
         );
 

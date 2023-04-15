@@ -14,7 +14,13 @@ declare(strict_types=1);
 
 namespace Modules\ContractManagement\Admin;
 
+use phpOMS\Application\ApplicationAbstract;
+use phpOMS\Config\SettingsInterface;
+use phpOMS\Message\Http\HttpRequest;
+use phpOMS\Message\Http\HttpResponse;
 use phpOMS\Module\InstallerAbstract;
+use phpOMS\Module\ModuleInfo;
+use phpOMS\Uri\HttpUri;
 
 /**
  * Installer class.
@@ -33,4 +39,88 @@ final class Installer extends InstallerAbstract
      * @since 1.0.0
      */
     public const PATH = __DIR__;
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function install(ApplicationAbstract $app, ModuleInfo $info, SettingsInterface $cfgHandler) : void
+    {
+        parent::install($app, $info, $cfgHandler);
+
+        /* Bill types */
+        $fileContent = \file_get_contents(__DIR__ . '/Install/types.json');
+        if ($fileContent === false) {
+            return;
+        }
+
+        /** @var array $types */
+        $types = \json_decode($fileContent, true);
+        if ($types === false) {
+            return;
+        }
+
+        self::createContractTypes($app, $types);
+    }
+
+    /**
+     * Install default contract types
+     *
+     * @param ApplicationAbstract $app      Application
+     * @param array               $types    Bill types
+     * @param int                 $template Default template
+     *
+     * @return array
+     *
+     * @since 1.0.0
+     */
+    private static function createContractTypes(ApplicationAbstract $app, array $types) : array
+    {
+        $contractTypes = [];
+
+        /** @var \Modules\ContractManagement\Controller\ApiController $module */
+        $module = $app->moduleManager->getModuleInstance('ContractManagement');
+
+        foreach ($types as $type) {
+            $response = new HttpResponse();
+            $request  = new HttpRequest(new HttpUri(''));
+
+            $request->header->account = 1;
+            $request->setData('name', $type['name'] ?? '');
+            $request->setData('title', \reset($type['l11n']));
+            $request->setData('language', \array_keys($type['l11n'])[0] ?? 'en');
+
+            $module->apiContractTypeCreate($request, $response);
+
+            $responseData = $response->get('');
+            if (!\is_array($responseData)) {
+                continue;
+            }
+
+            $billType = !\is_array($responseData['response'])
+                ? $responseData['response']->toArray()
+                : $responseData['response'];
+
+            $contractTypes[] = $billType;
+
+            $isFirst = true;
+            foreach ($type['l11n'] as $language => $l11n) {
+                if ($isFirst) {
+                    $isFirst = false;
+                    continue;
+                }
+
+                $response = new HttpResponse();
+                $request  = new HttpRequest(new HttpUri(''));
+
+                $request->header->account = 1;
+                $request->setData('title', $l11n);
+                $request->setData('language', $language);
+                $request->setData('type', $billType['id']);
+
+                $module->apiContractTypeL11nCreate($request, $response);
+            }
+        }
+
+        return $contractTypes;
+    }
 }

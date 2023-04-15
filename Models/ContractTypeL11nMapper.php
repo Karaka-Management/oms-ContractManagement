@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Modules\ContractManagement\Models;
 
 use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
+use phpOMS\Localization\BaseStringL11n;
 
 /**
  * Contract type l11n mapper class.
@@ -37,8 +38,8 @@ final class ContractTypeL11nMapper extends DataMapperFactory
      */
     public const COLUMNS = [
         'contractmgmt_type_l11n_id'    => ['name' => 'contractmgmt_type_l11n_id',    'type' => 'int',    'internal' => 'id'],
-        'contractmgmt_type_l11n_title' => ['name' => 'contractmgmt_type_l11n_title', 'type' => 'string', 'internal' => 'title', 'autocomplete' => true],
-        'contractmgmt_type_l11n_type'  => ['name' => 'contractmgmt_type_l11n_type',  'type' => 'int',    'internal' => 'type'],
+        'contractmgmt_type_l11n_title' => ['name' => 'contractmgmt_type_l11n_title', 'type' => 'string', 'internal' => 'content', 'autocomplete' => true],
+        'contractmgmt_type_l11n_type'  => ['name' => 'contractmgmt_type_l11n_type',  'type' => 'int',    'internal' => 'ref'],
         'contractmgmt_type_l11n_lang'  => ['name' => 'contractmgmt_type_l11n_lang',  'type' => 'string', 'internal' => 'language'],
     ];
 
@@ -57,4 +58,12 @@ final class ContractTypeL11nMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const PRIMARYFIELD = 'contractmgmt_type_l11n_id';
+
+    /**
+     * Model to use by the mapper.
+     *
+     * @var class-string<T>
+     * @since 1.0.0
+     */
+    public const MODEL = BaseStringL11n::class;
 }

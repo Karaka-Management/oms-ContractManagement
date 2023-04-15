@@ -8,6 +8,11 @@
                 "null": false,
                 "primary": true,
                 "autoincrement": true
+            },
+            "contractmgmt_type_name": {
+                "name": "contractmgmt_type_name",
+                "type": "VARCHAR(255)",
+                "null": false
             }
         }
     },
@@ -51,6 +56,11 @@
                 "null": false,
                 "primary": true,
                 "autoincrement": true
+            },
+            "contractmgmt_contract_template": {
+                "name": "contractmgmt_contract_template",
+                "type": "TINYINT",
+                "null": false
             },
             "contractmgmt_contract_title": {
                 "name": "contractmgmt_contract_title",
@@ -109,9 +119,18 @@
             "contractmgmt_contract_type": {
                 "name": "contractmgmt_contract_type",
                 "type": "INT",
-                "null": false,
+                "null": true,
+                "default": null,
                 "foreignTable": "contractmgmt_type",
                 "foreignKey": "contractmgmt_type_id"
+            },
+            "contractmgmt_contract_parent": {
+                "name": "contractmgmt_contract_parent",
+                "type": "INT",
+                "null": true,
+                "default": null,
+                "foreignTable": "contractmgmt_contract",
+                "foreignKey": "contractmgmt_contract_id"
             },
             "contractmgmt_contract_unit": {
                 "name": "contractmgmt_contract_unit",
