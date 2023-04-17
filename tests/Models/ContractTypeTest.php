@@ -16,6 +16,7 @@ namespace Modules\ContractManagement\tests\Models;
 
 use Modules\ContractManagement\Models\ContractType;
 use Modules\ContractManagement\Models\ContractTypeL11n;
+use phpOMS\Localization\BaseStringL11n;
 
 /**
  * @internal
@@ -51,7 +52,7 @@ final class ContractTypeTest extends \PHPUnit\Framework\TestCase
         $this->type->setL11n('Test');
         self::assertEquals('Test', $this->type->getL11n());
 
-        $this->type->setL11n(new ContractTypeL11n(0, 'NewTest'));
+        $this->type->setL11n(new BaseStringL11n('NewTest'));
         self::assertEquals('NewTest', $this->type->getL11n());
     }
 
@@ -61,12 +62,10 @@ final class ContractTypeTest extends \PHPUnit\Framework\TestCase
      */
     public function testSerialize() : void
     {
-        $this->type->type = 1;
-
         self::assertEquals(
             [
                 'id'       => 0,
-                'l11n'     => new ContractTypeL11n(),
+                'l11n'     => new BaseStringL11n(),
             ],
             $this->type->jsonSerialize()
         );
