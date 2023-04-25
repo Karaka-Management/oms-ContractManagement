@@ -67,7 +67,6 @@ final class Installer extends InstallerAbstract
      *
      * @param ApplicationAbstract $app      Application
      * @param array               $types    Bill types
-     * @param int                 $template Default template
      *
      * @return array
      *
