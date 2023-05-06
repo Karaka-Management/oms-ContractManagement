@@ -39,7 +39,7 @@ final class ContractTypeTest extends \PHPUnit\Framework\TestCase
      */
     public function testDefault() : void
     {
-        self::assertEquals(0, $this->type->getId());
+        self::assertEquals(0, $this->type->id);
         self::assertEquals('', $this->type->getL11n());
     }
 

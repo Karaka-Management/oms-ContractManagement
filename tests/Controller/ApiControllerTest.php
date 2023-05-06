@@ -107,7 +107,7 @@ final class ApiControllerTest extends \PHPUnit\Framework\TestCase
         $request->setData('language', ISO639x1Enum::_EN);
 
         $this->module->apiContractTypeCreate($request, $response);
-        self::assertGreaterThan(0, $response->get('')['response']->getId());
+        self::assertGreaterThan(0, $response->get('')['response']->id);
     }
 
     /**
@@ -141,7 +141,7 @@ final class ApiControllerTest extends \PHPUnit\Framework\TestCase
         $request->setData('language', ISO639x1Enum::_DE);
 
         $this->module->apiContractTypeL11nCreate($request, $response);
-        self::assertGreaterThan(0, $response->get('')['response']->getId());
+        self::assertGreaterThan(0, $response->get('')['response']->id);
     }
 
     /**
@@ -177,7 +177,7 @@ final class ApiControllerTest extends \PHPUnit\Framework\TestCase
         $request->setData('type', '1');
 
         $this->module->apiContractCreate($request, $response);
-        self::assertGreaterThan(0, $response->get('')['response']->getId());
+        self::assertGreaterThan(0, $response->get('')['response']->id);
     }
 
     /**

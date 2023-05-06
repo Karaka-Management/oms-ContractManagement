@@ -39,7 +39,7 @@ final class ContractTest extends \PHPUnit\Framework\TestCase
      */
     public function testDefault() : void
     {
-        self::assertEquals(0, $this->contract->getId());
+        self::assertEquals(0, $this->contract->id);
         self::assertEquals([], $this->contract->getFiles());
     }
 

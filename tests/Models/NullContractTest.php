@@ -37,6 +37,6 @@ final class NullContractTest extends \PHPUnit\Framework\TestCase
     public function testId() : void
     {
         $null = new NullContract(2);
-        self::assertEquals(2, $null->getId());
+        self::assertEquals(2, $null->id);
     }
 }
