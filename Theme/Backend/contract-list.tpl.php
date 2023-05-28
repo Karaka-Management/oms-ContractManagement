@@ -30,7 +30,7 @@ echo $this->getData('nav')->render(); ?>
 <div class="row">
     <div class="col-xs-12">
         <div class="portlet">
-            <div class="portlet-head"><?= $this->getHtml('Contracts'); ?><i class="fa fa-download floatRight download btn"></i></div>
+            <div class="portlet-head"><?= $this->getHtml('Contracts'); ?><i class="lni lni-download download btn end-xs"></i></div>
             <div class="slider">
             <table id="contractList" class="default sticky">
                 <thead>
@@ -47,7 +47,7 @@ echo $this->getData('nav')->render(); ?>
                         <label>
                             <i class="filter fa fa-filter"></i>
                         </label>
-                    <td class="wf-100"><?= $this->getHtml('Account'); ?>
+                    <td class="wf-100"><?= $this->getHtml('With'); ?>
                         <label for="contractList-sort-3">
                             <input type="radio" name="contractList-sort" id="contractList-sort-3">
                             <i class="sort-asc fa fa-chevron-up"></i>

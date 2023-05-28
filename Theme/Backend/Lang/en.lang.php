@@ -20,4 +20,11 @@ return ['ContractManagement' => [
     'Files'     => 'Files',
     'Overview'  => 'Overview',
     'Title'     => 'Title',
+    'With'     => 'With',
+    'Start'     => 'Start',
+    'Description'     => 'Description',
+    'AutoRenewal'     => 'Auto Renewal',
+    'Termination'     => 'Termination',
+    'Costs'     => 'Costs',
+    'Unit'     => 'Unit',
 ]];

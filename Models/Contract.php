@@ -54,8 +54,13 @@ class Contract
 
     public string $description = '';
 
+    // The original start of the contract ignoring renewals
+    public \DateTime $originalStart;
+
+    // Start of the contract considering renewals
     public ?\DateTime $start = null;
 
+    // End of the contract considering renewals
     public ?\DateTime $end = null;
 
     /**
@@ -73,6 +78,7 @@ class Contract
 
     public ?int $responsible = null;
 
+    // Contract with
     public Account $account;
 
     /**
