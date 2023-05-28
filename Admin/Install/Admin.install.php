@@ -21,5 +21,5 @@ return [
         'name'    => SettingsEnum::CONTRACT_RENEWAL_WARNING,
         'content' => '7776000',
         'module'  => ApiController::NAME,
-    ]
+    ],
 ];

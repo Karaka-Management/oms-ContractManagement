@@ -18,7 +18,7 @@ use phpOMS\Uri\UriFactory;
  * @var \phpOMS\Views\View                          $this
  * @var \Modules\ContractManagement\Models\Contract $contract
  */
-$contract = $this->getData('contract');
+$contract     = $this->getData('contract');
 $contractFile = $contract->getFiles();
 
 echo $this->getData('nav')->render(); ?>

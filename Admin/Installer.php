@@ -65,8 +65,8 @@ final class Installer extends InstallerAbstract
     /**
      * Install default contract types
      *
-     * @param ApplicationAbstract $app      Application
-     * @param array               $types    Bill types
+     * @param ApplicationAbstract $app   Application
+     * @param array               $types Bill types
      *
      * @return array
      *

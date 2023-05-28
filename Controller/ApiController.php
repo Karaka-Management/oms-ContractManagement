@@ -126,7 +126,7 @@ final class ApiController extends Controller
         $contract->account     = new NullAccount($request->getDataInt('account') ?? 0);
         $contract->renewal     = $request->getDataInt('renewal') ?? 0;
         $contract->autoRenewal = $request->getDataBool('autorenewal') ?? false;
-        $contract->unit        = New NullUnit($request->getDataInt('unit') ?? 0);
+        $contract->unit        = new NullUnit($request->getDataInt('unit') ?? 0);
         $contract->end         = $request->getDataDateTime('end');
 
         return $contract;

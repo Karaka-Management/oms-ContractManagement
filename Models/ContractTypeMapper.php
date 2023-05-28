@@ -36,7 +36,7 @@ final class ContractTypeMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'contractmgmt_type_id' => ['name' => 'contractmgmt_type_id', 'type' => 'int', 'internal' => 'id'],
+        'contractmgmt_type_id'   => ['name' => 'contractmgmt_type_id', 'type' => 'int', 'internal' => 'id'],
         'contractmgmt_type_name' => ['name' => 'contractmgmt_type_name', 'type' => 'string', 'internal' => 'name'],
     ];
 

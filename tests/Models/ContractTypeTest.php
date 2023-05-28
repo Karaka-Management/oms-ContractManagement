@@ -15,7 +15,6 @@ declare(strict_types=1);
 namespace Modules\ContractManagement\tests\Models;
 
 use Modules\ContractManagement\Models\ContractType;
-use Modules\ContractManagement\Models\ContractTypeL11n;
 use phpOMS\Localization\BaseStringL11n;
 
 /**
