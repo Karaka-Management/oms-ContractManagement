@@ -52,6 +52,7 @@ final class ContractMapper extends DataMapperFactory
         'contractmgmt_contract_autorenewal'       => ['name' => 'contractmgmt_contract_autorenewal', 'type' => 'bool',              'internal' => 'autoRenewal'],
         'contractmgmt_contract_duration'          => ['name' => 'contractmgmt_contract_duration',    'type' => 'int',               'internal' => 'duration'],
         'contractmgmt_contract_warning'           => ['name' => 'contractmgmt_contract_warning',     'type' => 'int',               'internal' => 'warning'],
+        'contractmgmt_contract_startoriginal'             => ['name' => 'contractmgmt_contract_startoriginal',       'type' => 'DateTime',          'internal' => 'originalStart'],
         'contractmgmt_contract_start'             => ['name' => 'contractmgmt_contract_start',       'type' => 'DateTime',          'internal' => 'start'],
         'contractmgmt_contract_end'               => ['name' => 'contractmgmt_contract_end',         'type' => 'DateTime',          'internal' => 'end'],
         'contractmgmt_contract_responsible'       => ['name' => 'contractmgmt_contract_responsible', 'type' => 'int',               'internal' => 'responsible'],

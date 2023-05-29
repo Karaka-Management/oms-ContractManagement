@@ -21,7 +21,7 @@ use Modules\Organization\Models\Unit;
 use phpOMS\Localization\Money;
 
 /**
- * Account class.
+ * Contract class.
  *
  * @package Modules\ContractManagement\Models
  * @license OMS License 2.0
@@ -55,7 +55,7 @@ class Contract
     public string $description = '';
 
     // The original start of the contract ignoring renewals
-    public \DateTime $originalStart;
+    public ?\DateTime $originalStart = null;
 
     // Start of the contract considering renewals
     public ?\DateTime $start = null;

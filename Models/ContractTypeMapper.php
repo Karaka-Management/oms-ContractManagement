@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Modules\ContractManagement\Models;
 
 use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
+use phpOMS\Localization\BaseStringL11nType;
 
 /**
  * Contract type mapper class.
@@ -37,7 +38,7 @@ final class ContractTypeMapper extends DataMapperFactory
      */
     public const COLUMNS = [
         'contractmgmt_type_id'   => ['name' => 'contractmgmt_type_id', 'type' => 'int', 'internal' => 'id'],
-        'contractmgmt_type_name' => ['name' => 'contractmgmt_type_name', 'type' => 'string', 'internal' => 'name'],
+        'contractmgmt_type_name' => ['name' => 'contractmgmt_type_name', 'type' => 'string', 'internal' => 'title'],
     ];
 
     /**
@@ -62,7 +63,7 @@ final class ContractTypeMapper extends DataMapperFactory
      * @var class-string<T>
      * @since 1.0.0
      */
-    public const MODEL = ContractType::class;
+    public const MODEL = BaseStringL11nType::class;
 
     /**
      * Primary table.

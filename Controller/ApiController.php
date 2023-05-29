@@ -17,10 +17,8 @@ namespace Modules\ContractManagement\Controller;
 use Modules\Admin\Models\NullAccount;
 use Modules\ContractManagement\Models\Contract;
 use Modules\ContractManagement\Models\ContractMapper;
-use Modules\ContractManagement\Models\ContractType;
 use Modules\ContractManagement\Models\ContractTypeL11nMapper;
 use Modules\ContractManagement\Models\ContractTypeMapper;
-use Modules\ContractManagement\Models\NullContractType;
 use Modules\Media\Models\MediaMapper;
 use Modules\Media\Models\PathSettings;
 use Modules\Organization\Models\NullUnit;
@@ -31,6 +29,8 @@ use phpOMS\Message\NotificationLevel;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
 use phpOMS\Model\Message\FormValidation;
+use phpOMS\Localization\NullBaseStringL11nType;
+use phpOMS\Localization\BaseStringL11nType;
 
 /**
  * Api controller for the contracts module.
@@ -121,7 +121,7 @@ final class ApiController extends Controller
         $contract              = new Contract();
         $contract->title       = $request->getDataString('title') ?? '';
         $contract->description = $request->getDataString('description') ?? '';
-        $contract->type        = new NullContractType($request->getDataInt('type') ?? 0);
+        $contract->type        = new NullBaseStringL11nType($request->getDataInt('type') ?? 0);
         $contract->start       = $request->getDataDateTime('start') ?? new \DateTime('now');
         $contract->account     = new NullAccount($request->getDataInt('account') ?? 0);
         $contract->renewal     = $request->getDataInt('renewal') ?? 0;
@@ -231,15 +231,15 @@ final class ApiController extends Controller
      *
      * @param RequestAbstract $request Request
      *
-     * @return ContractType
+     * @return BaseStringL11nType
      *
      * @since 1.0.0
      */
-    private function createContractTypeFromRequest(RequestAbstract $request) : ContractType
+    private function createContractTypeFromRequest(RequestAbstract $request) : BaseStringL11nType
     {
-        $contractType = new ContractType();
+        $contractType = new BaseStringL11nType();
         $contractType->setL11n($request->getDataString('title') ?? '', $request->getDataString('language') ?? ISO639x1Enum::_EN);
-        $contractType->name = $request->getDataString('name') ?? '';
+        $contractType->title = $request->getDataString('name') ?? '';
 
         return $contractType;
     }

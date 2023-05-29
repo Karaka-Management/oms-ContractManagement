@@ -79,6 +79,11 @@
                 "foreignTable": "account",
                 "foreignKey": "account_id"
             },
+            "contractmgmt_contract_startoriginal": {
+                "name": "contractmgmt_contract_startoriginal",
+                "type": "DATETIME",
+                "null": false
+            },
             "contractmgmt_contract_start": {
                 "name": "contractmgmt_contract_start",
                 "type": "DATETIME",
