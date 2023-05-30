@@ -104,7 +104,7 @@ final class BackendController extends Controller
 
         $contractTypes = ContractTypeMapper::getAll()
             ->with('l11n')
-            ->where('l11n/language', $response->getLanguage())
+            ->where('l11n/language', $response->header->l11n->language)
             ->execute();
         $view->setData('contractTypes', $contractTypes);
 
