@@ -52,24 +52,18 @@ final class BackendController extends Controller
         $view = new View($this->app->l11nManager, $request, $response);
 
         $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-list');
-        $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response));
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
 
         $mapper = ContractMapper::getAll()
             ->with('account')
             ->limit(25);
 
         if ($request->getData('ptype') === 'p') {
-            $view->setData('contracts',
-                $mapper->where('id', $request->getDataInt('id') ?? 0, '<')->execute()
-            );
+            $view->data['contracts'] = $mapper->where('id', $request->getDataInt('id') ?? 0, '<')->execute();
         } elseif ($request->getData('ptype') === 'n') {
-            $view->setData('contracts',
-                $mapper->where('id', $request->getDataInt('id') ?? 0, '>')->execute()
-            );
+            $view->data['contracts'] = $mapper->where('id', $request->getDataInt('id') ?? 0, '>')->execute();
         } else {
-            $view->setData('contracts',
-                $mapper->where('id', 0, '>')->execute()
-            );
+            $view->data['contracts'] = $mapper->where('id', 0, '>')->execute();
         }
 
         return $view;
@@ -92,7 +86,7 @@ final class BackendController extends Controller
         $view = new View($this->app->l11nManager, $request, $response);
 
         $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-single');
-        $view->addData('nav', $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response));
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
 
         $contract = ContractMapper::get()
             ->with('account')
@@ -100,20 +94,20 @@ final class BackendController extends Controller
             ->where('id', (int) $request->getData('id'))
             ->sort('files/id', 'DESC')
             ->execute();
-        $view->addData('contract', $contract);
+        $view->data['contract'] = $contract;
 
         $contractTypes = ContractTypeMapper::getAll()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
             ->execute();
-        $view->setData('contractTypes', $contractTypes);
+        $view->data['contractTypes'] = $contractTypes;
 
         $units = UnitMapper::getAll()
             ->execute();
-        $view->setData('units', $units);
+        $view->data['units'] = $units;
 
         $editor = new \Modules\Editor\Theme\Backend\Components\Editor\BaseView($this->app->l11nManager, $request, $response);
-        $view->addData('editor', $editor);
+        $view->data['editor'] = $editor;
 
         return $view;
     }

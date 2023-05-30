@@ -18,10 +18,10 @@ use phpOMS\Uri\UriFactory;
  * @var \phpOMS\Views\View                          $this
  * @var \Modules\ContractManagement\Models\Contract $contract
  */
-$contract     = $this->getData('contract');
+$contract     = $this->data['contract'];
 $contractFile = $contract->files;
 
-echo $this->getData('nav')->render(); ?>
+echo $this->data['nav']->render(); ?>
 
 <div class="tabview tab-2 col-simple">
     <div class="box">
@@ -52,7 +52,7 @@ echo $this->getData('nav')->render(); ?>
                                 <label for="iType"><?= $this->getHtml('Type'); ?></label>
                                 <select id="iType" name="type" data-tpl-text="/type" data-tpl-value="/type">
                                     <?php
-                                    $types = $this->getData('contractTypes') ?? [];
+                                    $types = $this->data['contractTypes'] ?? [];
                                     foreach ($types as $type) : ?>
                                         <option value="<?= $type->id; ?>" <?= $type->id === $contract->type->id ? ' selected' : ''; ?>><?= $this->printHtml($type->getL11n()); ?>
                                     <?php endforeach; ?>
@@ -95,7 +95,7 @@ echo $this->getData('nav')->render(); ?>
                                 <select id="iUnit" name="unit">
                                     <option value="">
                                     <?php
-                                    $units = $this->getData('units') ?? [];
+                                    $units = $this->data['units'] ?? [];
                                     foreach ($units as $unit) : ?>
                                         <option value="<?= $unit->id; ?>"<?= $contract->unit->id === $unit->id ? ' selected' : ''; ?>><?= $this->printHtml($unit->name); ?>
                                     <?php endforeach; ?>

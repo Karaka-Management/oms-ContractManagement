@@ -18,14 +18,14 @@ use phpOMS\Uri\UriFactory;
  * @var \phpOMS\Views\View                            $this
  * @var \Modules\ContractManagement\Models\Contract[] $contracts
  */
-$contracts = $this->getData('contracts') ?? [];
+$contracts = $this->data['contracts'] ?? [];
 
 $previous = empty($contracts) ? '{/base}/contract/list' : '{/base}/contract/list?{?}&id=' . \reset($contracts)->id . '&ptype=p';
 $next     = empty($contracts) ? '{/base}/contract/list' : '{/base}/contract/list?{?}&id=' . \end($contracts)->id . '&ptype=n';
 
 $now = new \DateTime('now');
 
-echo $this->getData('nav')->render(); ?>
+echo $this->data['nav']->render(); ?>
 
 <div class="row">
     <div class="col-xs-12">
