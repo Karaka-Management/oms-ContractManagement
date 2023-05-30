@@ -58,7 +58,7 @@ final class ApiController extends Controller
     public function apiContractCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateContractCreate($request))) {
-            $response->set('contract_create', new FormValidation($val));
+            $response->data['contract_create'] = new FormValidation($val);
             $response->header->status = RequestStatusCode::R_400;
 
             return;
@@ -147,7 +147,7 @@ final class ApiController extends Controller
      */
     public function apiContractDocumentCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
-        $uploadedFiles = $request->getFiles();
+        $uploadedFiles = $request->files;
 
         if (empty($uploadedFiles)) {
             $this->fillJsonResponse($request, $response, NotificationLevel::ERROR, 'Contract', 'Invalid contract image', $uploadedFiles);
@@ -214,7 +214,7 @@ final class ApiController extends Controller
     public function apiContractTypeCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateContractTypeCreate($request))) {
-            $response->set('contract_type_create', new FormValidation($val));
+            $response->data['contract_type_create'] = new FormValidation($val);
             $response->header->status = RequestStatusCode::R_400;
 
             return;
@@ -280,7 +280,7 @@ final class ApiController extends Controller
     public function apiContractTypeL11nCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateContractTypeL11nCreate($request))) {
-            $response->set('contract_type_create', new FormValidation($val));
+            $response->data['contract_type_create'] = new FormValidation($val);
             $response->header->status = RequestStatusCode::R_400;
 
             return;

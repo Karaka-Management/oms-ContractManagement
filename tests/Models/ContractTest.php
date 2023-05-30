@@ -40,7 +40,7 @@ final class ContractTest extends \PHPUnit\Framework\TestCase
     public function testDefault() : void
     {
         self::assertEquals(0, $this->contract->id);
-        self::assertEquals([], $this->contract->getFiles());
+        self::assertEquals([], $this->contract->files);
     }
 
     /**
@@ -50,7 +50,7 @@ final class ContractTest extends \PHPUnit\Framework\TestCase
     public function testMediaInputOutput() : void
     {
         $this->contract->addFile(new Media());
-        self::assertCount(1, $this->contract->getFiles());
+        self::assertCount(1, $this->contract->files);
     }
 
     /**

@@ -42,14 +42,6 @@ class Contract
 
     public bool $isTemplate = false;
 
-    /**
-     * Files.
-     *
-     * @var Media[]
-     * @since 1.0.0
-     */
-    private array $files = [];
-
     public string $title = '';
 
     public string $description = '';
@@ -107,18 +99,6 @@ class Contract
     }
 
     /**
-     * Get files
-     *
-     * @return Media[]
-     *
-     * @since 1.0.0
-     */
-    public function getFiles() : array
-    {
-        return $this->files;
-    }
-
-    /**
      * Add media to item
      *
      * @param Media $media Media
@@ -159,4 +139,6 @@ class Contract
     {
         return $this->toArray();
     }
+
+    use \Modules\Media\Models\MediaListTrait;
 }
