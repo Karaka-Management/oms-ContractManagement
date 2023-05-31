@@ -23,14 +23,14 @@ use Modules\Media\Models\MediaMapper;
 use Modules\Media\Models\PathSettings;
 use Modules\Organization\Models\NullUnit;
 use phpOMS\Localization\BaseStringL11n;
+use phpOMS\Localization\BaseStringL11nType;
 use phpOMS\Localization\ISO639x1Enum;
+use phpOMS\Localization\NullBaseStringL11nType;
 use phpOMS\Message\Http\RequestStatusCode;
 use phpOMS\Message\NotificationLevel;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
 use phpOMS\Model\Message\FormValidation;
-use phpOMS\Localization\NullBaseStringL11nType;
-use phpOMS\Localization\BaseStringL11nType;
 
 /**
  * Api controller for the contracts module.
@@ -59,7 +59,7 @@ final class ApiController extends Controller
     {
         if (!empty($val = $this->validateContractCreate($request))) {
             $response->data['contract_create'] = new FormValidation($val);
-            $response->header->status = RequestStatusCode::R_400;
+            $response->header->status          = RequestStatusCode::R_400;
 
             return;
         }
@@ -215,7 +215,7 @@ final class ApiController extends Controller
     {
         if (!empty($val = $this->validateContractTypeCreate($request))) {
             $response->data['contract_type_create'] = new FormValidation($val);
-            $response->header->status = RequestStatusCode::R_400;
+            $response->header->status               = RequestStatusCode::R_400;
 
             return;
         }
@@ -281,7 +281,7 @@ final class ApiController extends Controller
     {
         if (!empty($val = $this->validateContractTypeL11nCreate($request))) {
             $response->data['contract_type_create'] = new FormValidation($val);
-            $response->header->status = RequestStatusCode::R_400;
+            $response->header->status               = RequestStatusCode::R_400;
 
             return;
         }
