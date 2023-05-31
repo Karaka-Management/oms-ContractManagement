@@ -18,6 +18,7 @@ use Modules\Admin\Models\Account;
 use Modules\Admin\Models\NullAccount;
 use Modules\Media\Models\Media;
 use Modules\Organization\Models\Unit;
+use phpOMS\Localization\BaseStringL11nType;
 use phpOMS\Localization\Money;
 
 /**
@@ -83,7 +84,7 @@ class Contract
 
     public ?Money $costs = null;
 
-    public ?ContractType $type = null;
+    public ?BaseStringL11nType $type = null;
 
     public ?Unit $unit = null;
 
