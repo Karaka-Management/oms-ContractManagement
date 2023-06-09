@@ -106,8 +106,8 @@ final class BackendController extends Controller
             ->execute();
         $view->data['units'] = $units;
 
-        $editor               = new \Modules\Editor\Theme\Backend\Components\Editor\BaseView($this->app->l11nManager, $request, $response);
-        $view->data['editor'] = $editor;
+        $view->data['editor'] = new \Modules\Editor\Theme\Backend\Components\Editor\BaseView($this->app->l11nManager, $request, $response);
+        $view->data['media-upload'] = new \Modules\Media\Theme\Backend\Components\Upload\BaseView($this->app->l11nManager, $request, $response);
 
         return $view;
     }

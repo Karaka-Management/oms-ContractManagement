@@ -23,18 +23,18 @@ $contractFile = $contract->files;
 
 echo $this->data['nav']->render(); ?>
 
-<div class="tabview tab-2 col-simple">
+<div class="tabview tab-2">
     <div class="box">
         <ul class="tab-links">
             <li><label for="c-tab-1"><?= $this->getHtml('Overview'); ?></label></li>
             <li><label for="c-tab-2"><?= $this->getHtml('Files'); ?></label></li>
         </ul>
     </div>
-    <div class="tab-content col-simple">
+    <div class="tab-content">
         <input type="radio" id="c-tab-1" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-1' ? ' checked' : ''; ?>>
         <div class="tab">
             <div class="row">
-                <div class="col-xs-12 cold-sm-6 col-md-4">
+                <div class="col-xs-12 col-md-6">
                     <section class="portlet">
                         <div class="portlet-head"><?= $this->getHtml('Contract'); ?></div>
                         <div class="portlet-body">
@@ -112,15 +112,7 @@ echo $this->data['nav']->render(); ?>
 
         <input type="radio" id="c-tab-2" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-2' ? ' checked' : ''; ?>>
         <div class="tab col-simple">
-            <div class="col-simple">
-                <div class="col-xs-12 col-simple">
-                    <section id="mediaFile" class="portlet col-simple">
-                        <div class="portlet-body col-simple">
-                            <iframe class="col-simple" id="iContractFile" src="Resources/mozilla/Pdf/web/viewer.html?file=<?= \urlencode(UriFactory::build('{/api}media/export?id=' . \end($contractFile)->id)); ?>" loading="lazy" allowfullscreen></iframe>
-                        </div>
-                    </section>
-                </div>
-            </div>
+            <?= $this->data['media-upload']->render('contract-file', 'files', '', $contract->files); ?>
         </div>
     </div>
 </div>
