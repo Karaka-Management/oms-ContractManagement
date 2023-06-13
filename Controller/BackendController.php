@@ -94,19 +94,22 @@ final class BackendController extends Controller
             ->where('id', (int) $request->getData('id'))
             ->sort('files/id', 'DESC')
             ->execute();
+
         $view->data['contract'] = $contract;
 
         $contractTypes = ContractTypeMapper::getAll()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
             ->execute();
+
         $view->data['contractTypes'] = $contractTypes;
 
         $units = UnitMapper::getAll()
             ->execute();
+
         $view->data['units'] = $units;
 
-        $view->data['editor'] = new \Modules\Editor\Theme\Backend\Components\Editor\BaseView($this->app->l11nManager, $request, $response);
+        $view->data['editor']       = new \Modules\Editor\Theme\Backend\Components\Editor\BaseView($this->app->l11nManager, $request, $response);
         $view->data['media-upload'] = new \Modules\Media\Theme\Backend\Components\Upload\BaseView($this->app->l11nManager, $request, $response);
 
         return $view;
