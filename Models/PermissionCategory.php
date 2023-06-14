@@ -27,4 +27,6 @@ use phpOMS\Stdlib\Base\Enum;
 abstract class PermissionCategory extends Enum
 {
     public const CONTRACT = 1;
+
+    public const CONTRACT_TYPE = 2;
 }

@@ -40,4 +40,26 @@ return [
             ],
         ],
     ],
+    '^.*/contract/type/list.*$' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractTypeList',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::CONTRACT_TYPE,
+            ],
+        ],
+    ],
+    '^.*/contract/type/profile.*$' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractType',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::CONTRACT_TYPE,
+            ],
+        ],
+    ],
 ];

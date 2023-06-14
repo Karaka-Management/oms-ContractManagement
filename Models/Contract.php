@@ -100,20 +100,6 @@ class Contract
     }
 
     /**
-     * Add media to item
-     *
-     * @param Media $media Media
-     *
-     * @return void
-     *
-     * @since 1.0.0
-     */
-    public function addFile(Media $media) : void
-    {
-        $this->files[] = $media;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function toArray() : array
@@ -142,4 +128,6 @@ class Contract
     }
 
     use \Modules\Media\Models\MediaListTrait;
+    use \Modules\Editor\Models\EditorDocListTrait;
+    use \Modules\Attribute\Models\AttributeHolderTrait;
 }

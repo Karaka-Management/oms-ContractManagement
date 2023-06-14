@@ -185,5 +185,260 @@
                 "foreignKey": "media_id"
             }
         }
-    }
+    },
+    "contractmgmt_contract_note": {
+        "name": "contractmgmt_contract_note",
+        "fields": {
+            "contractmgmt_contract_note_id": {
+                "name": "contractmgmt_contract_note_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "contractmgmt_contract_note_contract": {
+                "name": "contractmgmt_contract_note_contract",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "contractmgmt_contract",
+                "foreignKey": "contractmgmt_contract_id"
+            },
+            "contractmgmt_contract_note_doc": {
+                "name": "contractmgmt_contract_note_doc",
+                "type": "INT",
+                "null": false,
+                "foreignTable": "editor_doc",
+                "foreignKey": "editor_doc_id"
+            }
+        }
+    },
+    "contractmgmt_attr_type": {
+        "name": "contractmgmt_attr_type",
+        "fields": {
+            "contractmgmt_attr_type_id": {
+                "name": "contractmgmt_attr_type_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "contractmgmt_attr_type_name": {
+                "name": "contractmgmt_attr_type_name",
+                "type": "VARCHAR(255)",
+                "null": false,
+                "unique": true
+            },
+            "contractmgmt_attr_type_datatype": {
+                "name": "contractmgmt_attr_type_datatype",
+                "type": "INT(11)",
+                "null": false
+            },
+            "contractmgmt_attr_type_fields": {
+                "name": "contractmgmt_attr_type_fields",
+                "type": "INT(11)",
+                "null": false
+            },
+            "contractmgmt_attr_type_custom": {
+                "name": "contractmgmt_attr_type_custom",
+                "type": "TINYINT(1)",
+                "null": false
+            },
+            "contractmgmt_attr_type_required": {
+                "description": "Every contract must have this attribute type if set to true.",
+                "name": "contractmgmt_attr_type_required",
+                "type": "TINYINT(1)",
+                "null": false
+            },
+            "contractmgmt_attr_type_pattern": {
+                "description": "This is a regex validation pattern.",
+                "name": "contractmgmt_attr_type_pattern",
+                "type": "VARCHAR(255)",
+                "null": false
+            }
+        }
+    },
+    "contractmgmt_attr_type_l11n": {
+        "name": "contractmgmt_attr_type_l11n",
+        "fields": {
+            "contractmgmt_attr_type_l11n_id": {
+                "name": "contractmgmt_attr_type_l11n_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "contractmgmt_attr_type_l11n_title": {
+                "name": "contractmgmt_attr_type_l11n_title",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "contractmgmt_attr_type_l11n_type": {
+                "name": "contractmgmt_attr_type_l11n_type",
+                "type": "INT(11)",
+                "null": false,
+                "foreignTable": "contractmgmt_attr_type",
+                "foreignKey": "contractmgmt_attr_type_id"
+            },
+            "contractmgmt_attr_type_l11n_lang": {
+                "name": "contractmgmt_attr_type_l11n_lang",
+                "type": "VARCHAR(2)",
+                "null": false,
+                "foreignTable": "language",
+                "foreignKey": "language_639_1"
+            }
+        }
+    },
+    "contractmgmt_attr_value": {
+        "name": "contractmgmt_attr_value",
+        "fields": {
+            "contractmgmt_attr_value_id": {
+                "name": "contractmgmt_attr_value_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "contractmgmt_attr_value_default": {
+                "name": "contractmgmt_attr_value_default",
+                "type": "TINYINT(1)",
+                "null": false
+            },
+            "contractmgmt_attr_value_valueStr": {
+                "name": "contractmgmt_attr_value_valueStr",
+                "type": "VARCHAR(255)",
+                "null": true,
+                "default": null
+            },
+            "contractmgmt_attr_value_valueInt": {
+                "name": "contractmgmt_attr_value_valueInt",
+                "type": "INT(11)",
+                "null": true,
+                "default": null
+            },
+            "contractmgmt_attr_value_valueDec": {
+                "name": "contractmgmt_attr_value_valueDec",
+                "type": "DECIMAL(19,5)",
+                "null": true,
+                "default": null
+            },
+            "contractmgmt_attr_value_valueDat": {
+                "name": "contractmgmt_attr_value_valueDat",
+                "type": "DATETIME",
+                "null": true,
+                "default": null
+            },
+            "contractmgmt_attr_value_unit": {
+                "name": "contractmgmt_attr_value_unit",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "contractmgmt_attr_value_deptype": {
+                "name": "contractmgmt_attr_value_deptype",
+                "type": "INT(11)",
+                "null": true,
+                "default": null,
+                "foreignTable": "contractmgmt_attr_type",
+                "foreignKey": "contractmgmt_attr_type_id"
+            },
+            "contractmgmt_attr_value_depvalue": {
+                "name": "contractmgmt_attr_value_depvalue",
+                "type": "INT(11)",
+                "null": true,
+                "default": null,
+                "foreignTable": "contractmgmt_attr_value",
+                "foreignKey": "contractmgmt_attr_value_id"
+            }
+        }
+    },
+    "contractmgmt_attr_value_l11n": {
+        "name": "contractmgmt_attr_value_l11n",
+        "fields": {
+            "contractmgmt_attr_value_l11n_id": {
+                "name": "contractmgmt_attr_value_l11n_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "contractmgmt_attr_value_l11n_title": {
+                "name": "contractmgmt_attr_value_l11n_title",
+                "type": "VARCHAR(255)",
+                "null": false
+            },
+            "contractmgmt_attr_value_l11n_value": {
+                "name": "contractmgmt_attr_value_l11n_value",
+                "type": "INT(11)",
+                "null": false,
+                "foreignTable": "contractmgmt_attr_value",
+                "foreignKey": "contractmgmt_attr_value_id"
+            },
+            "contractmgmt_attr_value_l11n_lang": {
+                "name": "contractmgmt_attr_value_l11n_lang",
+                "type": "VARCHAR(2)",
+                "null": false,
+                "foreignTable": "language",
+                "foreignKey": "language_639_1"
+            }
+        }
+    },
+    "contractmgmt_contract_attr_default": {
+        "name": "contractmgmt_contract_attr_default",
+        "fields": {
+            "contractmgmt_contract_attr_default_id": {
+                "name": "contractmgmt_contract_attr_default_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "contractmgmt_contract_attr_default_type": {
+                "name": "contractmgmt_contract_attr_default_type",
+                "type": "INT(11)",
+                "null": false,
+                "foreignTable": "contractmgmt_attr_type",
+                "foreignKey": "contractmgmt_attr_type_id"
+            },
+            "contractmgmt_contract_attr_default_value": {
+                "name": "contractmgmt_contract_attr_default_value",
+                "type": "INT(11)",
+                "null": false,
+                "foreignTable": "contractmgmt_attr_value",
+                "foreignKey": "contractmgmt_attr_value_id"
+            }
+        }
+    },
+    "contractmgmt_contract_attr": {
+        "name": "contractmgmt_contract_attr",
+        "fields": {
+            "contractmgmt_contract_attr_id": {
+                "name": "contractmgmt_contract_attr_id",
+                "type": "INT",
+                "null": false,
+                "primary": true,
+                "autoincrement": true
+            },
+            "contractmgmt_contract_attr_contract": {
+                "name": "contractmgmt_contract_attr_contract",
+                "type": "INT(11)",
+                "null": false,
+                "foreignTable": "contractmgmt_contract",
+                "foreignKey": "contractmgmt_contract_id"
+            },
+            "contractmgmt_contract_attr_type": {
+                "name": "contractmgmt_contract_attr_type",
+                "type": "INT(11)",
+                "null": false,
+                "foreignTable": "contractmgmt_attr_type",
+                "foreignKey": "contractmgmt_attr_type_id"
+            },
+            "contractmgmt_contract_attr_value": {
+                "name": "contractmgmt_contract_attr_value",
+                "type": "INT(11)",
+                "null": true,
+                "default": null,
+                "foreignTable": "contractmgmt_attr_value",
+                "foreignKey": "contractmgmt_attr_value_id"
+            }
+        }
+    },
 }

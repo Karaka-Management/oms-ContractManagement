@@ -28,6 +28,10 @@ echo $this->data['nav']->render(); ?>
         <ul class="tab-links">
             <li><label for="c-tab-1"><?= $this->getHtml('Overview'); ?></label></li>
             <li><label for="c-tab-2"><?= $this->getHtml('Files'); ?></label></li>
+            <li><label for="c-tab-3"><?= $this->getHtml('Notes'); ?></label></li>
+            <!-- if parrent contract show all parties that use this template/parent contract (e.g. show all customers who have this contract)
+            <li><label for="c-tab-4"><?= $this->getHtml('Parties'); ?></label></li>
+            -->
         </ul>
     </div>
     <div class="tab-content">

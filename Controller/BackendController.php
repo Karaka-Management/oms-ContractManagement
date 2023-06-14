@@ -81,6 +81,71 @@ final class BackendController extends Controller
      * @since 1.0.0
      * @codeCoverageIgnore
      */
+    public function viewContractTypeList(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : RenderableInterface
+    {
+        $view = new View($this->app->l11nManager, $request, $response);
+
+        $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-type-list');
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
+
+        $mapper = ContractTypeMapper::getAll()
+            ->with('l11n')
+            ->where('l11n/language', $response->header->l11n->language)
+            ->limit(25);
+
+        if ($request->getData('ptype') === 'p') {
+            $view->data['types'] = $mapper->where('id', $request->getDataInt('id') ?? 0, '<')->execute();
+        } elseif ($request->getData('ptype') === 'n') {
+            $view->data['types'] = $mapper->where('id', $request->getDataInt('id') ?? 0, '>')->execute();
+        } else {
+            $view->data['types'] = $mapper->where('id', 0, '>')->execute();
+        }
+
+        return $view;
+    }
+
+    /**
+     * Routing end-point for application behaviour.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param mixed            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
+    public function viewContractType(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : RenderableInterface
+    {
+        $view = new View($this->app->l11nManager, $request, $response);
+
+        $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-type');
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
+
+        $type = ContractTypeMapper::get()
+            ->with('l11n')
+            ->where('l11n/language', $response->header->l11n->language)
+            ->where('id', (int) $request->getData('id'))
+            ->execute();
+
+        $view->data['type'] = $type;
+
+        return $view;
+    }
+
+    /**
+     * Routing end-point for application behaviour.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param mixed            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
     public function viewContract(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : RenderableInterface
     {
         $view = new View($this->app->l11nManager, $request, $response);

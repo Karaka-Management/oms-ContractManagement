@@ -15,6 +15,7 @@ declare(strict_types=1);
 return ['ContractManagement' => [
     'Account'         => 'Account',
     'Contract'        => 'Contract',
+    'ContractTypes'   => 'Contract Types',
     'Contracts'       => 'Contracts',
     'End'             => 'End',
     'Files'           => 'Files',
@@ -27,4 +28,5 @@ return ['ContractManagement' => [
     'Termination'     => 'Termination',
     'Costs'           => 'Costs',
     'Unit'            => 'Unit',
+    'Parties'         => 'Parties',
 ]];

@@ -19,6 +19,7 @@ namespace Modules\ContractManagement\Models;
 use Modules\Admin\Models\AccountMapper;
 use Modules\Media\Models\MediaMapper;
 use Modules\Organization\Models\UnitMapper;
+use Modules\Editor\Models\EditorDocMapper;
 use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
 
 /**
@@ -118,6 +119,18 @@ final class ContractMapper extends DataMapperFactory
             'table'    => 'contractmgmt_contract_media',         /* table of the related object, null if no relation table is used (many->1) */
             'external' => 'contractmgmt_contract_media_media',
             'self'     => 'contractmgmt_contract_media_contract',
+        ],
+        'notes' => [
+            'mapper'   => EditorDocMapper::class,       /* mapper of the related object */
+            'table'    => 'contractmgmt_contract_note',         /* table of the related object, null if no relation table is used (many->1) */
+            'external' => 'contractmgmt_contract_note_doc',
+            'self'     => 'contractmgmt_contract_note_contract',
+        ],
+        'attributes' => [
+            'mapper'   => ContractAttributeMapper::class,
+            'table'    => 'contractmgmt_contract_attr',
+            'self'     => 'contractmgmt_contract_attr_contract',
+            'external' => null,
         ],
     ];
 }
