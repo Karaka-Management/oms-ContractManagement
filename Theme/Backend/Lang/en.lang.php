@@ -21,6 +21,7 @@ return ['ContractManagement' => [
     'Files'           => 'Files',
     'Overview'        => 'Overview',
     'Title'           => 'Title',
+    'Type'            => 'Type',
     'With'            => 'With',
     'Start'           => 'Start',
     'Description'     => 'Description',
