@@ -76,8 +76,8 @@ final class Installer extends InstallerAbstract
     {
         $contractTypes = [];
 
-        /** @var \Modules\ContractManagement\Controller\ApiController $module */
-        $module = $app->moduleManager->getModuleInstance('ContractManagement');
+        /** @var \Modules\ContractManagement\Controller\ApiContractTypeController $module */
+        $module = $app->moduleManager->getModuleInstance('ContractManagement', 'ApiContractType');
 
         foreach ($types as $type) {
             $response = new HttpResponse();

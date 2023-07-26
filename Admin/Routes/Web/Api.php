@@ -20,7 +20,7 @@ use phpOMS\Router\RouteVerb;
 return [
     '^.*/contract/type.*$' => [
         [
-            'dest'       => '\Modules\ContractManagement\Controller\ApiController:apiContractTypeCreate',
+            'dest'       => '\Modules\ContractManagement\Controller\ApiContractTypeController:apiContractTypeCreate',
             'verb'       => RouteVerb::PUT,
             'permission' => [
                 'module' => Controller::NAME,
@@ -29,7 +29,7 @@ return [
             ],
         ],
         [
-            'dest'       => '\Modules\ContractManagement\Controller\ApiController:apiContractTypeUpdate',
+            'dest'       => '\Modules\ContractManagement\Controller\ApiContractTypeController:apiContractTypeUpdate',
             'verb'       => RouteVerb::SET,
             'permission' => [
                 'module' => Controller::NAME,

@@ -17,20 +17,13 @@ namespace Modules\ContractManagement\Controller;
 use Modules\Admin\Models\NullAccount;
 use Modules\ContractManagement\Models\Contract;
 use Modules\ContractManagement\Models\ContractMapper;
-use Modules\ContractManagement\Models\ContractTypeL11nMapper;
-use Modules\ContractManagement\Models\ContractTypeMapper;
 use Modules\Media\Models\MediaMapper;
 use Modules\Media\Models\PathSettings;
 use Modules\Organization\Models\NullUnit;
-use phpOMS\Localization\BaseStringL11n;
-use phpOMS\Localization\BaseStringL11nType;
-use phpOMS\Localization\ISO639x1Enum;
 use phpOMS\Localization\NullBaseStringL11nType;
 use phpOMS\Message\Http\RequestStatusCode;
-use phpOMS\Message\NotificationLevel;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
-use phpOMS\Model\Message\FormValidation;
 
 /**
  * Api controller for the contracts module.
@@ -58,15 +51,15 @@ final class ApiController extends Controller
     public function apiContractCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
     {
         if (!empty($val = $this->validateContractCreate($request))) {
-            $response->data['contract_create'] = new FormValidation($val);
-            $response->header->status          = RequestStatusCode::R_400;
+            $response->header->status = RequestStatusCode::R_400;
+            $this->createInvalidCreateResponse($request, $response, $val);
 
             return;
         }
 
         $contract = $this->createContractFromRequest($request);
         $this->createModel($request->header->account, $contract, ContractMapper::class, 'contract', $request->getOrigin());
-        $this->fillJsonResponse($request, $response, NotificationLevel::OK, 'Contract', 'Contract successfully created', $contract);
+        $this->createStandardCreateResponse($request, $response, $contract);
     }
 
     /**
@@ -150,8 +143,8 @@ final class ApiController extends Controller
         $uploadedFiles = $request->files;
 
         if (empty($uploadedFiles)) {
-            $this->fillJsonResponse($request, $response, NotificationLevel::ERROR, 'Contract', 'Invalid contract image', $uploadedFiles);
             $response->header->status = RequestStatusCode::R_400;
+            $this->createInvalidCreateResponse($request, $response, $uploadedFiles);
 
             return;
         }
@@ -195,141 +188,6 @@ final class ApiController extends Controller
             ContractMapper::class, 'files', '', $request->getOrigin()
         );
 
-        $this->fillJsonResponse($request, $response, NotificationLevel::OK, 'Image', 'Image successfully updated', $uploaded);
-    }
-
-    /**
-     * Api method to create item attribute type
-     *
-     * @param RequestAbstract  $request  Request
-     * @param ResponseAbstract $response Response
-     * @param mixed            $data     Generic data
-     *
-     * @return void
-     *
-     * @api
-     *
-     * @since 1.0.0
-     */
-    public function apiContractTypeCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
-    {
-        if (!empty($val = $this->validateContractTypeCreate($request))) {
-            $response->data['contract_type_create'] = new FormValidation($val);
-            $response->header->status               = RequestStatusCode::R_400;
-
-            return;
-        }
-
-        $contractType = $this->createContractTypeFromRequest($request);
-        $this->createModel($request->header->account, $contractType, ContractTypeMapper::class, 'contract_type', $request->getOrigin());
-
-        $this->fillJsonResponse($request, $response, NotificationLevel::OK, 'Contract type', 'Contract type successfully created', $contractType);
-    }
-
-    /**
-     * Method to create item attribute from request.
-     *
-     * @param RequestAbstract $request Request
-     *
-     * @return BaseStringL11nType
-     *
-     * @since 1.0.0
-     */
-    private function createContractTypeFromRequest(RequestAbstract $request) : BaseStringL11nType
-    {
-        $contractType = new BaseStringL11nType();
-        $contractType->setL11n($request->getDataString('title') ?? '', $request->getDataString('language') ?? ISO639x1Enum::_EN);
-        $contractType->title = $request->getDataString('name') ?? '';
-
-        return $contractType;
-    }
-
-    /**
-     * Validate item attribute create request
-     *
-     * @param RequestAbstract $request Request
-     *
-     * @return array<string, bool>
-     *
-     * @since 1.0.0
-     */
-    private function validateContractTypeCreate(RequestAbstract $request) : array
-    {
-        $val = [];
-        if (($val['title'] = !$request->hasData('title'))
-        ) {
-            return $val;
-        }
-
-        return [];
-    }
-
-    /**
-     * Api method to create item l11n type
-     *
-     * @param RequestAbstract  $request  Request
-     * @param ResponseAbstract $response Response
-     * @param mixed            $data     Generic data
-     *
-     * @return void
-     *
-     * @api
-     *
-     * @since 1.0.0
-     */
-    public function apiContractTypeL11nCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
-    {
-        if (!empty($val = $this->validateContractTypeL11nCreate($request))) {
-            $response->data['contract_type_create'] = new FormValidation($val);
-            $response->header->status               = RequestStatusCode::R_400;
-
-            return;
-        }
-
-        $itemL11nType = $this->createContractTypeL11nFromRequest($request);
-        $this->createModel($request->header->account, $itemL11nType, ContractTypeL11nMapper::class, 'contract_type', $request->getOrigin());
-        $this->fillJsonResponse($request, $response, NotificationLevel::OK, 'Contract type', 'Contract localization type successfully created', $itemL11nType);
-    }
-
-    /**
-     * Method to create item l11n type from request.
-     *
-     * @param RequestAbstract $request Request
-     *
-     * @return BaseStringL11n
-     *
-     * @since 1.0.0
-     */
-    private function createContractTypeL11nFromRequest(RequestAbstract $request) : BaseStringL11n
-    {
-        $typeL11n          = new BaseStringL11n();
-        $typeL11n->ref     = $request->getDataInt('type') ?? 0;
-        $typeL11n->content = $request->getDataString('title') ?? '';
-        $typeL11n->setLanguage(
-            $request->getDataString('language') ?? $request->header->l11n->language
-        );
-
-        return $typeL11n;
-    }
-
-    /**
-     * Validate item l11n type create request
-     *
-     * @param RequestAbstract $request Request
-     *
-     * @return array<string, bool>
-     *
-     * @since 1.0.0
-     */
-    private function validateContractTypeL11nCreate(RequestAbstract $request) : array
-    {
-        $val = [];
-        if (($val['title'] = !$request->hasData('title'))
-            || ($val['type'] = !$request->hasData('type'))
-        ) {
-            return $val;
-        }
-
-        return [];
+        $this->createStandardUpdateResponse($request, $response, $uploaded);
     }
 }

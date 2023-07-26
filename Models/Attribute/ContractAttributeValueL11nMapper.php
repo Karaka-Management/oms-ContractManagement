@@ -4,7 +4,7 @@
  *
  * PHP Version 8.1
  *
- * @package   Modules\ContractManagement\Models
+ * @package   Modules\ContractManagement\Models\Attribute
  * @copyright Dennis Eichhorn
  * @license   OMS License 2.0
  * @version   1.0.0
@@ -12,7 +12,7 @@
  */
 declare(strict_types=1);
 
-namespace Modules\ContractManagement\Models;
+namespace Modules\ContractManagement\Models\Attribute;
 
 use phpOMS\DataStorage\Database\Mapper\DataMapperFactory;
 use phpOMS\Localization\BaseStringL11n;
@@ -20,7 +20,7 @@ use phpOMS\Localization\BaseStringL11n;
 /**
  * Contract mapper class.
  *
- * @package Modules\ContractManagement\Models
+ * @package Modules\ContractManagement\Models\Attribute
  * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0

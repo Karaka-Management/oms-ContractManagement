@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Modules\ContractManagement\Models;
 
 use Modules\Admin\Models\AccountMapper;
+use Modules\ContractManagement\Models\Attribute\ContractAttributeMapper;
 use Modules\Media\Models\MediaMapper;
 use Modules\Organization\Models\UnitMapper;
 use Modules\Editor\Models\EditorDocMapper;
