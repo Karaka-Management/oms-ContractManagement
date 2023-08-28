@@ -16,7 +16,6 @@ namespace Modules\ContractManagement\Models;
 
 use Modules\Admin\Models\Account;
 use Modules\Admin\Models\NullAccount;
-use Modules\Media\Models\Media;
 use Modules\Organization\Models\Unit;
 use phpOMS\Localization\BaseStringL11nType;
 use phpOMS\Localization\Money;

@@ -59,7 +59,7 @@
             },
             "contractmgmt_contract_template": {
                 "name": "contractmgmt_contract_template",
-                "type": "TINYINT",
+                "type": "TINYINT(1)",
                 "null": false
             },
             "contractmgmt_contract_title": {

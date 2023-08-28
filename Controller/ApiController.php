@@ -75,7 +75,6 @@ final class ApiController extends Controller
     {
         $val = [];
         if (($val['title'] = !$request->hasData('title'))
-            || ($val['start'] = !$request->hasData('start'))
             || ($val['duration'] = !$request->hasData('duration'))
             || ($val['type'] = !$request->hasData('type'))
         ) {
@@ -119,6 +118,7 @@ final class ApiController extends Controller
         $contract->account     = new NullAccount($request->getDataInt('account') ?? 0);
         $contract->renewal     = $request->getDataInt('renewal') ?? 0;
         $contract->autoRenewal = $request->getDataBool('autorenewal') ?? false;
+        $contract->isTemplate  = $request->getDataBool('template') ?? false;
         $contract->unit        = new NullUnit($request->getDataInt('unit') ?? 0);
         $contract->end         = $request->getDataDateTime('end');
 
@@ -189,5 +189,132 @@ final class ApiController extends Controller
         );
 
         $this->createStandardUpdateResponse($request, $response, $uploaded);
+    }
+
+    /**
+     * Api method to update Contract
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param mixed            $data     Generic data
+     *
+     * @return void
+     *
+     * @api
+     *
+     * @since 1.0.0
+     */
+    public function apiContractUpdate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
+    {
+        if (!empty($val = $this->validateContractUpdate($request))) {
+            $response->header->status = RequestStatusCode::R_400;
+            $this->createInvalidUpdateResponse($request, $response, $val);
+
+            return;
+        }
+
+        /** @var \Modules\ContractManagement\Models\Contract $old */
+        $old = ContractMapper::get()->where('id', (int) $request->getData('id'))->execute();
+        $new = $this->updateContractFromRequest($request, clone $old);
+
+        $this->updateModel($request->header->account, $old, $new, ContractMapper::class, 'contract', $request->getOrigin());
+        $this->createStandardUpdateResponse($request, $response, $new);
+    }
+
+    /**
+     * Method to update Contract from request.
+     *
+     * @param RequestAbstract  $request Request
+     * @param Contract     $new     Model to modify
+     *
+     * @return Contract
+     *
+     * @todo: implement
+     *
+     * @since 1.0.0
+     */
+    public function updateContractFromRequest(RequestAbstract $request, Contract $new) : Contract
+    {
+        $new->title       = $request->getDataString('title') ?? $new->title;
+        $new->description = $request->getDataString('description') ?? $new->description;
+        $new->type        = $request->hasData('type') ? new NullBaseStringL11nType($request->getDataInt('type') ?? 0) : $new->type;
+        $new->start       = $request->getDataDateTime('start') ?? $new->start;
+        $new->account     = $request->hasData('account') ? new NullAccount($request->getDataInt('account') ?? 0) : $new->account;
+        $new->renewal     = $request->getDataInt('renewal') ?? $new->renewal;
+        $new->autoRenewal = $request->getDataBool('autorenewal') ?? $new->autoRenewal;
+        $new->unit        = $request->hasData('unit') ? new NullUnit($request->getDataInt('unit') ?? 0) : $new->unit;
+        $new->end         = $request->getDataDateTime('end') ?? $new->end;
+
+        return $new;
+    }
+
+    /**
+     * Validate Contract update request
+     *
+     * @param RequestAbstract $request Request
+     *
+     * @return array<string, bool>
+     *
+     * @todo: implement
+     *
+     * @since 1.0.0
+     */
+    private function validateContractUpdate(RequestAbstract $request) : array
+    {
+        $val = [];
+        if (($val['id'] = !$request->hasData('id'))) {
+            return $val;
+        }
+
+        return [];
+    }
+
+    /**
+     * Api method to delete Contract
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param mixed            $data     Generic data
+     *
+     * @return void
+     *
+     * @api
+     *
+     * @since 1.0.0
+     */
+    public function apiContractDelete(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
+    {
+        if (!empty($val = $this->validateContractDelete($request))) {
+            $response->header->status = RequestStatusCode::R_400;
+            $this->createInvalidDeleteResponse($request, $response, $val);
+
+            return;
+        }
+
+        /** @var \Modules\ContractManagement\Models\Contract $contract */
+        $contract = ContractMapper::get()->where('id', (int) $request->getData('id'))->execute();
+        $this->deleteModel($request->header->account, $contract, ContractMapper::class, 'contract', $request->getOrigin());
+        $this->createStandardDeleteResponse($request, $response, $contract);
+    }
+
+    /**
+     * Validate Contract delete request
+     *
+     * @param RequestAbstract $request Request
+     *
+     * @return array<string, bool>
+     *
+     * @todo: implement
+     *
+     * @since 1.0.0
+     */
+    private function validateContractDelete(RequestAbstract $request) : array
+    {
+        $val = [];
+        if (($val['id'] = !$request->hasData('id'))) {
+            return $val;
+        }
+
+        return [];
     }
 }
