@@ -202,8 +202,8 @@ final class ApiContractTypeController extends Controller
     /**
      * Method to update ContractType from request.
      *
-     * @param RequestAbstract  $request Request
-     * @param BaseStringL11nType     $new     Model to modify
+     * @param RequestAbstract    $request Request
+     * @param BaseStringL11nType $new     Model to modify
      *
      * @return BaseStringL11nType
      *
@@ -319,8 +319,8 @@ final class ApiContractTypeController extends Controller
     /**
      * Method to update ContractTypeL11n from request.
      *
-     * @param RequestAbstract  $request Request
-     * @param BaseStringL11n     $new     Model to modify
+     * @param RequestAbstract $request Request
+     * @param BaseStringL11n  $new     Model to modify
      *
      * @return BaseStringL11n
      *

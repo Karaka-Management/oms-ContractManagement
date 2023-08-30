@@ -224,8 +224,8 @@ final class ApiController extends Controller
     /**
      * Method to update Contract from request.
      *
-     * @param RequestAbstract  $request Request
-     * @param Contract     $new     Model to modify
+     * @param RequestAbstract $request Request
+     * @param Contract        $new     Model to modify
      *
      * @return Contract
      *
