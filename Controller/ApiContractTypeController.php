@@ -261,7 +261,7 @@ final class ApiContractTypeController extends Controller
             return;
         }
 
-        /** @var \Modules\ContractManagement\Models\ContractType $contractType */
+        /** @var BaseStringL11nType $contractType */
         $contractType = ContractTypeMapper::get()->where('id', (int) $request->getData('id'))->execute();
         $this->deleteModel($request->header->account, $contractType, ContractTypeMapper::class, 'contract_type', $request->getOrigin());
         $this->createStandardDeleteResponse($request, $response, $contractType);
@@ -377,7 +377,7 @@ final class ApiContractTypeController extends Controller
             return;
         }
 
-        /** @var \Modules\ContractManagement\Models\ContractTypeL11n $contractTypeL11n */
+        /** @var BaseStringL11n $contractTypeL11n */
         $contractTypeL11n = ContractTypeL11nMapper::get()->where('id', (int) $request->getData('id'))->execute();
         $this->deleteModel($request->header->account, $contractTypeL11n, ContractTypeL11nMapper::class, 'contract_type_l11n', $request->getOrigin());
         $this->createStandardDeleteResponse($request, $response, $contractTypeL11n);
