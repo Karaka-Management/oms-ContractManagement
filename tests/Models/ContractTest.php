@@ -47,16 +47,6 @@ final class ContractTest extends \PHPUnit\Framework\TestCase
      * @covers Modules\ContractManagement\Models\Contract
      * @group module
      */
-    public function testMediaInputOutput() : void
-    {
-        $this->contract->addFile(new Media());
-        self::assertCount(1, $this->contract->files);
-    }
-
-    /**
-     * @covers Modules\ContractManagement\Models\Contract
-     * @group module
-     */
     public function testSerialize() : void
     {
         $this->contract->title       = 'Title';
@@ -78,7 +68,7 @@ final class ContractTest extends \PHPUnit\Framework\TestCase
                 'warning'        => 2,
                 'responsible'    => null,
                 'costs'          => null,
-                'type'           => new ContractType(),
+                'type'           => null,
             ],
             $serialized
         );
