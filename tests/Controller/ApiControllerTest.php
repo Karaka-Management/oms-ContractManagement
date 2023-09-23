@@ -16,6 +16,9 @@ namespace Modules\ContractManagement\tests\Controller;
 
 use Model\CoreSettings;
 use Modules\Admin\Models\AccountPermission;
+use Modules\ContractManagement\tests\Controller\Api\ApiControllerAttributeTrait;
+use Modules\ContractManagement\tests\Controller\Api\ApiControllerContractTrait;
+use Modules\ContractManagement\tests\Controller\Api\ApiControllerContractTypeTrait;
 use phpOMS\Account\Account;
 use phpOMS\Account\AccountManager;
 use phpOMS\Account\PermissionType;
@@ -23,15 +26,10 @@ use phpOMS\Application\ApplicationAbstract;
 use phpOMS\DataStorage\Session\HttpSession;
 use phpOMS\Dispatcher\Dispatcher;
 use phpOMS\Event\EventManager;
-use phpOMS\Localization\ISO639x1Enum;
 use phpOMS\Localization\L11nManager;
-use phpOMS\Message\Http\HttpRequest;
-use phpOMS\Message\Http\HttpResponse;
-use phpOMS\Message\Http\RequestStatusCode;
 use phpOMS\Module\ModuleAbstract;
 use phpOMS\Module\ModuleManager;
 use phpOMS\Router\WebRouter;
-use phpOMS\Uri\HttpUri;
 use phpOMS\Utils\TestUtils;
 
 /**
@@ -47,6 +45,10 @@ final class ApiControllerTest extends \PHPUnit\Framework\TestCase
      * @var \Modules\ContractManagement\Controller\ApiController
      */
     protected ModuleAbstract $module;
+
+    protected ModuleAbstract $attrModule;
+
+    protected ModuleAbstract $typeModule;
 
     /**
      * {@inheritdoc}
@@ -88,158 +90,16 @@ final class ApiControllerTest extends \PHPUnit\Framework\TestCase
         $this->app->accountManager->add($account);
         $this->app->router = new WebRouter();
 
-        $this->module = $this->app->moduleManager->get('ContractManagement');
+        $this->module = $this->app->moduleManager->get('ContractManagement', 'Api');
+        $this->attrModule = $this->app->moduleManager->get('ContractManagement', 'ApiAttribute');
+        $this->typeModule = $this->app->moduleManager->get('ContractManagement', 'ApiContractType');
 
         TestUtils::setMember($this->module, 'app', $this->app);
+        TestUtils::setMember($this->attrModule, 'app', $this->app);
+        TestUtils::setMember($this->typeModule, 'app', $this->app);
     }
 
-    /**
-     * @covers Modules\ContractManagement\Controller\ApiController
-     * @group module
-     */
-    public function testApiContractTypeCreate() : void
-    {
-        $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
-
-        $request->header->account = 1;
-        $request->setData('title', 'Test');
-        $request->setData('language', ISO639x1Enum::_EN);
-
-        $this->module->apiContractTypeCreate($request, $response);
-        self::assertGreaterThan(0, $response->get('')['response']->id);
-    }
-
-    /**
-     * @covers Modules\ContractManagement\Controller\ApiController
-     * @group module
-     */
-    public function testApiContractTypeCreateInvalidData() : void
-    {
-        $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
-
-        $request->header->account = 1;
-        $request->setData('invalid', '1');
-
-        $this->module->apiContractTypeCreate($request, $response);
-        self::assertEquals(RequestStatusCode::R_400, $response->header->status);
-    }
-
-    /**
-     * @covers Modules\ContractManagement\Controller\ApiController
-     * @group module
-     */
-    public function testApiContractTypeL11nCreate() : void
-    {
-        $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
-
-        $request->header->account = 1;
-        $request->setData('title', 'Test');
-        $request->setData('type', '1');
-        $request->setData('language', ISO639x1Enum::_DE);
-
-        $this->module->apiContractTypeL11nCreate($request, $response);
-        self::assertGreaterThan(0, $response->get('')['response']->id);
-    }
-
-    /**
-     * @covers Modules\ContractManagement\Controller\ApiController
-     * @group module
-     */
-    public function testApiContractTypeL11nCreateInvalidData() : void
-    {
-        $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
-
-        $request->header->account = 1;
-        $request->setData('invalid', '1');
-
-        $this->module->apiContractTypeL11nCreate($request, $response);
-        self::assertEquals(RequestStatusCode::R_400, $response->header->status);
-    }
-
-    /**
-     * @covers Modules\ContractManagement\Controller\ApiController
-     * @group module
-     */
-    public function testApiContractCreate() : void
-    {
-        $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
-
-        $request->header->account = 1;
-        $request->setData('title', 'Title');
-        $request->setData('start', '2010-10-09');
-        $request->setData('end', '2011-10-09');
-        $request->setData('duration', '2');
-        $request->setData('type', '1');
-
-        $this->module->apiContractCreate($request, $response);
-        self::assertGreaterThan(0, $response->get('')['response']->id);
-    }
-
-    /**
-     * @covers Modules\ContractManagement\Controller\ApiController
-     * @group module
-     */
-    public function testApiContractCreateInvalidData() : void
-    {
-        $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
-
-        $request->header->account = 1;
-        $request->setData('invalid', '1');
-
-        $this->module->apiContractCreate($request, $response);
-        self::assertEquals(RequestStatusCode::R_400, $response->header->status);
-    }
-
-    /**
-     * @covers Modules\ContractManagement\Controller\ApiController
-     * @group module
-     */
-    public function testApiContractDocCreate() : void
-    {
-        $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
-
-        if (!\is_file(__DIR__ . '/test_tmp.pdf')) {
-            \copy(__DIR__ . '/test.pdf', __DIR__ . '/test_tmp.pdf');
-        }
-
-        $request->header->account = 1;
-        $request->setData('contract', 1);
-        $request->setData('contract_title', 'Test title');
-
-        TestUtils::setMember($request, 'files', [
-            'file1' => [
-                'name'     => 'test.pdf',
-                'type'     => 'pdf',
-                'tmp_name' => __DIR__ . '/test_tmp.pdf',
-                'error'    => \UPLOAD_ERR_OK,
-                'size'     => \filesize(__DIR__ . '/test_tmp.pdf'),
-            ],
-        ]);
-
-        $this->module->apiContractDocumentCreate($request, $response);
-        self::assertCount(1, $response->get('')['response']);
-    }
-
-    /**
-     * @covers Modules\ContractManagement\Controller\ApiController
-     * @group module
-     */
-    public function testApiContractDocCreateInvalidData() : void
-    {
-        $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
-
-        $request->header->account = 1;
-        $request->setData('invalid', '1');
-
-        $this->module->apiContractCreate($request, $response);
-        self::assertEquals(RequestStatusCode::R_400, $response->header->status);
-    }
+    use ApiControllerAttributeTrait;
+    use ApiControllerContractTypeTrait;
+    use ApiControllerContractTrait;
 }
