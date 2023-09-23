@@ -13,11 +13,21 @@
 declare(strict_types=1);
 
 return ['ContractManagement' => [
-    'Account'   => '#VALUE!',
-    'Contract'  => 'Vertrag',
-    'Contracts' => 'Verträge',
-    'End'       => '#VALUE!',
-    'Files'     => '#VALUE!',
-    'Overview'  => '#VALUE!',
-    'Title'     => 'Titel',
+    'Account'         => 'Account',
+    'Contract'        => 'Vertrag',
+    'ContractTypes'   => 'Vertragstypen',
+    'Contracts'       => 'Verträge',
+    'End'             => 'Ende',
+    'Files'           => 'Dateien',
+    'Overview'        => 'Übersicht',
+    'Title'           => 'Titel',
+    'Type'            => 'Typ',
+    'With'            => 'Mit',
+    'Start'           => 'Start',
+    'Description'     => 'Beschreibung',
+    'AutoRenewal'     => 'Automatische Verlängerung',
+    'Termination'     => 'Beendigung',
+    'Costs'           => 'Kosten',
+    'Unit'            => 'Unit',
+    'Parties'         => 'Parteien',
 ]];
