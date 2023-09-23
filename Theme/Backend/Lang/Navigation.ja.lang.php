@@ -13,8 +13,9 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
-    'Contract'  => '契約',
-    'Contracts' => '契約',
-    'Create'    => '作成',
-    'List'      => 'リスト',
+    'Contract'      => '契約',
+    'ContractTypes' => '',
+    'Contracts'     => '契約',
+    'Create'        => '作成',
+    'List'          => 'リスト',
 ]];

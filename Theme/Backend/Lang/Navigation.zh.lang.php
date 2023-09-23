@@ -13,8 +13,9 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
-    'Contract'  => '合同',
-    'Contracts' => '合同',
-    'Create'    => '创建',
-    'List'      => '列表',
+    'Contract'      => '合同',
+    'ContractTypes' => '',
+    'Contracts'     => '合同',
+    'Create'        => '创建',
+    'List'          => '列表',
 ]];

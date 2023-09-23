@@ -13,8 +13,9 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
-    'Contract'  => 'Sopimus',
-    'Contracts' => 'Sopimukset',
-    'Create'    => 'Luoda',
-    'List'      => 'Lista',
+    'Contract'      => 'Sopimus',
+    'ContractTypes' => '',
+    'Contracts'     => 'Sopimukset',
+    'Create'        => 'Luoda',
+    'List'          => 'Lista',
 ]];

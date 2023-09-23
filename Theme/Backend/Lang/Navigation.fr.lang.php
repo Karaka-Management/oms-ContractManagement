@@ -13,8 +13,9 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
-    'Contract'  => 'Contracter',
-    'Contracts' => 'Contrats',
-    'Create'    => 'Créer',
-    'List'      => 'Lister',
+    'Contract'      => 'Contracter',
+    'ContractTypes' => '',
+    'Contracts'     => 'Contrats',
+    'Create'        => 'Créer',
+    'List'          => 'Lister',
 ]];

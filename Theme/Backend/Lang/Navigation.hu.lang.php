@@ -13,8 +13,9 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
-    'Contract'  => 'Szerződés',
-    'Contracts' => 'Szerződések',
-    'Create'    => 'Teremt',
-    'List'      => 'Lista',
+    'Contract'      => 'Szerződés',
+    'ContractTypes' => '',
+    'Contracts'     => 'Szerződések',
+    'Create'        => 'Teremt',
+    'List'          => 'Lista',
 ]];

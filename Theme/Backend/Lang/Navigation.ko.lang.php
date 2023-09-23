@@ -13,8 +13,9 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
-    'Contract'  => '계약',
-    'Contracts' => '계약서',
-    'Create'    => '만들다',
-    'List'      => '목록',
+    'Contract'      => '계약',
+    'ContractTypes' => '',
+    'Contracts'     => '계약서',
+    'Create'        => '만들다',
+    'List'          => '목록',
 ]];
