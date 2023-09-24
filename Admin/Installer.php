@@ -95,9 +95,9 @@ final class Installer extends InstallerAbstract
                 continue;
             }
 
-            $billType = !\is_array($responseData['response'])
-                ? $responseData['response']->toArray()
-                : $responseData['response'];
+            $billType = \is_array($responseData['response'])
+                ? $responseData['response']
+                : $responseData['response']->toArray();
 
             $contractTypes[] = $billType;
 
