@@ -74,7 +74,7 @@ final class ApiControllerTest extends \PHPUnit\Framework\TestCase
         $account = new Account();
         TestUtils::setMember($account, 'id', 1);
 
-        $permission = new AccountPermission();
+        $permission       = new AccountPermission();
         $permission->unit = 1;
         $permission->app  = 2;
         $permission->setPermission(
@@ -90,7 +90,7 @@ final class ApiControllerTest extends \PHPUnit\Framework\TestCase
         $this->app->accountManager->add($account);
         $this->app->router = new WebRouter();
 
-        $this->module = $this->app->moduleManager->get('ContractManagement', 'Api');
+        $this->module     = $this->app->moduleManager->get('ContractManagement', 'Api');
         $this->attrModule = $this->app->moduleManager->get('ContractManagement', 'ApiAttribute');
         $this->typeModule = $this->app->moduleManager->get('ContractManagement', 'ApiContractType');
 
