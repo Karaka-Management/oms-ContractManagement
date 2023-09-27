@@ -62,7 +62,7 @@ return [
 
     '^.*/contract/attribute.*$' => [
         [
-            'dest'       => '\Modules\ContractManagement\Controller\ApiAttributeController:apiAttributeCreate',
+            'dest'       => '\Modules\ContractManagement\Controller\ApiAttributeController:apiContractAttributeCreate',
             'verb'       => RouteVerb::PUT,
             'permission' => [
                 'module' => Controller::NAME,
@@ -71,7 +71,7 @@ return [
             ],
         ],
         [
-            'dest'       => '\Modules\ContractManagement\Controller\ApiAttributeController:apiAttributeUpdate',
+            'dest'       => '\Modules\ContractManagement\Controller\ApiAttributeController:apiContractAttributeUpdate',
             'verb'       => RouteVerb::SET,
             'permission' => [
                 'module' => Controller::NAME,
