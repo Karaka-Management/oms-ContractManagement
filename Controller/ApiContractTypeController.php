@@ -39,7 +39,7 @@ final class ApiContractTypeController extends Controller
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
-     * @param mixed            $data     Generic data
+     * @param array            $data     Generic data
      *
      * @return void
      *
@@ -47,7 +47,7 @@ final class ApiContractTypeController extends Controller
      *
      * @since 1.0.0
      */
-    public function apiContractTypeCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
+    public function apiContractTypeCreate(RequestAbstract $request, ResponseAbstract $response, array $data = []) : void
     {
         if (!empty($val = $this->validateContractTypeCreate($request))) {
             $response->header->status = RequestStatusCode::R_400;
@@ -104,7 +104,7 @@ final class ApiContractTypeController extends Controller
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
-     * @param mixed            $data     Generic data
+     * @param array            $data     Generic data
      *
      * @return void
      *
@@ -112,7 +112,7 @@ final class ApiContractTypeController extends Controller
      *
      * @since 1.0.0
      */
-    public function apiContractTypeL11nCreate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
+    public function apiContractTypeL11nCreate(RequestAbstract $request, ResponseAbstract $response, array $data = []) : void
     {
         if (!empty($val = $this->validateContractTypeL11nCreate($request))) {
             $response->header->status = RequestStatusCode::R_400;
@@ -173,7 +173,7 @@ final class ApiContractTypeController extends Controller
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
-     * @param mixed            $data     Generic data
+     * @param array            $data     Generic data
      *
      * @return void
      *
@@ -181,7 +181,7 @@ final class ApiContractTypeController extends Controller
      *
      * @since 1.0.0
      */
-    public function apiContractTypeUpdate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
+    public function apiContractTypeUpdate(RequestAbstract $request, ResponseAbstract $response, array $data = []) : void
     {
         if (!empty($val = $this->validateContractTypeUpdate($request))) {
             $response->header->status = RequestStatusCode::R_400;
@@ -243,7 +243,7 @@ final class ApiContractTypeController extends Controller
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
-     * @param mixed            $data     Generic data
+     * @param array            $data     Generic data
      *
      * @return void
      *
@@ -251,7 +251,7 @@ final class ApiContractTypeController extends Controller
      *
      * @since 1.0.0
      */
-    public function apiContractTypeDelete(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
+    public function apiContractTypeDelete(RequestAbstract $request, ResponseAbstract $response, array $data = []) : void
     {
         if (!empty($val = $this->validateContractTypeDelete($request))) {
             $response->header->status = RequestStatusCode::R_400;
@@ -290,7 +290,7 @@ final class ApiContractTypeController extends Controller
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
-     * @param mixed            $data     Generic data
+     * @param array            $data     Generic data
      *
      * @return void
      *
@@ -298,7 +298,7 @@ final class ApiContractTypeController extends Controller
      *
      * @since 1.0.0
      */
-    public function apiContractTypeL11nUpdate(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
+    public function apiContractTypeL11nUpdate(RequestAbstract $request, ResponseAbstract $response, array $data = []) : void
     {
         if (!empty($val = $this->validateContractTypeL11nUpdate($request))) {
             $response->header->status = RequestStatusCode::R_400;
@@ -359,7 +359,7 @@ final class ApiContractTypeController extends Controller
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
-     * @param mixed            $data     Generic data
+     * @param array            $data     Generic data
      *
      * @return void
      *
@@ -367,7 +367,7 @@ final class ApiContractTypeController extends Controller
      *
      * @since 1.0.0
      */
-    public function apiContractTypeL11nDelete(RequestAbstract $request, ResponseAbstract $response, mixed $data = null) : void
+    public function apiContractTypeL11nDelete(RequestAbstract $request, ResponseAbstract $response, array $data = []) : void
     {
         if (!empty($val = $this->validateContractTypeL11nDelete($request))) {
             $response->header->status = RequestStatusCode::R_400;
