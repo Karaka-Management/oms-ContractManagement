@@ -52,11 +52,11 @@ final class ContractAttributeMapper extends DataMapperFactory
     public const OWNS_ONE = [
         'type' => [
             'mapper'   => ContractAttributeTypeMapper::class,
-            'external' => 'contractmgmt_contract_attr_type',
+            'external' => 'contractmgmt_attr_type',
         ],
         'value' => [
             'mapper'   => ContractAttributeValueMapper::class,
-            'external' => 'contractmgmt_contract_attr_value',
+            'external' => 'contractmgmt_attr_value',
         ],
     ];
 

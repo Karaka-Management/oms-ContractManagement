@@ -37,15 +37,15 @@ final class ContractAttributeValueMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'contractmgmt_contract_attr_value_id'                => ['name' => 'contractmgmt_contract_attr_value_id',       'type' => 'int',      'internal' => 'id'],
-        'contractmgmt_contract_attr_value_default'           => ['name' => 'contractmgmt_contract_attr_value_default',  'type' => 'bool',     'internal' => 'isDefault'],
-        'contractmgmt_contract_attr_value_valueStr'          => ['name' => 'contractmgmt_contract_attr_value_valueStr', 'type' => 'string',   'internal' => 'valueStr'],
-        'contractmgmt_contract_attr_value_valueInt'          => ['name' => 'contractmgmt_contract_attr_value_valueInt', 'type' => 'int',      'internal' => 'valueInt'],
-        'contractmgmt_contract_attr_value_valueDec'          => ['name' => 'contractmgmt_contract_attr_value_valueDec', 'type' => 'float',    'internal' => 'valueDec'],
-        'contractmgmt_contract_attr_value_valueDat'          => ['name' => 'contractmgmt_contract_attr_value_valueDat', 'type' => 'DateTime', 'internal' => 'valueDat'],
-        'contractmgmt_contract_attr_value_unit'              => ['name' => 'contractmgmt_contract_attr_value_unit', 'type' => 'string', 'internal' => 'unit'],
-        'contractmgmt_contract_attr_value_deptype'           => ['name' => 'contractmgmt_contract_attr_value_deptype', 'type' => 'int', 'internal' => 'dependingAttributeType'],
-        'contractmgmt_contract_attr_value_depvalue'          => ['name' => 'contractmgmt_contract_attr_value_depvalue', 'type' => 'int', 'internal' => 'dependingAttributeValue'],
+        'contractmgmt_attr_value_id'                => ['name' => 'contractmgmt_attr_value_id',       'type' => 'int',      'internal' => 'id'],
+        'contractmgmt_attr_value_default'           => ['name' => 'contractmgmt_attr_value_default',  'type' => 'bool',     'internal' => 'isDefault'],
+        'contractmgmt_attr_value_valueStr'          => ['name' => 'contractmgmt_attr_value_valueStr', 'type' => 'string',   'internal' => 'valueStr'],
+        'contractmgmt_attr_value_valueInt'          => ['name' => 'contractmgmt_attr_value_valueInt', 'type' => 'int',      'internal' => 'valueInt'],
+        'contractmgmt_attr_value_valueDec'          => ['name' => 'contractmgmt_attr_value_valueDec', 'type' => 'float',    'internal' => 'valueDec'],
+        'contractmgmt_attr_value_valueDat'          => ['name' => 'contractmgmt_attr_value_valueDat', 'type' => 'DateTime', 'internal' => 'valueDat'],
+        'contractmgmt_attr_value_unit'              => ['name' => 'contractmgmt_attr_value_unit', 'type' => 'string', 'internal' => 'unit'],
+        'contractmgmt_attr_value_deptype'           => ['name' => 'contractmgmt_attr_value_deptype', 'type' => 'int', 'internal' => 'dependingAttributeType'],
+        'contractmgmt_attr_value_depvalue'          => ['name' => 'contractmgmt_attr_value_depvalue', 'type' => 'int', 'internal' => 'dependingAttributeValue'],
     ];
 
     /**
@@ -57,8 +57,8 @@ final class ContractAttributeValueMapper extends DataMapperFactory
     public const HAS_MANY = [
         'l11n' => [
             'mapper'   => ContractAttributeValueL11nMapper::class,
-            'table'    => 'contractmgmt_contract_attr_value_l11n',
-            'self'     => 'contractmgmt_contract_attr_value_l11n_value',
+            'table'    => 'contractmgmt_attr_value_l11n',
+            'self'     => 'contractmgmt_attr_value_l11n_value',
             'external' => null,
         ],
     ];
@@ -77,7 +77,7 @@ final class ContractAttributeValueMapper extends DataMapperFactory
      * @var string
      * @since 1.0.0
      */
-    public const TABLE = 'contractmgmt_contract_attr_value';
+    public const TABLE = 'contractmgmt_attr_value';
 
     /**
      * Primary field name.
@@ -85,5 +85,5 @@ final class ContractAttributeValueMapper extends DataMapperFactory
      * @var string
      * @since 1.0.0
      */
-    public const PRIMARYFIELD = 'contractmgmt_contract_attr_value_id';
+    public const PRIMARYFIELD = 'contractmgmt_attr_value_id';
 }

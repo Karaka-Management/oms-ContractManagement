@@ -37,13 +37,13 @@ final class ContractAttributeTypeMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'contractmgmt_contract_attr_type_id'         => ['name' => 'contractmgmt_contract_attr_type_id',       'type' => 'int',    'internal' => 'id'],
-        'contractmgmt_contract_attr_type_name'       => ['name' => 'contractmgmt_contract_attr_type_name',     'type' => 'string', 'internal' => 'name', 'autocomplete' => true],
-        'contractmgmt_contract_attr_type_datatype'   => ['name' => 'contractmgmt_contract_attr_type_datatype',   'type' => 'int',    'internal' => 'datatype'],
-        'contractmgmt_contract_attr_type_fields'     => ['name' => 'contractmgmt_contract_attr_type_fields',   'type' => 'int',    'internal' => 'fields'],
-        'contractmgmt_contract_attr_type_custom'     => ['name' => 'contractmgmt_contract_attr_type_custom',   'type' => 'bool',   'internal' => 'custom'],
-        'contractmgmt_contract_attr_type_pattern'    => ['name' => 'contractmgmt_contract_attr_type_pattern',  'type' => 'string', 'internal' => 'validationPattern'],
-        'contractmgmt_contract_attr_type_required'   => ['name' => 'contractmgmt_contract_attr_type_required', 'type' => 'bool',   'internal' => 'isRequired'],
+        'contractmgmt_attr_type_id'         => ['name' => 'contractmgmt_attr_type_id',       'type' => 'int',    'internal' => 'id'],
+        'contractmgmt_attr_type_name'       => ['name' => 'contractmgmt_attr_type_name',     'type' => 'string', 'internal' => 'name', 'autocomplete' => true],
+        'contractmgmt_attr_type_datatype'   => ['name' => 'contractmgmt_attr_type_datatype',   'type' => 'int',    'internal' => 'datatype'],
+        'contractmgmt_attr_type_fields'     => ['name' => 'contractmgmt_attr_type_fields',   'type' => 'int',    'internal' => 'fields'],
+        'contractmgmt_attr_type_custom'     => ['name' => 'contractmgmt_attr_type_custom',   'type' => 'bool',   'internal' => 'custom'],
+        'contractmgmt_attr_type_pattern'    => ['name' => 'contractmgmt_attr_type_pattern',  'type' => 'string', 'internal' => 'validationPattern'],
+        'contractmgmt_attr_type_required'   => ['name' => 'contractmgmt_attr_type_required', 'type' => 'bool',   'internal' => 'isRequired'],
     ];
 
     /**
@@ -55,8 +55,8 @@ final class ContractAttributeTypeMapper extends DataMapperFactory
     public const HAS_MANY = [
         'l11n' => [
             'mapper'   => ContractAttributeTypeL11nMapper::class,
-            'table'    => 'contractmgmt_contract_attr_type_l11n',
-            'self'     => 'contractmgmt_contract_attr_type_l11n_type',
+            'table'    => 'contractmgmt_attr_type_l11n',
+            'self'     => 'contractmgmt_attr_type_l11n_type',
             'column'   => 'content',
             'external' => null,
         ],
@@ -82,7 +82,7 @@ final class ContractAttributeTypeMapper extends DataMapperFactory
      * @var string
      * @since 1.0.0
      */
-    public const TABLE = 'contractmgmt_contract_attr_type';
+    public const TABLE = 'contractmgmt_attr_type';
 
     /**
      * Primary field name.
@@ -90,5 +90,5 @@ final class ContractAttributeTypeMapper extends DataMapperFactory
      * @var string
      * @since 1.0.0
      */
-    public const PRIMARYFIELD = 'contractmgmt_contract_attr_type_id';
+    public const PRIMARYFIELD = 'contractmgmt_attr_type_id';
 }

@@ -99,7 +99,7 @@ final class ApiControllerTest extends \PHPUnit\Framework\TestCase
         TestUtils::setMember($this->typeModule, 'app', $this->app);
     }
 
-    use ApiControllerAttributeTrait;
     use ApiControllerContractTypeTrait;
     use ApiControllerContractTrait;
+    use ApiControllerAttributeTrait;
 }
