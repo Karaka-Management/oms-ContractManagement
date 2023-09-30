@@ -1,0 +1,58 @@
+[
+    {
+		"name": "rent",
+		"l11n": {
+			"en": "Rent",
+			"de": "Miete"
+		}
+	},
+    {
+		"name": "it",
+		"l11n": {
+			"en": "IT",
+			"de": "IT"
+		}
+	},
+    {
+		"name": "utilities",
+		"l11n": {
+			"en": "Utilities",
+			"de": "Nebenkosten"
+		}
+	},
+    {
+		"name": "energy",
+		"l11n": {
+			"en": "Energy",
+			"de": "Energie"
+		}
+	},
+    {
+		"name": "procurement",
+		"l11n": {
+			"en": "Procurement",
+			"de": "Einkauf"
+		}
+	},
+    {
+		"name": "sales",
+		"l11n": {
+			"en": "Sales",
+			"de": "Vertrieb"
+		}
+	},
+    {
+		"name": "sales_subscription",
+		"l11n": {
+			"en": "Sales subscription",
+			"de": "Vertriebsabonnement"
+		}
+	},
+    {
+		"name": "nda",
+		"l11n": {
+			"en": "NDA",
+			"de": "NDA"
+		}
+	}
+]
