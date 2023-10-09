@@ -39,7 +39,7 @@ trait ApiControllerContractTrait
         $request->setData('type', '1');
 
         $this->module->apiContractCreate($request, $response);
-        self::assertGreaterThan(0, $response->get('')['response']->id);
+        self::assertGreaterThan(0, $response->getDataArray('')['response']->id);
     }
 
     /**
@@ -86,7 +86,7 @@ trait ApiControllerContractTrait
         ]);
 
         $this->module->apiContractDocumentCreate($request, $response);
-        self::assertCount(1, $response->get('')['response']);
+        self::assertCount(1, $response->getDataArray('')['response']);
     }
 
     /**

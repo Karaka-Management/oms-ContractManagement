@@ -36,7 +36,7 @@ trait ApiControllerContractTypeTrait
         $request->setData('language', ISO639x1Enum::_EN);
 
         $this->typeModule->apiContractTypeCreate($request, $response);
-        self::assertGreaterThan(0, $response->get('')['response']->id);
+        self::assertGreaterThan(0, $response->getDataArray('')['response']->id);
     }
 
     /**
@@ -70,7 +70,7 @@ trait ApiControllerContractTypeTrait
         $request->setData('language', ISO639x1Enum::_DE);
 
         $this->typeModule->apiContractTypeL11nCreate($request, $response);
-        self::assertGreaterThan(0, $response->get('')['response']->id);
+        self::assertGreaterThan(0, $response->getDataArray('')['response']->id);
     }
 
     /**

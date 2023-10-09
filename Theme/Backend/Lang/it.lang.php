@@ -13,17 +13,17 @@
 declare(strict_types=1);
 
 return ['ContractManagement' => [
-    'Account'       => '#VALUE!',
+    'Account'       => '',
     'AutoRenewal'   => '',
     'Contract'      => 'Contrarre',
     'ContractTypes' => '',
     'Contracts'     => 'Contratti',
     'Costs'         => '',
     'Description'   => '',
-    'End'           => '#VALUE!',
-    'Files'         => '#VALUE!',
+    'End'           => '',
+    'Files'         => '',
     'Name'          => '',
-    'Overview'      => '#VALUE!',
+    'Overview'      => '',
     'Parties'       => '',
     'Start'         => '',
     'Termination'   => '',
