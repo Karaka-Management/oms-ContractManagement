@@ -61,7 +61,7 @@ final class ApiAttributeController extends Controller
             return;
         }
 
-        $type      = ContractAttributeTypeMapper::get()->where('id', (int) $request->getData('type'))->execute();
+        $type      = ContractAttributeTypeMapper::get()->with('defaults')->where('id', (int) $request->getData('type'))->execute();
         $attribute = $this->createAttributeFromRequest($request, $type);
         $this->createModel($request->header->account, $attribute, ContractAttributeMapper::class, 'attribute', $request->getOrigin());
         $this->createStandardCreateResponse($request, $response, $attribute);
@@ -359,7 +359,7 @@ final class ApiAttributeController extends Controller
         }
 
         /** @var AttributeType $old */
-        $old = ContractAttributeTypeMapper::get()->where('id', (int) $request->getData('id'))->execute();
+        $old = ContractAttributeTypeMapper::get()->with('defaults')->where('id', (int) $request->getData('id'))->execute();
         $new = $this->updateAttributeTypeFromRequest($request, clone $old);
 
         $this->updateModel($request->header->account, $old, $new, ContractAttributeTypeMapper::class, 'contract_attribute_type', $request->getOrigin());
@@ -391,7 +391,7 @@ final class ApiAttributeController extends Controller
         }
 
         /** @var AttributeType $contractAttributeType */
-        $contractAttributeType = ContractAttributeTypeMapper::get()->where('id', (int) $request->getData('id'))->execute();
+        $contractAttributeType = ContractAttributeTypeMapper::get()->with('defaults')->where('id', (int) $request->getData('id'))->execute();
         $this->deleteModel($request->header->account, $contractAttributeType, ContractAttributeTypeMapper::class, 'contract_attribute_type', $request->getOrigin());
         $this->createStandardDeleteResponse($request, $response, $contractAttributeType);
     }
