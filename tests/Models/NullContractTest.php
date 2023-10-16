@@ -23,7 +23,7 @@ final class NullContractTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @covers Modules\ContractManagement\Models\NullContract
-     * @group framework
+     * @group module
      */
     public function testNull() : void
     {
@@ -32,7 +32,7 @@ final class NullContractTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @covers Modules\ContractManagement\Models\NullContract
-     * @group framework
+     * @group module
      */
     public function testId() : void
     {
