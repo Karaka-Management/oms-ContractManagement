@@ -30,7 +30,7 @@ echo $this->data['nav']->render(); ?>
 <div class="row">
     <div class="col-xs-12">
         <div class="portlet">
-            <div class="portlet-head"><?= $this->getHtml('Contracts'); ?><i class="lni lni-download download btn end-xs"></i></div>
+            <div class="portlet-head"><?= $this->getHtml('Contracts'); ?><i class="g-icon download btn end-xs">download</i></div>
             <div class="slider">
             <table id="contractList" class="default sticky">
                 <thead>
@@ -38,38 +38,38 @@ echo $this->data['nav']->render(); ?>
                     <td class="wf-100"><?= $this->getHtml('Title'); ?>
                         <label for="contractList-sort-1">
                             <input type="radio" name="contractList-sort" id="contractList-sort-1">
-                            <i class="sort-asc fa fa-chevron-up"></i>
+                            <i class="sort-asc g-icon">expand_less</i>
                         </label>
                         <label for="contractList-sort-2">
                             <input type="radio" name="contractList-sort" id="contractList-sort-2">
-                            <i class="sort-desc fa fa-chevron-down"></i>
+                            <i class="sort-desc g-icon">expand_more</i>
                         </label>
                         <label>
-                            <i class="filter fa fa-filter"></i>
+                            <i class="filter g-icon">filter_alt</i>
                         </label>
                     <td class="wf-100"><?= $this->getHtml('With'); ?>
                         <label for="contractList-sort-3">
                             <input type="radio" name="contractList-sort" id="contractList-sort-3">
-                            <i class="sort-asc fa fa-chevron-up"></i>
+                            <i class="sort-asc g-icon">expand_less</i>
                         </label>
                         <label for="contractList-sort-4">
                             <input type="radio" name="contractList-sort" id="contractList-sort-4">
-                            <i class="sort-desc fa fa-chevron-down"></i>
+                            <i class="sort-desc g-icon">expand_more</i>
                         </label>
                         <label>
-                            <i class="filter fa fa-filter"></i>
+                            <i class="filter g-icon">filter_alt</i>
                         </label>
                     <td><?= $this->getHtml('End'); ?>
                         <label for="contractList-sort-5">
                             <input type="radio" name="contractList-sort" id="contractList-sort-5">
-                            <i class="sort-asc fa fa-chevron-up"></i>
+                            <i class="sort-asc g-icon">expand_less</i>
                         </label>
                         <label for="contractList-sort-6">
                             <input type="radio" name="contractList-sort" id="contractList-sort-6">
-                            <i class="sort-desc fa fa-chevron-down"></i>
+                            <i class="sort-desc g-icon">expand_more</i>
                         </label>
                         <label>
-                            <i class="filter fa fa-filter"></i>
+                            <i class="filter g-icon">filter_alt</i>
                         </label>
                 <tbody>
                 <?php foreach ($contracts as $key => $value) :
