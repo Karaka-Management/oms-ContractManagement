@@ -6,6 +6,13 @@
 			"de": "Miete"
 		}
 	},
+	{
+		"name": "leasing",
+		"l11n": {
+			"en": "Leasing",
+			"de": "Leasing"
+		}
+	},
     {
 		"name": "it",
 		"l11n": {
@@ -27,6 +34,13 @@
 			"de": "Energie"
 		}
 	},
+	{
+		"name": "fleet",
+		"l11n": {
+			"en": "Fleet",
+			"de": "Fuhrpark"
+		}
+	},
     {
 		"name": "procurement",
 		"l11n": {
@@ -34,11 +48,39 @@
 			"de": "Einkauf"
 		}
 	},
+	{
+		"name": "insurance",
+		"l11n": {
+			"en": "Insurance",
+			"de": "Versicherung"
+		}
+	},
+	{
+		"name": "consultants",
+		"l11n": {
+			"en": "Consultants",
+			"de": "Berater"
+		}
+	},
+	{
+		"name": "marketing",
+		"l11n": {
+			"en": "Marketing",
+			"de": "Marketing"
+		}
+	},
     {
 		"name": "sales",
 		"l11n": {
 			"en": "Sales",
 			"de": "Vertrieb"
+		}
+	},
+	{
+		"name": "assets",
+		"l11n": {
+			"en": "Assets",
+			"de": "Anlagegüter"
 		}
 	},
     {
