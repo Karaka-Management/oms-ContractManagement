@@ -17,7 +17,7 @@ namespace Modules\ContractManagement\Models;
 use phpOMS\Stdlib\Base\Enum;
 
 /**
- * Permision state enum.
+ * Permission category enum.
  *
  * @package Modules\ContractManagement\Models
  * @license OMS License 2.0
@@ -29,4 +29,6 @@ abstract class PermissionCategory extends Enum
     public const CONTRACT = 1;
 
     public const CONTRACT_TYPE = 2;
+
+    public const NOTE = 3;
 }

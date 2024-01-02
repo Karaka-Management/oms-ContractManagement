@@ -16,19 +16,18 @@ declare(strict_types=1);
  * @var \phpOMS\Views\View                          $this
  * @var \Modules\ContractManagement\Models\Contract $contract
  */
-$contract     = $this->data['contract'];
-$contractFile = $contract->files;
+$contract = $this->data['contract'];
 
 echo $this->data['nav']->render(); ?>
 
 <div class="tabview tab-2">
     <div class="box">
         <ul class="tab-links">
-            <li><label for="c-tab-1"><?= $this->getHtml('Overview'); ?></label></li>
-            <li><label for="c-tab-2"><?= $this->getHtml('Files'); ?></label></li>
-            <li><label for="c-tab-3"><?= $this->getHtml('Notes', 'Editor', 'Backend'); ?></label></li>
+            <li><label for="c-tab-1"><?= $this->getHtml('Overview'); ?></label>
+            <li><label for="c-tab-2"><?= $this->getHtml('Files'); ?></label>
+            <li><label for="c-tab-3"><?= $this->getHtml('Notes', 'Editor', 'Backend'); ?></label>
             <!-- if parrent contract show all parties that use this template/parent contract (e.g. show all customers who have this contract)
-            <li><label for="c-tab-4"><?= $this->getHtml('Parties'); ?></label></li>
+            <li><label for="c-tab-4"><?= $this->getHtml('Parties'); ?></label>
             -->
         </ul>
     </div>
@@ -115,6 +114,11 @@ echo $this->data['nav']->render(); ?>
         <input type="radio" id="c-tab-2" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-2' ? ' checked' : ''; ?>>
         <div class="tab col-simple">
             <?= $this->data['media-upload']->render('contract-file', 'files', '', $contract->files); ?>
+        </div>
+
+        <input type="radio" id="c-tab-3" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-3' ? ' checked' : ''; ?>>
+        <div class="tab col-simple">
+            <?= $this->data['note']->render('contract-note', 'notes', $contract->notes); ?>
         </div>
     </div>
 </div>
