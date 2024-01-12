@@ -16,7 +16,6 @@ return ['ContractManagement' => [
     'Account'       => '',
     'AutoRenewal'   => '',
     'Contract'      => '계약',
-    'ContractTypes' => '',
     'Contracts'     => '계약서',
     'Costs'         => '',
     'Description'   => '',

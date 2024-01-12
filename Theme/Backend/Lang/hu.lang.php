@@ -16,7 +16,6 @@ return ['ContractManagement' => [
     'Account'       => '',
     'AutoRenewal'   => '',
     'Contract'      => 'Szerződés',
-    'ContractTypes' => '',
     'Contracts'     => 'Szerződések',
     'Costs'         => '',
     'Description'   => '',

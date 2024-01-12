@@ -243,6 +243,11 @@
                 "type": "TINYINT(1)",
                 "null": false
             },
+            "contractmgmt_attr_type_repeatable": {
+                "name": "contractmgmt_attr_type_repeatable",
+                "type": "TINYINT(1)",
+                "null": false
+            },
             "contractmgmt_attr_type_required": {
                 "description": "Every contract must have this attribute type if set to true.",
                 "name": "contractmgmt_attr_type_required",

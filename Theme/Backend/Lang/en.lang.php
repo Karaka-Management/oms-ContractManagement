@@ -16,7 +16,6 @@ return ['ContractManagement' => [
     'Account'       => 'Account',
     'AutoRenewal'   => 'Auto Renewal',
     'Contract'      => 'Contract',
-    'ContractTypes' => 'Contract Types',
     'Contracts'     => 'Contracts',
     'Costs'         => 'Costs',
     'Description'   => 'Description',

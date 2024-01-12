@@ -16,7 +16,6 @@ return ['ContractManagement' => [
     'Account'       => '',
     'AutoRenewal'   => '',
     'Contract'      => 'Sözleşme',
-    'ContractTypes' => '',
     'Contracts'     => 'Sözleşme',
     'Costs'         => '',
     'Description'   => '',

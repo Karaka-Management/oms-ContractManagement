@@ -75,11 +75,13 @@ echo $this->data['nav']->render(); ?>
                                 <input type="datetime-local" id="iEnd" name="end" value="<?= $this->printHtml($contract->end->format('Y-m-d\TH:i:s')); ?>">
                             </div>
 
-                            <label class="checkbox" for="iAutoRenewal">
-                                <input id="iAutoRenewal" type="checkbox" name="auto_renewal" value="1"<?= $contract->autoRenewal ? ' checked' : ''; ?>>
-                                <span class="checkmark"></span>
-                                <?= $this->getHtml('AutoRenewal'); ?>
-                            </label>
+                            <div class="form-group">
+                                <label class="checkbox" for="iAutoRenewal">
+                                    <input id="iAutoRenewal" type="checkbox" name="auto_renewal" value="1"<?= $contract->autoRenewal ? ' checked' : ''; ?>>
+                                    <span class="checkmark"></span>
+                                    <?= $this->getHtml('AutoRenewal'); ?>
+                                </label>
+                            </div>
 
                             <div class="form-group">
                                 <label for="iTermination"><?= $this->getHtml('Termination'); ?></label>

@@ -16,7 +16,6 @@ return ['ContractManagement' => [
     'Account'       => '',
     'AutoRenewal'   => '',
     'Contract'      => 'Sopimus',
-    'ContractTypes' => '',
     'Contracts'     => 'Sopimukset',
     'Costs'         => '',
     'Description'   => '',

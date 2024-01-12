@@ -16,7 +16,6 @@ return ['ContractManagement' => [
     'Account'       => 'Account',
     'AutoRenewal'   => 'Automatische Verlängerung',
     'Contract'      => 'Vertrag',
-    'ContractTypes' => 'Vertragstypen',
     'Contracts'     => 'Verträge',
     'Costs'         => 'Kosten',
     'Description'   => 'Beschreibung',

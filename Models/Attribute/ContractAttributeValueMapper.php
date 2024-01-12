@@ -59,6 +59,7 @@ final class ContractAttributeValueMapper extends DataMapperFactory
             'mapper'   => ContractAttributeValueL11nMapper::class,
             'table'    => 'contractmgmt_attr_value_l11n',
             'self'     => 'contractmgmt_attr_value_l11n_value',
+            'column'   => 'content',
             'external' => null,
         ],
     ];

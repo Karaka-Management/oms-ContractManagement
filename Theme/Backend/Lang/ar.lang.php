@@ -16,7 +16,6 @@ return ['ContractManagement' => [
     'Account'       => '',
     'AutoRenewal'   => '',
     'Contract'      => 'اتفافية',
-    'ContractTypes' => '',
     'Contracts'     => 'انكماش',
     'Costs'         => '',
     'Description'   => '',
