@@ -73,7 +73,7 @@ echo $this->data['nav']->render(); ?>
                         </label>
                 <tbody>
                 <?php foreach ($contracts as $key => $value) :
-                    $url = UriFactory::build('{/base}/contract/single?{?}&id=' . $value->id);
+                    $url = UriFactory::build('{/base}/contract/view?{?}&id=' . $value->id);
 
                     $type = 'ok';
                     if (($value->end->getTimestamp() < $now->getTimestamp() && $value->end->getTimestamp() + 7776000 > $now->getTimestamp())
@@ -88,7 +88,7 @@ echo $this->data['nav']->render(); ?>
                 ?>
                 <tr tabindex="0" data-href="<?= $url; ?>">
                     <td data-label="<?= $this->getHtml('Title'); ?>"><a href="<?= $url; ?>"><?= $this->printHtml($value->title); ?></a>
-                    <td data-label="<?= $this->getHtml('Account'); ?>"><a class="content" href="<?= UriFactory::build('{/base}/profile/single?{?}&for=' . $value->account->id); ?>"><?= $this->printHtml($value->account->name1); ?> <?= $this->printHtml($value->account->name2); ?></a>
+                    <td data-label="<?= $this->getHtml('Account'); ?>"><a class="content" href="<?= UriFactory::build('{/base}/profile/view?{?}&for=' . $value->account->id); ?>"><?= $this->printHtml($value->account->name1); ?> <?= $this->printHtml($value->account->name2); ?></a>
                     <td data-label="<?= $this->getHtml('End'); ?>"><a href="<?= $url; ?>"><span class="tag <?= $type;  ?>"><?= $value->end !== null ? $value->end->format('Y-m-d') : ''; ?></span></a>
                 <?php endforeach; ?>
             </table>

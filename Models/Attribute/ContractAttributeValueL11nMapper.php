@@ -37,10 +37,10 @@ final class ContractAttributeValueL11nMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'contractmgmt_attr_value_l11n_id'     => ['name' => 'contractmgmt_attr_value_l11n_id',    'type' => 'int',    'internal' => 'id'],
-        'contractmgmt_attr_value_l11n_title'  => ['name' => 'contractmgmt_attr_value_l11n_title', 'type' => 'string', 'internal' => 'content', 'autocomplete' => true],
-        'contractmgmt_attr_value_l11n_value'  => ['name' => 'contractmgmt_attr_value_l11n_value',  'type' => 'int',    'internal' => 'ref'],
-        'contractmgmt_attr_value_l11n_lang'   => ['name' => 'contractmgmt_attr_value_l11n_lang',  'type' => 'string', 'internal' => 'language'],
+        'contractmgmt_attr_value_l11n_id'    => ['name' => 'contractmgmt_attr_value_l11n_id',    'type' => 'int',    'internal' => 'id'],
+        'contractmgmt_attr_value_l11n_title' => ['name' => 'contractmgmt_attr_value_l11n_title', 'type' => 'string', 'internal' => 'content', 'autocomplete' => true],
+        'contractmgmt_attr_value_l11n_value' => ['name' => 'contractmgmt_attr_value_l11n_value',  'type' => 'int',    'internal' => 'ref'],
+        'contractmgmt_attr_value_l11n_lang'  => ['name' => 'contractmgmt_attr_value_l11n_lang',  'type' => 'string', 'internal' => 'language'],
     ];
 
     /**

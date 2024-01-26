@@ -148,13 +148,20 @@ final class ApiAttributeController extends Controller
             ->where('id', $request->getDataInt('type') ?? 0)
             ->execute();
 
+        if ($type->isInternal) {
+            $response->header->status = RequestStatusCode::R_403;
+            $this->createInvalidCreateResponse($request, $response, $val);
+
+            return;
+        }
+
         $attrValue = $this->createAttributeValueFromRequest($request, $type);
         $this->createModel($request->header->account, $attrValue, ContractAttributeValueMapper::class, 'attr_value', $request->getOrigin());
 
         if ($attrValue->isDefault) {
             $this->createModelRelation(
                 $request->header->account,
-                (int) $request->getData('type'),
+                $type->id,
                 $attrValue->id,
                 ContractAttributeTypeMapper::class, 'defaults', '', $request->getOrigin()
             );

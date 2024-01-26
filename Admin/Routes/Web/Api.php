@@ -18,7 +18,7 @@ use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
 return [
-    '^.*/contract/type.*$' => [
+    '^.*/contract/type(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\ApiContractTypeController:apiContractTypeCreate',
             'verb'       => RouteVerb::PUT,
@@ -60,7 +60,7 @@ return [
         ],
     ],
 
-    '^.*/contract/attribute.*$' => [
+    '^.*/contract/attribute(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\ApiAttributeController:apiContractAttributeCreate',
             'verb'       => RouteVerb::PUT,

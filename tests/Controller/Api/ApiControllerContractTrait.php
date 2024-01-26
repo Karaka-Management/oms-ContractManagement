@@ -17,7 +17,6 @@ namespace Modules\ContractManagement\tests\Controller\Api;
 use phpOMS\Message\Http\HttpRequest;
 use phpOMS\Message\Http\HttpResponse;
 use phpOMS\Message\Http\RequestStatusCode;
-use phpOMS\Uri\HttpUri;
 use phpOMS\Utils\TestUtils;
 
 trait ApiControllerContractTrait
@@ -29,7 +28,7 @@ trait ApiControllerContractTrait
     public function testApiContractCreate() : void
     {
         $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
+        $request  = new HttpRequest();
 
         $request->header->account = 1;
         $request->setData('title', 'Title');
@@ -49,7 +48,7 @@ trait ApiControllerContractTrait
     public function testApiContractCreateInvalidData() : void
     {
         $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
+        $request  = new HttpRequest();
 
         $request->header->account = 1;
         $request->setData('invalid', '1');
@@ -65,7 +64,7 @@ trait ApiControllerContractTrait
     public function testApiContractDocCreate() : void
     {
         $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
+        $request  = new HttpRequest();
 
         if (!\is_file(__DIR__ . '/test_tmp.pdf')) {
             \copy(__DIR__ . '/test.pdf', __DIR__ . '/test_tmp.pdf');
@@ -96,7 +95,7 @@ trait ApiControllerContractTrait
     public function testApiContractDocCreateInvalidData() : void
     {
         $response = new HttpResponse();
-        $request  = new HttpRequest(new HttpUri(''));
+        $request  = new HttpRequest();
 
         $request->header->account = 1;
         $request->setData('invalid', '1');

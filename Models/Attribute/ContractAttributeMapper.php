@@ -37,10 +37,10 @@ final class ContractAttributeMapper extends DataMapperFactory
      * @since 1.0.0
      */
     public const COLUMNS = [
-        'contractmgmt_contract_attr_id'        => ['name' => 'contractmgmt_contract_attr_id',    'type' => 'int', 'internal' => 'id'],
-        'contractmgmt_contract_attr_contract'  => ['name' => 'contractmgmt_contract_attr_contract',  'type' => 'int', 'internal' => 'ref'],
-        'contractmgmt_contract_attr_type'      => ['name' => 'contractmgmt_contract_attr_type',  'type' => 'int', 'internal' => 'type'],
-        'contractmgmt_contract_attr_value'     => ['name' => 'contractmgmt_contract_attr_value', 'type' => 'int', 'internal' => 'value'],
+        'contractmgmt_contract_attr_id'       => ['name' => 'contractmgmt_contract_attr_id',    'type' => 'int', 'internal' => 'id'],
+        'contractmgmt_contract_attr_contract' => ['name' => 'contractmgmt_contract_attr_contract',  'type' => 'int', 'internal' => 'ref'],
+        'contractmgmt_contract_attr_type'     => ['name' => 'contractmgmt_contract_attr_type',  'type' => 'int', 'internal' => 'type'],
+        'contractmgmt_contract_attr_value'    => ['name' => 'contractmgmt_contract_attr_value', 'type' => 'int', 'internal' => 'value'],
     ];
 
     /**

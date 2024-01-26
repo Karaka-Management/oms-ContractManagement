@@ -18,7 +18,7 @@ use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
 return [
-    '^.*/contract/list.*$' => [
+    '^.*/contract/list(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractList',
             'verb'       => RouteVerb::GET,
@@ -29,7 +29,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/single.*$' => [
+    '^.*/contract/view(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContract',
             'verb'       => RouteVerb::GET,
@@ -40,7 +40,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/type/list.*$' => [
+    '^.*/contract/type/list(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractTypeList',
             'verb'       => RouteVerb::GET,
@@ -51,7 +51,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/type/profile.*$' => [
+    '^.*/contract/type/view(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractType',
             'verb'       => RouteVerb::GET,

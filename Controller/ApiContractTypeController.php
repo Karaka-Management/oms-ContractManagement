@@ -73,7 +73,10 @@ final class ApiContractTypeController extends Controller
     private function createContractTypeFromRequest(RequestAbstract $request) : BaseStringL11nType
     {
         $contractType = new BaseStringL11nType();
-        $contractType->setL11n($request->getDataString('title') ?? '', $request->getDataString('language') ?? ISO639x1Enum::_EN);
+        $contractType->setL11n(
+            $request->getDataString('title') ?? '',
+            ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? ISO639x1Enum::_EN
+        );
         $contractType->title = $request->getDataString('name') ?? '';
 
         return $contractType;
@@ -137,12 +140,10 @@ final class ApiContractTypeController extends Controller
      */
     private function createContractTypeL11nFromRequest(RequestAbstract $request) : BaseStringL11n
     {
-        $contractTypeL11n      = new BaseStringL11n();
-        $contractTypeL11n->ref = $request->getDataInt('type') ?? 0;
-        $contractTypeL11n->setLanguage(
-            $request->getDataString('language') ?? $request->header->l11n->language
-        );
-        $contractTypeL11n->content = $request->getDataString('title') ?? '';
+        $contractTypeL11n           = new BaseStringL11n();
+        $contractTypeL11n->ref      = $request->getDataInt('type') ?? 0;
+        $contractTypeL11n->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $request->header->l11n->language;
+        $contractTypeL11n->content  = $request->getDataString('title') ?? '';
 
         return $contractTypeL11n;
     }
@@ -327,10 +328,8 @@ final class ApiContractTypeController extends Controller
      */
     public function updateContractTypeL11nFromRequest(RequestAbstract $request, BaseStringL11n $new) : BaseStringL11n
     {
-        $new->setLanguage(
-            $request->getDataString('language') ?? $new->language
-        );
-        $new->content = $request->getDataString('title') ?? $new->content;
+        $new->language = ISO639x1Enum::tryFromValue($request->getDataString('language')) ?? $new->language;
+        $new->content  = $request->getDataString('title') ?? $new->content;
 
         return $new;
     }
