@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Modules\ContractManagement\Controller;
 
+use Modules\ContractManagement\Models\Attribute\ContractAttributeTypeMapper;
 use Modules\ContractManagement\Models\ContractMapper;
 use Modules\ContractManagement\Models\ContractTypeMapper;
 use Modules\Organization\Models\UnitMapper;
@@ -153,31 +154,39 @@ final class BackendController extends Controller
         $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-view');
         $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
 
-        $contract = ContractMapper::get()
+        $view->data['contract'] = ContractMapper::get()
             ->with('account')
+            ->with('attributes')
+            ->with('attributes/type')
+            ->with('attributes/value')
+            ->with('attributes/type/l11n')
             ->with('files')
             ->with('notes')
             ->where('id', (int) $request->getData('id'))
+            ->where('attributes/type/l11n/language', $response->header->l11n->language)
             ->sort('files/id', 'DESC')
             ->execute();
 
-        $view->data['contract'] = $contract;
-
-        $contractTypes = ContractTypeMapper::getAll()
+            $view->data['contractTypes'] = ContractTypeMapper::getAll()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
             ->execute();
 
-        $view->data['contractTypes'] = $contractTypes;
-
-        $units = UnitMapper::getAll()
+        $view->data['units'] = UnitMapper::getAll()
             ->execute();
 
-        $view->data['units'] = $units;
+        /** @var \Modules\Attribute\Models\AttributeType[] */
+        $view->data['attributeTypes'] = ContractAttributeTypeMapper::getAll()
+            ->with('l11n')
+            ->where('l11n/language', $response->header->l11n->language)
+            ->execute();
 
         $view->data['editor']       = new \Modules\Editor\Theme\Backend\Components\Editor\BaseView($this->app->l11nManager, $request, $response);
         $view->data['media-upload'] = new \Modules\Media\Theme\Backend\Components\Upload\BaseView($this->app->l11nManager, $request, $response);
         $view->data['note']         = new \Modules\Editor\Theme\Backend\Components\Note\BaseView($this->app->l11nManager, $request, $response);
+
+        $view->data['attributeView']                               = new \Modules\Attribute\Theme\Backend\Components\AttributeView($this->app->l11nManager, $request, $response);
+        $view->data['attributeView']->data['default_localization'] = $this->app->l11nServer;
 
         return $view;
     }

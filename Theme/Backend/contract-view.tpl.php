@@ -26,6 +26,7 @@ echo $this->data['nav']->render(); ?>
             <li><label for="c-tab-1"><?= $this->getHtml('Overview'); ?></label>
             <li><label for="c-tab-2"><?= $this->getHtml('Files'); ?></label>
             <li><label for="c-tab-3"><?= $this->getHtml('Notes', 'Editor', 'Backend'); ?></label>
+            <li><label for="c-tab-4"><?= $this->getHtml('Attributes', 'Attribute', 'Backend'); ?></label>
             <!-- if parrent contract show all parties that use this template/parent contract (e.g. show all customers who have this contract)
             <li><label for="c-tab-4"><?= $this->getHtml('Parties'); ?></label>
             -->
@@ -121,6 +122,20 @@ echo $this->data['nav']->render(); ?>
         <input type="radio" id="c-tab-3" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-3' ? ' checked' : ''; ?>>
         <div class="tab col-simple">
             <?= $this->data['note']->render('contract-note', 'notes', $contract->notes); ?>
+        </div>
+
+        <input type="radio" id="c-tab-4" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-4' ? ' checked' : ''; ?>>
+        <div class="tab col-simple">
+            <div class="row">
+                <?= $this->data['attributeView']->render(
+                    $contract->attributes,
+                    $this->data['attributeTypes'] ?? [],
+                    $this->data['units'] ?? [],
+                    '{/api}contract/attribute',
+                    $contract->id
+                    );
+                ?>
+            </div>
         </div>
     </div>
 </div>

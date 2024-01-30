@@ -13,6 +13,7 @@
 declare(strict_types=1);
 
 return ['Navigation' => [
+    'Attributes'      => 'Attribute',
     'Contract'      => 'Vertrag',
     'ContractTypes' => 'Vertragsarten',
     'Contracts'     => 'Verträge',
