@@ -47,7 +47,7 @@ echo $this->data['nav']->render(); ?>
                         <label>
                             <i class="filter g-icon">filter_alt</i>
                         </label>
-                    <td class="wf-100"><?= $this->getHtml('With'); ?>
+                    <td><?= $this->getHtml('With'); ?>
                         <label for="contractList-sort-3">
                             <input type="radio" name="contractList-sort" id="contractList-sort-3">
                             <i class="sort-asc g-icon">expand_less</i>
@@ -72,7 +72,10 @@ echo $this->data['nav']->render(); ?>
                             <i class="filter g-icon">filter_alt</i>
                         </label>
                 <tbody>
-                <?php foreach ($contracts as $key => $value) :
+                <?php
+                $count = 0;
+                foreach ($contracts as $key => $value) :
+                    ++$count;
                     $url = UriFactory::build('{/base}/contract/view?{?}&id=' . $value->id);
 
                     $type = 'ok';
@@ -91,6 +94,9 @@ echo $this->data['nav']->render(); ?>
                     <td data-label="<?= $this->getHtml('Account'); ?>"><a class="content" href="<?= UriFactory::build('{/base}/profile/view?{?}&for=' . $value->account->id); ?>"><?= $this->printHtml($value->account->name1); ?> <?= $this->printHtml($value->account->name2); ?></a>
                     <td data-label="<?= $this->getHtml('End'); ?>"><a href="<?= $url; ?>"><span class="tag <?= $type;  ?>"><?= $value->end !== null ? $value->end->format('Y-m-d') : ''; ?></span></a>
                 <?php endforeach; ?>
+                <?php if ($count === 0) : ?>
+                    <tr><td colspan="3" class="empty"><?= $this->getHtml('Empty', '0', '0'); ?>
+                    <?php endif; ?>
             </table>
             </div>
             <div class="portlet-foot">

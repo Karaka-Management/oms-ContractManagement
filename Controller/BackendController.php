@@ -19,6 +19,7 @@ use Modules\ContractManagement\Models\ContractMapper;
 use Modules\ContractManagement\Models\ContractTypeMapper;
 use Modules\Organization\Models\UnitMapper;
 use phpOMS\Contract\RenderableInterface;
+use phpOMS\DataStorage\Database\Query\OrderType;
 use phpOMS\Message\RequestAbstract;
 use phpOMS\Message\ResponseAbstract;
 use phpOMS\Views\View;
@@ -164,10 +165,16 @@ final class BackendController extends Controller
             ->with('notes')
             ->where('id', (int) $request->getData('id'))
             ->where('attributes/type/l11n/language', $response->header->l11n->language)
-            ->sort('files/id', 'DESC')
+            ->sort('files/id', OrderType::DESC)
             ->execute();
 
-            $view->data['contractTypes'] = ContractTypeMapper::getAll()
+        $view->data['children'] = ContractMapper::getAll()
+            ->with('account')
+            ->where('parent', (int) $request->getData('id'))
+            ->sort('createdAt', OrderType::DESC)
+            ->execute();
+
+        $view->data['contractTypes'] = ContractTypeMapper::getAll()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
             ->execute();

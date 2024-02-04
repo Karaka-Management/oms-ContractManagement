@@ -12,6 +12,8 @@
  */
 declare(strict_types=1);
 
+use phpOMS\Uri\UriFactory;
+
 /**
  * @var \phpOMS\Views\View                          $this
  * @var \Modules\ContractManagement\Models\Contract $contract
@@ -27,9 +29,7 @@ echo $this->data['nav']->render(); ?>
             <li><label for="c-tab-2"><?= $this->getHtml('Files'); ?></label>
             <li><label for="c-tab-3"><?= $this->getHtml('Notes', 'Editor', 'Backend'); ?></label>
             <li><label for="c-tab-4"><?= $this->getHtml('Attributes', 'Attribute', 'Backend'); ?></label>
-            <!-- if parrent contract show all parties that use this template/parent contract (e.g. show all customers who have this contract)
-            <li><label for="c-tab-4"><?= $this->getHtml('Parties'); ?></label>
-            -->
+            <li><label for="c-tab-5"><?= $this->getHtml('Parties'); ?></label>
         </ul>
     </div>
     <div class="tab-content">
@@ -135,6 +135,86 @@ echo $this->data['nav']->render(); ?>
                     $contract->id
                     );
                 ?>
+            </div>
+        </div>
+
+        <input type="radio" id="c-tab-5" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-5' ? ' checked' : ''; ?>>
+        <div class="tab">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="portlet">
+                        <div class="portlet-head"><?= $this->getHtml('Contracts'); ?><i class="g-icon download btn end-xs">download</i></div>
+                        <div class="slider">
+                        <table id="contractList" class="default sticky">
+                            <thead>
+                            <tr>
+                                <td><?= $this->getHtml('End'); ?>
+                                    <label for="contractList-sort-5">
+                                        <input type="radio" name="contractList-sort" id="contractList-sort-5">
+                                        <i class="sort-asc g-icon">expand_less</i>
+                                    </label>
+                                    <label for="contractList-sort-6">
+                                        <input type="radio" name="contractList-sort" id="contractList-sort-6">
+                                        <i class="sort-desc g-icon">expand_more</i>
+                                    </label>
+                                    <label>
+                                        <i class="filter g-icon">filter_alt</i>
+                                    </label>
+                                <td><?= $this->getHtml('With'); ?>
+                                    <label for="contractList-sort-3">
+                                        <input type="radio" name="contractList-sort" id="contractList-sort-3">
+                                        <i class="sort-asc g-icon">expand_less</i>
+                                    </label>
+                                    <label for="contractList-sort-4">
+                                        <input type="radio" name="contractList-sort" id="contractList-sort-4">
+                                        <i class="sort-desc g-icon">expand_more</i>
+                                    </label>
+                                    <label>
+                                        <i class="filter g-icon">filter_alt</i>
+                                    </label>
+                                <td class="wf-100"><?= $this->getHtml('Title'); ?>
+                                    <label for="contractList-sort-1">
+                                        <input type="radio" name="contractList-sort" id="contractList-sort-1">
+                                        <i class="sort-asc g-icon">expand_less</i>
+                                    </label>
+                                    <label for="contractList-sort-2">
+                                        <input type="radio" name="contractList-sort" id="contractList-sort-2">
+                                        <i class="sort-desc g-icon">expand_more</i>
+                                    </label>
+                                    <label>
+                                        <i class="filter g-icon">filter_alt</i>
+                                    </label>
+                            <tbody>
+                            <?php
+                            $count = 0;
+                            $now = new \DateTime('now');
+                            foreach ($this->data['children'] as $key => $value) :
+                                ++$count;
+                                $url = UriFactory::build('{/base}/contract/view?{?}&id=' . $value->id);
+
+                                $type = 'ok';
+                                if (($value->end->getTimestamp() < $now->getTimestamp() && $value->end->getTimestamp() + 7776000 > $now->getTimestamp())
+                                    || ($value->end->getTimestamp() > $now->getTimestamp() && $value->end->getTimestamp() - 7776000 < $now->getTimestamp())
+                                ) {
+                                    $type = 'error';
+                                } elseif ($value->end->getTimestamp() < $now->getTimestamp()) {
+                                    $type = 'info';
+                                } elseif ($value->end->getTimestamp() + 7776000 < $now->getTimestamp()) {
+                                    $type = 'warning';
+                                }
+                            ?>
+                            <tr tabindex="0" data-href="<?= $url; ?>">
+                                <td data-label="<?= $this->getHtml('End'); ?>"><a href="<?= $url; ?>"><span class="tag <?= $type;  ?>"><?= $value->end !== null ? $value->end->format('Y-m-d') : ''; ?></span></a>
+                                <td data-label="<?= $this->getHtml('Account'); ?>"><a class="content" href="<?= UriFactory::build('{/base}/profile/view?{?}&for=' . $value->account->id); ?>"><?= $this->printHtml($value->account->name1); ?> <?= $this->printHtml($value->account->name2); ?></a>
+                                <td data-label="<?= $this->getHtml('Title'); ?>"><a href="<?= $url; ?>"><?= $this->printHtml($value->title); ?></a>
+                            <?php endforeach; ?>
+                            <?php if ($count === 0) : ?>
+                            <tr><td colspan="3" class="empty"><?= $this->getHtml('Empty', '0', '0'); ?>
+                            <?php endif; ?>
+                        </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

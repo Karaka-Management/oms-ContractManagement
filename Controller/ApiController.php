@@ -124,6 +124,7 @@ final class ApiController extends Controller
         $contract->isTemplate  = $request->getDataBool('template') ?? false;
         $contract->unit        = new NullUnit($request->getDataInt('unit') ?? 0);
         $contract->end         = $request->getDataDateTime('end');
+        $contract->parent      = $request->getDataInt('parent');
 
         return $contract;
     }
@@ -159,7 +160,7 @@ final class ApiController extends Controller
 
         $path = $this->createContractDir($contract);
 
-        $uploaded = $this->app->moduleManager->get('Media')->uploadFiles(
+        $uploaded = $this->app->moduleManager->get('Media', 'Api')->uploadFiles(
             names: $request->getDataList('names'),
             fileNames: $request->getDataList('filenames'),
             files: $uploadedFiles,
@@ -312,8 +313,6 @@ final class ApiController extends Controller
      * @param RequestAbstract $request Request
      *
      * @return array<string, bool>
-     *
-     * @todo Implement API validation function
      *
      * @since 1.0.0
      */
