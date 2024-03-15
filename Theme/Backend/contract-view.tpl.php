@@ -187,7 +187,7 @@ echo $this->data['nav']->render(); ?>
                             <tbody>
                             <?php
                             $count = 0;
-                            $now = new \DateTime('now');
+                            $now   = new \DateTime('now');
                             foreach ($this->data['children'] as $key => $value) :
                                 ++$count;
                                 $url = UriFactory::build('{/base}/contract/view?{?}&id=' . $value->id);

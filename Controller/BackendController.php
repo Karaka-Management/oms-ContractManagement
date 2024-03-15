@@ -182,7 +182,6 @@ final class BackendController extends Controller
         $view->data['units'] = UnitMapper::getAll()
             ->execute();
 
-        /** @var \Modules\Attribute\Models\AttributeType[] */
         $view->data['attributeTypes'] = ContractAttributeTypeMapper::getAll()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
