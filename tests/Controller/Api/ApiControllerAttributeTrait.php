@@ -23,7 +23,7 @@ use phpOMS\Message\Http\RequestStatusCode;
 trait ApiControllerAttributeTrait
 {
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeTypeCreate() : void
@@ -41,7 +41,7 @@ trait ApiControllerAttributeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeTypeL11nCreate() : void
@@ -59,7 +59,7 @@ trait ApiControllerAttributeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeValueIntCreate() : void
@@ -79,7 +79,7 @@ trait ApiControllerAttributeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeValueStrCreate() : void
@@ -98,7 +98,7 @@ trait ApiControllerAttributeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeValueFloatCreate() : void
@@ -117,7 +117,7 @@ trait ApiControllerAttributeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeValueDatCreate() : void
@@ -136,7 +136,7 @@ trait ApiControllerAttributeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeCreate() : void
@@ -154,7 +154,7 @@ trait ApiControllerAttributeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeValueCreateInvalidData() : void
@@ -170,7 +170,7 @@ trait ApiControllerAttributeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeTypeCreateInvalidData() : void
@@ -186,7 +186,7 @@ trait ApiControllerAttributeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeTypeL11nCreateInvalidData() : void
@@ -202,7 +202,7 @@ trait ApiControllerAttributeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractAttributeCreateInvalidData() : void

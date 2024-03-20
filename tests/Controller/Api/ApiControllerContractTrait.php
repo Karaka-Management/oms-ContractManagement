@@ -22,7 +22,7 @@ use phpOMS\Utils\TestUtils;
 trait ApiControllerContractTrait
 {
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractCreate() : void
@@ -42,7 +42,7 @@ trait ApiControllerContractTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractCreateInvalidData() : void
@@ -58,7 +58,7 @@ trait ApiControllerContractTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractDocCreate() : void
@@ -89,7 +89,7 @@ trait ApiControllerContractTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractDocCreateInvalidData() : void

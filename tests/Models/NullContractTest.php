@@ -22,7 +22,7 @@ use Modules\ContractManagement\Models\NullContract;
 final class NullContractTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @covers Modules\ContractManagement\Models\NullContract
+     * @covers \Modules\ContractManagement\Models\NullContract
      * @group module
      */
     public function testNull() : void
@@ -31,7 +31,7 @@ final class NullContractTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\ContractManagement\Models\NullContract
+     * @covers \Modules\ContractManagement\Models\NullContract
      * @group module
      */
     public function testId() : void
@@ -41,7 +41,7 @@ final class NullContractTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\ContractManagement\Models\NullContract
+     * @covers \Modules\ContractManagement\Models\NullContract
      * @group module
      */
     public function testJsonSerialize() : void

@@ -22,7 +22,7 @@ use phpOMS\Message\Http\RequestStatusCode;
 trait ApiControllerContractTypeTrait
 {
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractTypeCreate() : void
@@ -39,7 +39,7 @@ trait ApiControllerContractTypeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractTypeCreateInvalidData() : void
@@ -55,7 +55,7 @@ trait ApiControllerContractTypeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractTypeL11nCreate() : void
@@ -73,7 +73,7 @@ trait ApiControllerContractTypeTrait
     }
 
     /**
-     * @covers Modules\ContractManagement\Controller\ApiController
+     * @covers \Modules\ContractManagement\Controller\ApiController
      * @group module
      */
     public function testApiContractTypeL11nCreateInvalidData() : void

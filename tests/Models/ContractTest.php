@@ -32,7 +32,7 @@ final class ContractTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\ContractManagement\Models\Contract
+     * @covers \Modules\ContractManagement\Models\Contract
      * @group module
      */
     public function testDefault() : void
@@ -42,7 +42,7 @@ final class ContractTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @covers Modules\ContractManagement\Models\Contract
+     * @covers \Modules\ContractManagement\Models\Contract
      * @group module
      */
     public function testSerialize() : void
