@@ -19,6 +19,7 @@ use Modules\ContractManagement\Models\Contract;
 /**
  * @internal
  */
+#[\PHPUnit\Framework\Attributes\CoversClass(\Modules\ContractManagement\Models\Contract::class)]
 final class ContractTest extends \PHPUnit\Framework\TestCase
 {
     private Contract $contract;
@@ -31,20 +32,14 @@ final class ContractTest extends \PHPUnit\Framework\TestCase
         $this->contract = new Contract();
     }
 
-    /**
-     * @covers \Modules\ContractManagement\Models\Contract
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testDefault() : void
     {
         self::assertEquals(0, $this->contract->id);
         self::assertEquals([], $this->contract->files);
     }
 
-    /**
-     * @covers \Modules\ContractManagement\Models\Contract
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testSerialize() : void
     {
         $this->contract->title       = 'Title';

@@ -19,31 +19,23 @@ use Modules\ContractManagement\Models\NullContract;
 /**
  * @internal
  */
+#[\PHPUnit\Framework\Attributes\CoversClass(\Modules\ContractManagement\Models\NullContract::class)]
 final class NullContractTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @covers \Modules\ContractManagement\Models\NullContract
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testNull() : void
     {
         self::assertInstanceOf('\Modules\ContractManagement\Models\Contract', new NullContract());
     }
 
-    /**
-     * @covers \Modules\ContractManagement\Models\NullContract
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testId() : void
     {
         $null = new NullContract(2);
         self::assertEquals(2, $null->id);
     }
 
-    /**
-     * @covers \Modules\ContractManagement\Models\NullContract
-     * @group module
-     */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testJsonSerialize() : void
     {
         $null = new NullContract(2);

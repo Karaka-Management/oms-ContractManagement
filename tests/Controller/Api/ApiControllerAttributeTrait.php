@@ -24,8 +24,8 @@ trait ApiControllerAttributeTrait
 {
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeTypeCreate() : void
     {
         $response = new HttpResponse();
@@ -42,8 +42,8 @@ trait ApiControllerAttributeTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeTypeL11nCreate() : void
     {
         $response = new HttpResponse();
@@ -60,8 +60,8 @@ trait ApiControllerAttributeTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeValueIntCreate() : void
     {
         $response = new HttpResponse();
@@ -80,8 +80,8 @@ trait ApiControllerAttributeTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeValueStrCreate() : void
     {
         $response = new HttpResponse();
@@ -99,8 +99,8 @@ trait ApiControllerAttributeTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeValueFloatCreate() : void
     {
         $response = new HttpResponse();
@@ -118,8 +118,8 @@ trait ApiControllerAttributeTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeValueDatCreate() : void
     {
         $response = new HttpResponse();
@@ -137,8 +137,8 @@ trait ApiControllerAttributeTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeCreate() : void
     {
         $response = new HttpResponse();
@@ -155,8 +155,8 @@ trait ApiControllerAttributeTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeValueCreateInvalidData() : void
     {
         $response = new HttpResponse();
@@ -171,8 +171,8 @@ trait ApiControllerAttributeTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeTypeCreateInvalidData() : void
     {
         $response = new HttpResponse();
@@ -187,8 +187,8 @@ trait ApiControllerAttributeTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeTypeL11nCreateInvalidData() : void
     {
         $response = new HttpResponse();
@@ -203,8 +203,8 @@ trait ApiControllerAttributeTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractAttributeCreateInvalidData() : void
     {
         $response = new HttpResponse();

@@ -23,8 +23,8 @@ trait ApiControllerContractTrait
 {
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractCreate() : void
     {
         $response = new HttpResponse();
@@ -43,8 +43,8 @@ trait ApiControllerContractTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractCreateInvalidData() : void
     {
         $response = new HttpResponse();
@@ -59,8 +59,8 @@ trait ApiControllerContractTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractDocCreate() : void
     {
         $response = new HttpResponse();
@@ -90,8 +90,8 @@ trait ApiControllerContractTrait
 
     /**
      * @covers \Modules\ContractManagement\Controller\ApiController
-     * @group module
      */
+    #[\PHPUnit\Framework\Attributes\Group('module')]
     public function testApiContractDocCreateInvalidData() : void
     {
         $response = new HttpResponse();
