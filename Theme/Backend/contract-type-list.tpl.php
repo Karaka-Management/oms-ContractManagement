@@ -22,7 +22,11 @@ echo $this->data['nav']->render(); ?>
 <div class="row">
     <div class="col-xs-12">
         <section class="portlet">
-            <div class="portlet-head"><?= $this->getHtml('ContractTypes', 'Contract', 'Backend'); ?><i class="g-icon download btn end-xs">download</i></div>
+            <div class="portlet-head">
+                <?= $this->getHtml('ContractTypes'); ?>
+                <a class="button end-xs save" href="<?= UriFactory::build('{/base}/'); ?>contract/type/create"><?= $this->getHtml('New', '0', '0'); ?></a>
+                <i class="g-icon download btn end-xs">download</i>
+            </div>
             <div class="slider">
             <table id="iContractTypeList" class="default sticky">
                 <thead>

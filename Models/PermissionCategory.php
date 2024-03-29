@@ -31,4 +31,6 @@ abstract class PermissionCategory extends Enum
     public const CONTRACT_TYPE = 2;
 
     public const NOTE = 3;
+
+    public const ATTRIBUTE = 4;
 }

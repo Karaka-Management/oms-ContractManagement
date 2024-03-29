@@ -131,7 +131,7 @@ echo $this->data['nav']->render(); ?>
                     $contract->attributes,
                     $this->data['attributeTypes'] ?? [],
                     $this->data['units'] ?? [],
-                    '{/api}contract/attribute',
+                    '{/api}contract/attribute?csrf={$CSRF}',
                     $contract->id
                     );
                 ?>

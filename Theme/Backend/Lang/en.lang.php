@@ -30,4 +30,5 @@ return ['ContractManagement' => [
     'Type'        => 'Type',
     'Unit'        => 'Unit',
     'With'        => 'With',
+    'ContractTypes'        => 'Contract Types',
 ]];

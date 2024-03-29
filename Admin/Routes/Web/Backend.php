@@ -40,6 +40,17 @@ return [
             ],
         ],
     ],
+    '^.*/contract/create(\?.*$|$)' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractCreate',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::CREATE,
+                'state'  => PermissionCategory::CONTRACT,
+            ],
+        ],
+    ],
     '^.*/contract/type/list(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractTypeList',
@@ -59,6 +70,72 @@ return [
                 'module' => BackendController::NAME,
                 'type'   => PermissionType::READ,
                 'state'  => PermissionCategory::CONTRACT_TYPE,
+            ],
+        ],
+    ],
+    '^.*/contract/type/create(\?.*$|$)' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractTypeCreate',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::CREATE,
+                'state'  => PermissionCategory::CONTRACT_TYPE,
+            ],
+        ],
+    ],
+    '^.*/contract/attribute/type/list(\?.*$|$)' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractManagementAttributeTypeList',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::ATTRIBUTE,
+            ],
+        ],
+    ],
+    '^.*/contract/attribute/type/view(\?.*$|$)' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractManagementAttributeType',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::ATTRIBUTE,
+            ],
+        ],
+    ],
+    '^.*/contract/attribute/type/create(\?.*$|$)' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractManagementAttributeTypeCreate',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::CREATE,
+                'state'  => PermissionCategory::ATTRIBUTE,
+            ],
+        ],
+    ],
+    '^.*/contract/attribute/value/view(\?.*$|$)' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractManagementAttributeValue',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::ATTRIBUTE,
+            ],
+        ],
+    ],
+    '^.*/contract/attribute/value/create(\?.*$|$)' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractManagementAttributeValueCreate',
+            'verb'       => RouteVerb::GET,
+            'permission' => [
+                'module' => BackendController::NAME,
+                'type'   => PermissionType::CREATE,
+                'state'  => PermissionCategory::ATTRIBUTE,
             ],
         ],
     ],
