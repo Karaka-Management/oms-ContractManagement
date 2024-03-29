@@ -18,7 +18,7 @@ use phpOMS\Account\PermissionType;
 use phpOMS\Router\RouteVerb;
 
 return [
-    '^.*/contract/list(\?.*$|$)' => [
+    '^/contract/list(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractList',
             'verb'       => RouteVerb::GET,
@@ -29,7 +29,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/view(\?.*$|$)' => [
+    '^/contract/view(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContract',
             'verb'       => RouteVerb::GET,
@@ -40,7 +40,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/create(\?.*$|$)' => [
+    '^/contract/create(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractCreate',
             'verb'       => RouteVerb::GET,
@@ -51,7 +51,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/type/list(\?.*$|$)' => [
+    '^/contract/type/list(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractTypeList',
             'verb'       => RouteVerb::GET,
@@ -62,7 +62,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/type/view(\?.*$|$)' => [
+    '^/contract/type/view(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractType',
             'verb'       => RouteVerb::GET,
@@ -73,7 +73,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/type/create(\?.*$|$)' => [
+    '^/contract/type/create(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractTypeCreate',
             'verb'       => RouteVerb::GET,
@@ -84,7 +84,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/attribute/type/list(\?.*$|$)' => [
+    '^/contract/attribute/type/list(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractManagementAttributeTypeList',
             'verb'       => RouteVerb::GET,
@@ -95,7 +95,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/attribute/type/view(\?.*$|$)' => [
+    '^/contract/attribute/type/view(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractManagementAttributeType',
             'verb'       => RouteVerb::GET,
@@ -106,7 +106,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/attribute/type/create(\?.*$|$)' => [
+    '^/contract/attribute/type/create(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractManagementAttributeTypeCreate',
             'verb'       => RouteVerb::GET,
@@ -117,7 +117,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/attribute/value/view(\?.*$|$)' => [
+    '^/contract/attribute/value/view(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractManagementAttributeValue',
             'verb'       => RouteVerb::GET,
@@ -128,7 +128,7 @@ return [
             ],
         ],
     ],
-    '^.*/contract/attribute/value/create(\?.*$|$)' => [
+    '^/contract/attribute/value/create(\?.*$|$)' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\BackendController:viewContractManagementAttributeValueCreate',
             'verb'       => RouteVerb::GET,
