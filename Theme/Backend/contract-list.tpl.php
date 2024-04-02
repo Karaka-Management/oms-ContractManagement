@@ -20,8 +20,8 @@ use phpOMS\Uri\UriFactory;
  */
 $contracts = $this->data['contracts'] ?? [];
 
-$previous = empty($contracts) ? '{/base}/contract/list' : '{/base}/contract/list?{?}&id=' . \reset($contracts)->id . '&ptype=p';
-$next     = empty($contracts) ? '{/base}/contract/list' : '{/base}/contract/list?{?}&id=' . \end($contracts)->id . '&ptype=n';
+$previous = empty($contracts) ? '{/base}/contract/list' : '{/base}/contract/list?{?}&offset=' . \reset($contracts)->id . '&ptype=p';
+$next     = empty($contracts) ? '{/base}/contract/list' : '{/base}/contract/list?{?}&offset=' . \end($contracts)->id . '&ptype=n';
 
 $now = new \DateTime('now');
 

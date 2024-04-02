@@ -61,9 +61,9 @@ final class BackendController extends Controller
             ->limit(25);
 
         if ($request->getData('ptype') === 'p') {
-            $view->data['contracts'] = $mapper->where('id', $request->getDataInt('id') ?? 0, '<')->execute();
+            $view->data['contracts'] = $mapper->where('id', $request->getDataInt('offset') ?? 0, '<')->execute();
         } elseif ($request->getData('ptype') === 'n') {
-            $view->data['contracts'] = $mapper->where('id', $request->getDataInt('id') ?? 0, '>')->execute();
+            $view->data['contracts'] = $mapper->where('id', $request->getDataInt('offset') ?? 0, '>')->execute();
         } else {
             $view->data['contracts'] = $mapper->where('id', 0, '>')->execute();
         }
@@ -96,9 +96,9 @@ final class BackendController extends Controller
             ->limit(25);
 
         if ($request->getData('ptype') === 'p') {
-            $view->data['types'] = $mapper->where('id', $request->getDataInt('id') ?? 0, '<')->execute();
+            $view->data['types'] = $mapper->where('id', $request->getDataInt('offset') ?? 0, '<')->execute();
         } elseif ($request->getData('ptype') === 'n') {
-            $view->data['types'] = $mapper->where('id', $request->getDataInt('id') ?? 0, '>')->execute();
+            $view->data['types'] = $mapper->where('id', $request->getDataInt('offset') ?? 0, '>')->execute();
         } else {
             $view->data['types'] = $mapper->where('id', 0, '>')->execute();
         }
@@ -172,20 +172,20 @@ final class BackendController extends Controller
             ->with('account')
             ->where('parent', (int) $request->getData('id'))
             ->sort('createdAt', OrderType::DESC)
-            ->execute();
+            ->executeGetArray();
 
         $view->data['contractTypes'] = ContractTypeMapper::getAll()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
-            ->execute();
+            ->executeGetArray();
 
         $view->data['units'] = UnitMapper::getAll()
-            ->execute();
+            ->executeGetArray();
 
         $view->data['attributeTypes'] = ContractAttributeTypeMapper::getAll()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
-            ->execute();
+            ->executeGetArray();
 
         $view->data['editor']       = new \Modules\Editor\Theme\Backend\Components\Editor\BaseView($this->app->l11nManager, $request, $response);
         $view->data['media-upload'] = new \Modules\Media\Theme\Backend\Components\Upload\BaseView($this->app->l11nManager, $request, $response);
