@@ -35,7 +35,7 @@ use phpOMS\Message\ResponseAbstract;
 final class ApiContractTypeController extends Controller
 {
     /**
-     * Api method to create item attribute type
+     * Api method to create ContractType
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
@@ -62,7 +62,7 @@ final class ApiContractTypeController extends Controller
     }
 
     /**
-     * Method to create item attribute from request.
+     * Method to create ContractType from request.
      *
      * @param RequestAbstract $request Request
      *
@@ -83,7 +83,7 @@ final class ApiContractTypeController extends Controller
     }
 
     /**
-     * Validate item attribute create request
+     * Validate ContractType create request
      *
      * @param RequestAbstract $request Request
      *
@@ -103,7 +103,7 @@ final class ApiContractTypeController extends Controller
     }
 
     /**
-     * Api method to create item attribute l11n
+     * Api method to create ContractType l11n
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
@@ -130,7 +130,7 @@ final class ApiContractTypeController extends Controller
     }
 
     /**
-     * Method to create item attribute l11n from request.
+     * Method to create ContractType l11n from request.
      *
      * @param RequestAbstract $request Request
      *
@@ -149,7 +149,7 @@ final class ApiContractTypeController extends Controller
     }
 
     /**
-     * Validate item attribute l11n create request
+     * Validate ContractType l11n create request
      *
      * @param RequestAbstract $request Request
      *

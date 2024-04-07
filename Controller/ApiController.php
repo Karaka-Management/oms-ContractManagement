@@ -327,7 +327,7 @@ final class ApiController extends Controller
     }
 
     /**
-     * Api method to create item files
+     * Api method to create Note
      *
      * @param RequestAbstract  $request  Request
      * @param ResponseAbstract $response Response
@@ -365,7 +365,7 @@ final class ApiController extends Controller
     }
 
     /**
-     * Validate item note create request
+     * Validate note create request
      *
      * @param RequestAbstract $request Request
      *
