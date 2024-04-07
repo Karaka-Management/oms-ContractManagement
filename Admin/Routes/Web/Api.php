@@ -23,7 +23,7 @@ return [
             'dest'       => '\Modules\ContractManagement\Controller\ApiContractTypeController:apiContractTypeCreate',
             'verb'       => RouteVerb::PUT,
             'csrf'       => true,
-            'active' => true,
+            'active'     => true,
             'permission' => [
                 'module' => Controller::NAME,
                 'type'   => PermissionType::READ,
@@ -34,7 +34,7 @@ return [
             'dest'       => '\Modules\ContractManagement\Controller\ApiContractTypeController:apiContractTypeUpdate',
             'verb'       => RouteVerb::SET,
             'csrf'       => true,
-            'active' => true,
+            'active'     => true,
             'permission' => [
                 'module' => Controller::NAME,
                 'type'   => PermissionType::READ,
@@ -48,7 +48,7 @@ return [
             'dest'       => '\Modules\ContractManagement\Controller\ApiController:apiContractCreate',
             'verb'       => RouteVerb::PUT,
             'csrf'       => true,
-            'active' => true,
+            'active'     => true,
             'permission' => [
                 'module' => Controller::NAME,
                 'type'   => PermissionType::READ,
@@ -59,7 +59,7 @@ return [
             'dest'       => '\Modules\ContractManagement\Controller\ApiController:apiContractUpdate',
             'verb'       => RouteVerb::SET,
             'csrf'       => true,
-            'active' => true,
+            'active'     => true,
             'permission' => [
                 'module' => Controller::NAME,
                 'type'   => PermissionType::READ,
@@ -73,7 +73,7 @@ return [
             'dest'       => '\Modules\ContractManagement\Controller\ApiAttributeController:apiContractAttributeCreate',
             'verb'       => RouteVerb::PUT,
             'csrf'       => true,
-            'active' => true,
+            'active'     => true,
             'permission' => [
                 'module' => Controller::NAME,
                 'type'   => PermissionType::READ,
@@ -84,7 +84,7 @@ return [
             'dest'       => '\Modules\ContractManagement\Controller\ApiAttributeController:apiContractAttributeUpdate',
             'verb'       => RouteVerb::SET,
             'csrf'       => true,
-            'active' => true,
+            'active'     => true,
             'permission' => [
                 'module' => Controller::NAME,
                 'type'   => PermissionType::READ,
