@@ -18,7 +18,6 @@ use Modules\Admin\Models\NullAccount;
 use Modules\ContractManagement\Models\Contract;
 use Modules\ContractManagement\Models\ContractMapper;
 use Modules\ContractManagement\Models\PermissionCategory;
-use Modules\Media\Models\MediaMapper;
 use Modules\Media\Models\PathSettings;
 use Modules\Organization\Models\NullUnit;
 use phpOMS\Account\PermissionType;
@@ -144,11 +143,9 @@ final class ApiController extends Controller
      */
     public function apiContractDocumentCreate(RequestAbstract $request, ResponseAbstract $response, array $data = []) : void
     {
-        $uploadedFiles = $request->files;
-
-        if (empty($uploadedFiles)) {
+        if (empty($request->files)) {
             $response->header->status = RequestStatusCode::R_400;
-            $this->createInvalidCreateResponse($request, $response, $uploadedFiles);
+            $this->createInvalidCreateResponse($request, $response, $request->files);
 
             return;
         }
@@ -163,42 +160,25 @@ final class ApiController extends Controller
         $uploaded = $this->app->moduleManager->get('Media', 'Api')->uploadFiles(
             names: $request->getDataList('names'),
             fileNames: $request->getDataList('filenames'),
-            files: $uploadedFiles,
+            files: $request->files,
             account: $request->header->account,
             basePath: __DIR__ . '/../../../Modules/Media/Files' . $path,
             virtualPath: $path,
             pathSettings: PathSettings::FILE_PATH,
-            readContent: true
+            readContent: true,
+            type: $request->getDataInt('type'),
+            rel: $contract->id,
+            mapper: ContractMapper::class,
+            field: 'files'
         );
 
-        if ($request->hasData('type')) {
-            foreach ($uploaded as $file) {
-                $this->createModelRelation(
-                    $request->header->account,
-                    $file->id,
-                    $request->getDataInt('type'),
-                    MediaMapper::class,
-                    'types',
-                    '',
-                    $request->getOrigin()
-                );
-            }
-        }
-
-        if (empty($uploaded)) {
+        if (empty($uploaded->sources)) {
             $this->createInvalidAddResponse($request, $response, []);
 
             return;
         }
 
-        $this->createModelRelation(
-            $request->header->account,
-            (int) $request->getData('contract'),
-            \reset($uploaded)->id,
-            ContractMapper::class, 'files', '', $request->getOrigin()
-        );
-
-        $this->createStandardUpdateResponse($request, $response, $uploaded);
+        $this->createStandardUpdateResponse($request, $response, $uploaded->sources);
     }
 
     /**

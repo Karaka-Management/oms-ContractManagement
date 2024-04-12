@@ -56,17 +56,14 @@ final class BackendController extends Controller
         $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-list');
         $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
 
-        $mapper = ContractMapper::getAll()
+        $view->data['contracts'] = ContractMapper::getAll()
             ->with('account')
-            ->limit(25);
-
-        if ($request->getData('ptype') === 'p') {
-            $view->data['contracts'] = $mapper->where('id', $request->getDataInt('offset') ?? 0, '<')->execute();
-        } elseif ($request->getData('ptype') === 'n') {
-            $view->data['contracts'] = $mapper->where('id', $request->getDataInt('offset') ?? 0, '>')->execute();
-        } else {
-            $view->data['contracts'] = $mapper->where('id', 0, '>')->execute();
-        }
+            ->limit(25)
+            ->paginate(
+                'id',
+                $request->getDataString('ptype') ?? '',
+                $request->getDataInt('offset')
+            )->executeGetArray();
 
         return $view;
     }
@@ -90,18 +87,15 @@ final class BackendController extends Controller
         $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-type-list');
         $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
 
-        $mapper = ContractTypeMapper::getAll()
+        $view->data['types'] = ContractTypeMapper::getAll()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
-            ->limit(25);
-
-        if ($request->getData('ptype') === 'p') {
-            $view->data['types'] = $mapper->where('id', $request->getDataInt('offset') ?? 0, '<')->execute();
-        } elseif ($request->getData('ptype') === 'n') {
-            $view->data['types'] = $mapper->where('id', $request->getDataInt('offset') ?? 0, '>')->execute();
-        } else {
-            $view->data['types'] = $mapper->where('id', 0, '>')->execute();
-        }
+            ->limit(25)
+            ->paginate(
+                'id',
+                $request->getDataString('ptype') ?? '',
+                $request->getDataInt('offset')
+            )->executeGetArray();
 
         return $view;
     }
