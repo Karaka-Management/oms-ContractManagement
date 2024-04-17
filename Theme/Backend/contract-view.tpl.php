@@ -12,17 +12,20 @@
  */
 declare(strict_types=1);
 
+use Modules\ContractManagement\Models\NullContract;
 use phpOMS\Uri\UriFactory;
 
 /**
  * @var \phpOMS\Views\View                          $this
  * @var \Modules\ContractManagement\Models\Contract $contract
  */
-$contract = $this->data['contract'];
+$contract = $this->data['contract'] ?? new NullContract();
+$isNew = $contract->id === 0;
 
 echo $this->data['nav']->render(); ?>
 
 <div class="tabview tab-2">
+    <?php if (!$isNew) : ?>
     <div class="box">
         <ul class="tab-links">
             <li><label for="c-tab-1"><?= $this->getHtml('Overview'); ?></label>
@@ -32,8 +35,9 @@ echo $this->data['nav']->render(); ?>
             <li><label for="c-tab-5"><?= $this->getHtml('Parties'); ?></label>
         </ul>
     </div>
+    <?php endif; ?>
     <div class="tab-content">
-        <input type="radio" id="c-tab-1" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-1' ? ' checked' : ''; ?>>
+        <input type="radio" id="c-tab-1" name="tabular-2"<?= $isNew || $this->request->uri->fragment === 'c-tab-1' ? ' checked' : ''; ?>>
         <div class="tab">
             <div class="row">
                 <div class="col-xs-12 col-md-6">
@@ -56,7 +60,7 @@ echo $this->data['nav']->render(); ?>
                                     <?php
                                     $types = $this->data['contractTypes'] ?? [];
                                     foreach ($types as $type) : ?>
-                                        <option value="<?= $type->id; ?>" <?= $type->id === $contract->type->id ? ' selected' : ''; ?>><?= $this->printHtml($type->getL11n()); ?>
+                                        <option value="<?= $type->id; ?>" <?= $type->id === $contract->type?->id ? ' selected' : ''; ?>><?= $this->printHtml($type->getL11n()); ?>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -68,12 +72,12 @@ echo $this->data['nav']->render(); ?>
 
                             <div class="form-group">
                                 <label for="iStart"><?= $this->getHtml('Start'); ?></label>
-                                <input type="datetime-local" id="iStart" name="start" value="<?= $this->printHtml($contract->start->format('Y-m-d\TH:i:s')); ?>">
+                                <input type="datetime-local" id="iStart" name="start" value="<?= $contract->start?->format('Y-m-d\TH:i:s'); ?>">
                             </div>
 
                             <div class="form-group">
                                 <label for="iEnd"><?= $this->getHtml('End'); ?></label>
-                                <input type="datetime-local" id="iEnd" name="end" value="<?= $this->printHtml($contract->end->format('Y-m-d\TH:i:s')); ?>">
+                                <input type="datetime-local" id="iEnd" name="end" value="<?= $contract->end?->format('Y-m-d\TH:i:s'); ?>">
                             </div>
 
                             <div class="form-group">
@@ -114,6 +118,7 @@ echo $this->data['nav']->render(); ?>
             </div>
         </div>
 
+        <?php if (!$isNew) : ?>
         <input type="radio" id="c-tab-2" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-2' ? ' checked' : ''; ?>>
         <div class="tab col-simple">
             <?= $this->data['media-upload']->render('contract-file', 'files', '', $contract->files); ?>
@@ -142,7 +147,7 @@ echo $this->data['nav']->render(); ?>
         <div class="tab">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="portlet">
+                    <section class="portlet">
                         <div class="portlet-head"><?= $this->getHtml('Contracts'); ?><i class="g-icon download btn end-xs">download</i></div>
                         <div class="slider">
                         <table id="contractList" class="default sticky">
@@ -213,9 +218,10 @@ echo $this->data['nav']->render(); ?>
                             <?php endif; ?>
                         </table>
                         </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 </div>

@@ -22,6 +22,7 @@ return ['ContractManagement' => [
     'End'           => 'Ende',
     'Files'         => 'Dateien',
     'Name'          => 'Name',
+    'ContractType'          => 'Vertragsart',
     'Overview'      => 'Übersicht',
     'Parties'       => 'Parteien',
     'Start'         => 'Start',

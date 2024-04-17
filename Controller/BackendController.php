@@ -14,8 +14,14 @@ declare(strict_types=1);
 
 namespace Modules\ContractManagement\Controller;
 
+use Modules\Attribute\Models\NullAttributeType;
+use Modules\Attribute\Models\NullAttributeValue;
+use Modules\ContractManagement\Models\Attribute\ContractAttributeTypeL11nMapper;
 use Modules\ContractManagement\Models\Attribute\ContractAttributeTypeMapper;
+use Modules\ContractManagement\Models\Attribute\ContractAttributeValueL11nMapper;
+use Modules\ContractManagement\Models\Attribute\ContractAttributeValueMapper;
 use Modules\ContractManagement\Models\ContractMapper;
+use Modules\ContractManagement\Models\ContractTypeL11nMapper;
 use Modules\ContractManagement\Models\ContractTypeMapper;
 use Modules\Organization\Models\UnitMapper;
 use phpOMS\Contract\RenderableInterface;
@@ -90,7 +96,7 @@ final class BackendController extends Controller
         $view->data['types'] = ContractTypeMapper::getAll()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
-            ->limit(25)
+            ->limit(50)
             ->paginate(
                 'id',
                 $request->getDataString('ptype') ?? '',
@@ -119,13 +125,65 @@ final class BackendController extends Controller
         $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-type');
         $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
 
-        $type = ContractTypeMapper::get()
+        $view->data['type'] = ContractTypeMapper::get()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
             ->where('id', (int) $request->getData('id'))
             ->execute();
 
-        $view->data['type'] = $type;
+        $view->data['l11nView']   = new \Web\Backend\Views\L11nView($this->app->l11nManager, $request, $response);
+        $view->data['l11nValues'] = ContractTypeL11nMapper::getAll()
+            ->where('ref', $view->data['type']->id)
+            ->executeGetArray();
+
+        return $view;
+    }
+
+    /**
+     * Routing end-point for application behavior.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param array            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
+    public function viewContractTypeCreate(RequestAbstract $request, ResponseAbstract $response, array $data = []) : RenderableInterface
+    {
+        $view = new View($this->app->l11nManager, $request, $response);
+
+        $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-type');
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
+
+        return $view;
+    }
+
+    /**
+     * Routing end-point for application behavior.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param array            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
+    public function viewContractCreate(RequestAbstract $request, ResponseAbstract $response, array $data = []) : RenderableInterface
+    {
+        $view = new View($this->app->l11nManager, $request, $response);
+
+        $view->setTemplate('/Modules/ContractManagement/Theme/Backend/contract-view');
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
+
+        $view->data['contractTypes'] = ContractTypeMapper::getAll()
+            ->with('l11n')
+            ->where('l11n/language', $response->header->l11n->language)
+            ->executeGetArray();
 
         return $view;
     }
@@ -189,6 +247,151 @@ final class BackendController extends Controller
 
         $view->data['attributeView']                               = new \Modules\Attribute\Theme\Backend\Components\AttributeView($this->app->l11nManager, $request, $response);
         $view->data['attributeView']->data['default_localization'] = $this->app->l11nServer;
+
+        return $view;
+    }
+
+    /**
+     * Routing end-point for application behavior.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param array            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
+    public function viewContractManagementAttributeTypeList(RequestAbstract $request, ResponseAbstract $response, array $data = []) : RenderableInterface
+    {
+        $view              = new \Modules\Attribute\Theme\Backend\Components\AttributeTypeListView($this->app->l11nManager, $request, $response);
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
+
+        $view->attributes = ContractAttributeTypeMapper::getAll()
+            ->with('l11n')
+            ->where('l11n/language', $response->header->l11n->language)
+            ->executeGetArray();
+
+        $view->path = 'contract';
+
+        return $view;
+    }
+
+    /**
+     * Routing end-point for application behavior.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param array            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
+    public function viewContractManagementAttributeType(RequestAbstract $request, ResponseAbstract $response, array $data = []) : RenderableInterface
+    {
+        $view              = new \Modules\Attribute\Theme\Backend\Components\AttributeTypeView($this->app->l11nManager, $request, $response);
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
+
+        $view->attribute = ContractAttributeTypeMapper::get()
+            ->with('l11n')
+            ->with('defaults')
+            ->with('defaults/l11n')
+            ->where('id', (int) $request->getData('id'))
+            ->where('l11n/language', $response->header->l11n->language)
+            ->where('defaults/l11n/language', [$response->header->l11n->language, null])
+            ->execute();
+
+        $view->l11ns = ContractAttributeTypeL11nMapper::getAll()
+            ->where('ref', $view->attribute->id)
+            ->executeGetArray();
+
+        $view->path = 'contract';
+
+        return $view;
+    }
+
+    /**
+     * Routing end-point for application behavior.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param array            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
+    public function viewContractManagementAttributeTypeCreate(RequestAbstract $request, ResponseAbstract $response, array $data = []) : RenderableInterface
+    {
+        $view              = new \Modules\Attribute\Theme\Backend\Components\AttributeTypeView($this->app->l11nManager, $request, $response);
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
+
+        $view->attribute = new NullAttributeType();
+
+        $view->path = 'contract';
+
+        return $view;
+    }
+
+    /**
+     * Routing end-point for application behavior.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param array            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
+    public function viewContractManagementAttributeValueCreate(RequestAbstract $request, ResponseAbstract $response, array $data = []) : RenderableInterface
+    {
+        $view              = new \Modules\Attribute\Theme\Backend\Components\AttributeValueView($this->app->l11nManager, $request, $response);
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1007901001, $request, $response);
+
+        $view->type      = ContractAttributeTypeMapper::get()->where('id', (int) $request->getData('type'))->execute();
+        $view->attribute = new NullAttributeValue();
+
+        $view->path = 'contract';
+
+        return $view;
+    }
+
+    /**
+     * Routing end-point for application behavior.
+     *
+     * @param RequestAbstract  $request  Request
+     * @param ResponseAbstract $response Response
+     * @param array            $data     Generic data
+     *
+     * @return RenderableInterface
+     *
+     * @since 1.0.0
+     * @codeCoverageIgnore
+     */
+    public function viewContractManagementAttributeValue(RequestAbstract $request, ResponseAbstract $response, array $data = []) : RenderableInterface
+    {
+        $view              = new \Modules\Attribute\Theme\Backend\Components\AttributeValueView($this->app->l11nManager, $request, $response);
+        $view->data['nav'] = $this->app->moduleManager->get('Navigation')->createNavigationMid(1004802001, $request, $response);
+
+        $view->type = ContractAttributeTypeMapper::get()->where('id', (int) $request->getData('type'))->execute();
+
+        $view->attribute = ContractAttributeValueMapper::get()
+            ->with('l11n')
+            ->where('id', (int) $request->getData('id'))
+            ->where('l11n/language', [$response->header->l11n->language, null])
+            ->execute();
+
+        $view->l11ns = ContractAttributeValueL11nMapper::getAll()
+            ->where('ref', $view->attribute->id)
+            ->executeGetArray();
+
+        // @todo Also find the ContractAttributeType
 
         return $view;
     }
