@@ -105,7 +105,7 @@ echo $this->data['nav']->render(); ?>
                                     <?php
                                     $units = $this->data['units'] ?? [];
                                     foreach ($units as $unit) : ?>
-                                        <option value="<?= $unit->id; ?>"<?= $contract->unit->id === $unit->id ? ' selected' : ''; ?>><?= $this->printHtml($unit->name); ?>
+                                        <option value="<?= $unit->id; ?>"<?= $contract->unit?->id === $unit->id ? ' selected' : ''; ?>><?= $this->printHtml($unit->name); ?>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
