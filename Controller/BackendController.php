@@ -40,6 +40,9 @@ use phpOMS\Views\View;
  * @link    https://jingga.app
  * @since   1.0.0
  * @codeCoverageIgnore
+ *
+ * @feature Implement directory view for contracts
+ *      https://github.com/Karaka-Management/oms-ContractManagement/issues/1
  */
 final class BackendController extends Controller
 {

@@ -34,6 +34,15 @@ use phpOMS\Message\ResponseAbstract;
  * @license OMS License 2.0
  * @link    https://jingga.app
  * @since   1.0.0
+ *
+ * @feature Create task/message if a contracts term runs out
+ *      https://github.com/Karaka-Management/oms-ContractManagement/issues/4
+ *
+ * @feature Create job which informs people about contract end of life
+ *      https://github.com/Karaka-Management/oms-ContractManagement/issues/3
+ *
+ * @feature Setting to change responsible person/group A to B (e.g. person leaves company)
+ *      https://github.com/Karaka-Management/oms-ContractManagement/issues/2
  */
 final class ApiController extends Controller
 {

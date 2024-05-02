@@ -43,7 +43,7 @@ return [
         ],
     ],
 
-    '^.*/contract$' => [
+    '^.*/contract(\?.*|$)$' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\ApiController:apiContractCreate',
             'verb'       => RouteVerb::PUT,
