@@ -26,8 +26,8 @@
     "providing": {
         "Navigation": "*",
         "Admin": "*",
-        "Media": "*",
-        "Search": "*"
+        "Search": "*",
+        "Tag": "*"
     },
     "load": [
         {

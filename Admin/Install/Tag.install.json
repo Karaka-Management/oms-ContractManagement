@@ -1,0 +1,23 @@
+[
+    {
+        "name": "contract",
+        "l11n": {
+            "en": "Contract",
+            "de": "Vertrag"
+        }
+    },
+    {
+        "name": "leasing",
+        "l11n": {
+            "en": "Leasing",
+            "de": "Leasing"
+        }
+    },
+    {
+        "name": "insurance",
+        "l11n": {
+            "en": "Insurance",
+            "de": "Versicherung"
+        }
+    }
+]

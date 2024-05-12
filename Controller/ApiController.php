@@ -175,7 +175,7 @@ final class ApiController extends Controller
             virtualPath: $path,
             pathSettings: PathSettings::FILE_PATH,
             readContent: true,
-            type: $request->getDataInt('type'),
+            tag: $request->getDataInt('tag'),
             rel: $contract->id,
             mapper: ContractMapper::class,
             field: 'files'

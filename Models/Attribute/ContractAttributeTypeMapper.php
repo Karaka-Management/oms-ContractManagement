@@ -42,7 +42,7 @@ final class ContractAttributeTypeMapper extends DataMapperFactory
         'contractmgmt_attr_type_datatype'   => ['name' => 'contractmgmt_attr_type_datatype',   'type' => 'int',    'internal' => 'datatype'],
         'contractmgmt_attr_type_fields'     => ['name' => 'contractmgmt_attr_type_fields',   'type' => 'int',    'internal' => 'fields'],
         'contractmgmt_attr_type_custom'     => ['name' => 'contractmgmt_attr_type_custom',   'type' => 'bool',   'internal' => 'custom'],
-        'contractmgmt_attr_type_repeatable' => ['name' => 'contractmgmt_attr_type_repeatable',   'type' => 'bool',   'internal' => 'repeatable'],
+        'contractmgmt_attr_type_repeatable' => ['name' => 'contractmgmt_attr_type_repeatable',   'type' => 'bool',   'internal' => 'isRepeatable'],
         'contractmgmt_attr_type_internal'   => ['name' => 'contractmgmt_attr_type_internal',   'type' => 'bool',   'internal' => 'isInternal'],
         'contractmgmt_attr_type_pattern'    => ['name' => 'contractmgmt_attr_type_pattern',  'type' => 'string', 'internal' => 'validationPattern'],
         'contractmgmt_attr_type_required'   => ['name' => 'contractmgmt_attr_type_required', 'type' => 'bool',   'internal' => 'isRequired'],
