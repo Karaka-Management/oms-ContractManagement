@@ -254,13 +254,13 @@
                 "null": false
             },
             "contractmgmt_attr_type_required": {
-                "description": "Every contract must have this attribute type if set to true.",
+                "comment": "Every contract must have this attribute type if set to true.",
                 "name": "contractmgmt_attr_type_required",
                 "type": "TINYINT(1)",
                 "null": false
             },
             "contractmgmt_attr_type_pattern": {
-                "description": "This is a regex validation pattern.",
+                "comment": "This is a regex validation pattern.",
                 "name": "contractmgmt_attr_type_pattern",
                 "type": "VARCHAR(255)",
                 "null": false

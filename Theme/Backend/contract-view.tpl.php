@@ -20,7 +20,7 @@ use phpOMS\Uri\UriFactory;
  * @var \Modules\ContractManagement\Models\Contract $contract
  */
 $contract = $this->data['contract'] ?? new NullContract();
-$isNew = $contract->id === 0;
+$isNew    = $contract->id === 0;
 
 echo $this->data['nav']->render(); ?>
 
