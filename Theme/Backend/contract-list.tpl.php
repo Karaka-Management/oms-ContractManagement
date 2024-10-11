@@ -30,7 +30,9 @@ echo $this->data['nav']->render(); ?>
 <div class="row">
     <div class="col-xs-12">
         <section class="portlet">
-            <div class="portlet-head"><?= $this->getHtml('Contracts'); ?><i class="g-icon download btn end-xs">download</i></div>
+            <div class="portlet-head"><?= $this->getHtml('Contracts'); ?>
+            <a class="button end-xs save" href="<?= UriFactory::build('{/base}/contract/create'); ?>"><?= $this->getHtml('New', '0', '0'); ?></a>
+        </div>
             <div class="slider">
             <table id="contractList" class="default sticky">
                 <thead>
@@ -79,20 +81,25 @@ echo $this->data['nav']->render(); ?>
                     $url = UriFactory::build('{/base}/contract/view?{?}&id=' . $value->id);
 
                     $type = 'ok';
-                    if (($value->end->getTimestamp() < $now->getTimestamp() && $value->end->getTimestamp() + 7776000 > $now->getTimestamp())
-                        || ($value->end->getTimestamp() > $now->getTimestamp() && $value->end->getTimestamp() - 7776000 < $now->getTimestamp())
-                    ) {
-                        $type = 'error';
-                    } elseif ($value->end->getTimestamp() < $now->getTimestamp()) {
-                        $type = 'info';
-                    } elseif ($value->end->getTimestamp() + 7776000 < $now->getTimestamp()) {
-                        $type = 'warning';
+                    if ($value->end !== null) {
+                        if (($value->end->getTimestamp() < $now->getTimestamp() && $value->end->getTimestamp() + 7776000 > $now->getTimestamp())
+                            || ($value->end->getTimestamp() > $now->getTimestamp() && $value->end->getTimestamp() - 7776000 < $now->getTimestamp())
+                        ) {
+                            $type = 'error';
+                        } elseif ($value->end->getTimestamp() < $now->getTimestamp()) {
+                            $type = 'info';
+                        } elseif ($value->end->getTimestamp() + 7776000 < $now->getTimestamp()) {
+                            $type = 'warning';
+                        }
                     }
                 ?>
                 <tr tabindex="0" data-href="<?= $url; ?>">
                     <td data-label="<?= $this->getHtml('Title'); ?>"><a href="<?= $url; ?>"><?= $this->printHtml($value->title); ?></a>
                     <td data-label="<?= $this->getHtml('Account'); ?>"><a class="content" href="<?= UriFactory::build('{/base}/profile/view?{?}&for=' . $value->account->id); ?>"><?= $this->printHtml($value->account->name1); ?> <?= $this->printHtml($value->account->name2); ?></a>
-                    <td data-label="<?= $this->getHtml('End'); ?>"><a href="<?= $url; ?>"><span class="tag <?= $type;  ?>"><?= $value->end !== null ? $value->end->format('Y-m-d') : ''; ?></span></a>
+                    <td data-label="<?= $this->getHtml('End'); ?>">
+                        <?php if ($value->end !== null) : ?>
+                        <a href="<?= $url; ?>"><span class="tag <?= $type;  ?>"><?= $value->end !== null ? $value->end->format('Y-m-d') : ''; ?></span></a>
+                        <?php endif; ?>
                 <?php endforeach; ?>
                 <?php if ($count === 0) : ?>
                     <tr><td colspan="3" class="empty"><?= $this->getHtml('Empty', '0', '0'); ?>

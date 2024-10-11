@@ -86,7 +86,6 @@ final class ApiController extends Controller
     {
         $val = [];
         if (($val['title'] = !$request->hasData('title'))
-            || ($val['duration'] = !$request->hasData('duration'))
             || ($val['type'] = !$request->hasData('type'))
         ) {
             return $val;
@@ -161,7 +160,7 @@ final class ApiController extends Controller
 
         /** @var \Modules\ContractManagement\Models\Contract */
         $contract = ContractMapper::get()
-            ->where('id', $request->getDataInt('contract'))
+            ->where('id', $request->getDataInt('ref'))
             ->execute();
 
         $path = $this->createContractDir($contract);
@@ -337,7 +336,7 @@ final class ApiController extends Controller
             return;
         }
 
-        $request->setData('virtualpath', '/Modules/ContractManagement/Contracts/' . $request->getData('id'), true);
+        $request->setData('virtualpath', '/Modules/ContractManagement/Contracts/' . $request->getData('ref'), true);
         $this->app->moduleManager->get('Editor', 'Api')->apiEditorCreate($request, $response, $data);
 
         if ($response->header->status !== RequestStatusCode::R_200) {
@@ -350,7 +349,7 @@ final class ApiController extends Controller
         }
 
         $model = $responseData['response'];
-        $this->createModelRelation($request->header->account, (int) $request->getData('id'), $model->id, ContractMapper::class, 'notes', '', $request->getOrigin());
+        $this->createModelRelation($request->header->account, (int) $request->getData('ref'), $model->id, ContractMapper::class, 'notes', '', $request->getOrigin());
     }
 
     /**
@@ -365,7 +364,7 @@ final class ApiController extends Controller
     private function validateNoteCreate(RequestAbstract $request) : array
     {
         $val = [];
-        if (($val['id'] = !$request->hasData('id'))
+        if (($val['ref'] = !$request->hasData('ref'))
         ) {
             return $val;
         }
@@ -392,7 +391,12 @@ final class ApiController extends Controller
         if (!$this->app->accountManager->get($accountId)->hasPermission(
             PermissionType::MODIFY, $this->app->unitId, $this->app->appId, self::NAME, PermissionCategory::NOTE, $request->getDataInt('id'))
         ) {
-            $this->fillJsonResponse($request, $response, NotificationLevel::HIDDEN, '', '', []);
+            $this->fillJsonResponse(
+                $request, $response,
+                NotificationLevel::ERROR, '',
+                $this->app->l11nManager->getText($response->header->l11n->language, '0', '0', 'InvalidPermission'),
+                []
+            );
             $response->header->status = RequestStatusCode::R_403;
 
             return;

@@ -42,6 +42,10 @@ echo $this->data['nav']->render(); ?>
             <div class="row">
                 <div class="col-xs-12 col-md-6">
                     <section class="portlet">
+                    <form id="iContractForm"
+                        method="<?= $isNew ? 'PUT' : 'POST'; ?>"
+                        action="<?= UriFactory::build('{/api}contract?csrf={$CSRF}'); ?>"
+                        <?= $isNew ? 'data-redirect="' . UriFactory::build('{/base}/contract/view') . '?id={/0/response/id}"' : ''; ?>>
                         <div class="portlet-head"><?= $this->getHtml('Contract'); ?></div>
                         <div class="portlet-body">
                             <div class="form-group">
@@ -113,6 +117,7 @@ echo $this->data['nav']->render(); ?>
                         <div class="portlet-foot">
                             <input type="Submit" value="<?= $this->getHtml('Save', '0', '0'); ?>">
                         </div>
+                        </form>
                     </section>
                 </div>
             </div>
@@ -121,12 +126,12 @@ echo $this->data['nav']->render(); ?>
         <?php if (!$isNew) : ?>
         <input type="radio" id="c-tab-2" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-2' ? ' checked' : ''; ?>>
         <div class="tab col-simple">
-            <?= $this->data['media-upload']->render('contract-file', 'files', '', $contract->files); ?>
+            <?= $this->data['media-upload']->render('contract-file', 'files', '', $contract->files, '{/api}contract/file?csrf={$CSRF}', (string) $contract->id); ?>
         </div>
 
         <input type="radio" id="c-tab-3" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-3' ? ' checked' : ''; ?>>
         <div class="tab col-simple">
-            <?= $this->data['note']->render('contract-note', 'notes', $contract->notes); ?>
+            <?= $this->data['note']->render('contract-note', 'notes', $contract->notes, '{/api}contract/note?csrf={$CSRF}', (string) $contract->id); ?>
         </div>
 
         <input type="radio" id="c-tab-4" name="tabular-2"<?= $this->request->uri->fragment === 'c-tab-4' ? ' checked' : ''; ?>>

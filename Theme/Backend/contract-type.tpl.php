@@ -24,7 +24,9 @@ echo $this->data['nav']->render(); ?>
 <div class="row">
     <div class="col-xs-12 col-md-6">
         <section class="portlet">
-            <form id="materialForm" method="<?= $isNew ? 'PUT' : 'POST'; ?>" action="<?= UriFactory::build('{/api}contract/type?csrf={$CSRF}'); ?>">
+            <form id="materialForm" method="<?= $isNew ? 'PUT' : 'POST'; ?>"
+                action="<?= UriFactory::build('{/api}contract/type?csrf={$CSRF}'); ?>"
+                <?= $isNew ? 'data-redirect="' . UriFactory::build('{/base}/contract/type/view') . '?id={/0/response/id}"' : ''; ?>>
                 <div class="portlet-head"><?= $this->getHtml('ContractType'); ?></div>
                 <div class="portlet-body">
                     <div class="form-group">
@@ -51,7 +53,8 @@ echo $this->data['nav']->render(); ?>
     <?= $this->data['l11nView']->render(
         $this->data['l11nValues'],
         [],
-        '{/api}contract/type/l11n?csrf={$CSRF}'
+        '{/api}contract/type/l11n?csrf={$CSRF}',
+        (string) $type->id
     );
     ?>
 </div>

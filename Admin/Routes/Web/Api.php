@@ -43,6 +43,31 @@ return [
         ],
     ],
 
+    '^.*/contract/type/l11n(\?.*|$)$' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\ApiContractTypeController:apiContractTypeL11nCreate',
+            'verb'       => RouteVerb::PUT,
+            'csrf'       => true,
+            'active'     => true,
+            'permission' => [
+                'module' => Controller::NAME,
+                'type'   => PermissionType::CREATE,
+                'state'  => PermissionCategory::ATTRIBUTE,
+            ],
+        ],
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\ApiContractTypeController:apiContractTypeL11nUpdate',
+            'verb'       => RouteVerb::SET,
+            'csrf'       => true,
+            'active'     => true,
+            'permission' => [
+                'module' => Controller::NAME,
+                'type'   => PermissionType::MODIFY,
+                'state'  => PermissionCategory::ATTRIBUTE,
+            ],
+        ],
+    ],
+
     '^.*/contract(\?.*|$)$' => [
         [
             'dest'       => '\Modules\ContractManagement\Controller\ApiController:apiContractCreate',
@@ -63,6 +88,56 @@ return [
             'permission' => [
                 'module' => Controller::NAME,
                 'type'   => PermissionType::READ,
+                'state'  => PermissionCategory::CONTRACT,
+            ],
+        ],
+    ],
+
+    '^.*/contract/file(\?.*|$)$' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\ApiController:apiContractDocumentCreate',
+            'verb'       => RouteVerb::PUT,
+            'csrf'       => true,
+            'active'     => true,
+            'permission' => [
+                'module' => Controller::NAME,
+                'type'   => PermissionType::CREATE,
+                'state'  => PermissionCategory::CONTRACT,
+            ],
+        ],
+    ],
+
+    '^.*/contract/note(\?.*|$)$' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\ApiController:apiNoteCreate',
+            'verb'       => RouteVerb::PUT,
+            'csrf'       => true,
+            'active'     => true,
+            'permission' => [
+                'module' => Controller::NAME,
+                'type'   => PermissionType::CREATE,
+                'state'  => PermissionCategory::CONTRACT,
+            ],
+        ],
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\ApiController:apiNoteUpdate',
+            'verb'       => RouteVerb::SET,
+            'csrf'       => true,
+            'active'     => true,
+            'permission' => [
+                'module' => Controller::NAME,
+                'type'   => PermissionType::MODIFY,
+                'state'  => PermissionCategory::CONTRACT,
+            ],
+        ],
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\ApiController:apiNoteDelete',
+            'verb'       => RouteVerb::DELETE,
+            'csrf'       => true,
+            'active'     => true,
+            'permission' => [
+                'module' => Controller::NAME,
+                'type'   => PermissionType::DELETE,
                 'state'  => PermissionCategory::CONTRACT,
             ],
         ],
@@ -89,6 +164,31 @@ return [
                 'module' => Controller::NAME,
                 'type'   => PermissionType::READ,
                 'state'  => PermissionCategory::CONTRACT,
+            ],
+        ],
+    ],
+
+    '^.*/contract/attribute/type/l11n(\?.*|$)$' => [
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\ApiAttributeController:apiContractAttributeTypeL11nCreate',
+            'verb'       => RouteVerb::PUT,
+            'csrf'       => true,
+            'active'     => true,
+            'permission' => [
+                'module' => Controller::NAME,
+                'type'   => PermissionType::CREATE,
+                'state'  => PermissionCategory::ATTRIBUTE,
+            ],
+        ],
+        [
+            'dest'       => '\Modules\ContractManagement\Controller\ApiAttributeController:apiContractAttributeTypeL11nUpdate',
+            'verb'       => RouteVerb::SET,
+            'csrf'       => true,
+            'active'     => true,
+            'permission' => [
+                'module' => Controller::NAME,
+                'type'   => PermissionType::MODIFY,
+                'state'  => PermissionCategory::ATTRIBUTE,
             ],
         ],
     ],
