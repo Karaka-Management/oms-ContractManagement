@@ -131,7 +131,7 @@ final class BackendController extends Controller
         $view->data['type'] = ContractTypeMapper::get()
             ->with('l11n')
             ->where('l11n/language', $response->header->l11n->language)
-            ->where('id', (int) $request->getData('id'))
+            ->where('id', $request->getDataInt('id') ?? 0)
             ->execute();
 
         $view->data['l11nView']   = new \Web\Backend\Views\L11nView($this->app->l11nManager, $request, $response);
@@ -219,7 +219,7 @@ final class BackendController extends Controller
             ->with('attributes/value/l11n')
             ->with('files')
             ->with('notes')
-            ->where('id', (int) $request->getData('id'))
+            ->where('id', $request->getDataInt('id') ?? 0)
             ->where('attributes/type/l11n/language', $response->header->l11n->language)
             ->where('attributes/value/l11n/language', [$response->header->l11n->language, null])
             ->sort('files/id', OrderType::DESC)
@@ -227,7 +227,7 @@ final class BackendController extends Controller
 
         $view->data['children'] = ContractMapper::getAll()
             ->with('account')
-            ->where('parent', (int) $request->getData('id'))
+            ->where('parent', $request->getDataInt('id') ?? 0)
             ->sort('createdAt', OrderType::DESC)
             ->executeGetArray();
 
@@ -302,7 +302,7 @@ final class BackendController extends Controller
             ->with('l11n')
             ->with('defaults')
             ->with('defaults/l11n')
-            ->where('id', (int) $request->getData('id'))
+            ->where('id', $request->getDataInt('id') ?? 0)
             ->where('l11n/language', $response->header->l11n->language)
             ->where('defaults/l11n/language', [$response->header->l11n->language, null])
             ->execute();
@@ -386,7 +386,7 @@ final class BackendController extends Controller
 
         $view->attribute = ContractAttributeValueMapper::get()
             ->with('l11n')
-            ->where('id', (int) $request->getData('id'))
+            ->where('id', $request->getDataInt('id') ?? 0)
             ->where('l11n/language', [$response->header->l11n->language, null])
             ->execute();
 

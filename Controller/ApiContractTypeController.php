@@ -192,7 +192,7 @@ final class ApiContractTypeController extends Controller
         }
 
         /** @var BaseStringL11nType $old */
-        $old = ContractTypeMapper::get()->where('id', (int) $request->getData('id'));
+        $old = ContractTypeMapper::get()->where('id', $request->getDataInt('id') ?? 0);
         $new = $this->updateContractTypeFromRequest($request, clone $old);
 
         $this->updateModel($request->header->account, $old, $new, ContractTypeMapper::class, 'contract_type', $request->getOrigin());
@@ -262,7 +262,7 @@ final class ApiContractTypeController extends Controller
         }
 
         /** @var BaseStringL11nType $contractType */
-        $contractType = ContractTypeMapper::get()->where('id', (int) $request->getData('id'))->execute();
+        $contractType = ContractTypeMapper::get()->where('id', $request->getDataInt('id') ?? 0)->execute();
         $this->deleteModel($request->header->account, $contractType, ContractTypeMapper::class, 'contract_type', $request->getOrigin());
         $this->createStandardDeleteResponse($request, $response, $contractType);
     }
@@ -309,7 +309,7 @@ final class ApiContractTypeController extends Controller
         }
 
         /** @var BaseStringL11n $old */
-        $old = ContractTypeL11nMapper::get()->where('id', (int) $request->getData('id'));
+        $old = ContractTypeL11nMapper::get()->where('id', $request->getDataInt('id') ?? 0);
         $new = $this->updateContractTypeL11nFromRequest($request, clone $old);
 
         $this->updateModel($request->header->account, $old, $new, ContractTypeL11nMapper::class, 'contract_type_l11n', $request->getOrigin());
@@ -376,7 +376,7 @@ final class ApiContractTypeController extends Controller
         }
 
         /** @var BaseStringL11n $contractTypeL11n */
-        $contractTypeL11n = ContractTypeL11nMapper::get()->where('id', (int) $request->getData('id'))->execute();
+        $contractTypeL11n = ContractTypeL11nMapper::get()->where('id', $request->getDataInt('id') ?? 0)->execute();
         $this->deleteModel($request->header->account, $contractTypeL11n, ContractTypeL11nMapper::class, 'contract_type_l11n', $request->getOrigin());
         $this->createStandardDeleteResponse($request, $response, $contractTypeL11n);
     }

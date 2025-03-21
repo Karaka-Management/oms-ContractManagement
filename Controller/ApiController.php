@@ -212,7 +212,7 @@ final class ApiController extends Controller
         }
 
         /** @var \Modules\ContractManagement\Models\Contract $old */
-        $old = ContractMapper::get()->where('id', (int) $request->getData('id'))->execute();
+        $old = ContractMapper::get()->where('id', $request->getDataInt('id') ?? 0)->execute();
         $new = $this->updateContractFromRequest($request, clone $old);
 
         $this->updateModel($request->header->account, $old, $new, ContractMapper::class, 'contract', $request->getOrigin());
@@ -290,7 +290,7 @@ final class ApiController extends Controller
         }
 
         /** @var \Modules\ContractManagement\Models\Contract $contract */
-        $contract = ContractMapper::get()->where('id', (int) $request->getData('id'))->execute();
+        $contract = ContractMapper::get()->where('id', $request->getDataInt('id') ?? 0)->execute();
         $this->deleteModel($request->header->account, $contract, ContractMapper::class, 'contract', $request->getOrigin());
         $this->createStandardDeleteResponse($request, $response, $contract);
     }
